@@ -6,8 +6,65 @@
 
 <div layout:fragment="content">
 
-    <th:block th:replace="~{view/director/right-form :: right-form}"></th:block>
+    <div  class="extract-ar">
+        <link rel="stylesheet" th:href="@{/css/director/extract.css}">
+        <th:block th:replace="~{view/director/right-form :: right-form}"></th:block>
 
+        <form class="extract-exam-form">
+            <select>
+                <option>수능</option>
+                <option>모의고사</option>
+                <option>자격증</option>
+                <option>학교 시험</option>
+                <option>기타</option>
+            </select>
+
+            <select><!-- 모의고사 선택이라고 가정 -->
+                <option>평가원(6,9)</option>
+                <option>교육청</option>
+                <option>사설</option>
+            </select>
+
+            <select><!-- 모의고사 선택이라고 가정 -->
+                <option>2024</option>
+                <option>2023</option>
+                <option>2022</option>
+                <option>2021</option>
+                <option>2020</option>
+                <option>2019</option>
+                <option>2018</option>
+            </select>
+
+            <select><!-- 모의고사 선택이라고 가정 -->
+                <option>A형(타입)</option>
+                <option>B형(타입)</option>
+                <option>1형(타입)</option>
+                <option>2형(타입)</option>
+            </select>
+            <select><!-- 모의고사 선택이라고 가정 -->
+                <option>국어</option>
+                <option>수학</option>
+                <option>영어</option>
+                <option>한국사</option>
+                <option>사탐</option>
+                <option>과탐</option>
+                <option>직탐</option>
+                <option>제2외국어</option>
+                <option>한문</option>
+            </select>
+
+        </form>
+
+        <div style="width: 100%; height: 15px;"></div>
+
+        <div class="exam-pdf-form">
+            시험지 선택(드래그 가능)
+        </div>
+
+        <div style="width: 100%; height: 15px;"></div>
+
+        <div class="exam-data-submit">입력 완료</div>
+    </div>
 
 </div>
 </html>

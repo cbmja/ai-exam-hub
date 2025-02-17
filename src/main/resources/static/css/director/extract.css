@@ -1,0 +1,80 @@
+/* 추출 페이지(네비 , 사이드 , 우측 폼 제외 영역) */
+.extract-ar{
+    /* 크기 */
+    height: 600px;
+
+    /* 정렬 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* pdf 정보 입력 폼 */
+.extract-exam-form{
+    /* 크기 */
+    width: 80%;
+    height: 130px;
+
+    /* 테두리 */
+    border-radius: 8px;
+    border: 1px solid #000000;
+
+    /* 정렬 */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    /* 여백 */
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* pdf 선택 영역 */
+.exam-pdf-form{
+    /* 크기 */
+    width: calc(80% + 30px);
+    height: 130px;
+
+    /* 테두리 */
+    border-radius: 8px;
+    border: 1px solid #000000;
+
+    /* 정렬 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* 텍스트 */
+    font-size: 20px;
+    color: #1F2328;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* 시험 정보 입력 버튼 */
+.exam-data-submit{
+    /* 크기 */
+    width: calc(80% + 30px);
+    height: 37px;
+
+    /* 테두리 */
+    border-radius: 8px;
+    border: 1px solid #000000;
+
+    /* 정렬 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* 텍스트 */
+    font-size: 20px;
+    color: #1F2328;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
