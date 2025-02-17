@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ai-exam-hub
+
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+
+  mvc:
+    view:
+      suffix: .html
+
+  datasource:
+    url: jdbc:mysql://localhost.com:3306/examhub?allowPublicKeyRetrieval=true&useSSL=false
+    username: examhub
+    password: examhub007512!
+    driver-class-name: com.mysql.cj.jdbc.Driver
