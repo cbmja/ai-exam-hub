@@ -1,0 +1,14 @@
+.right-form-ar{
+    /* 크기 */
+    width: 300px;
+    height: 500px;
+
+    /* 테두리 */
+    border-radius: 8px;
+    border: 1px solid #000000;
+
+    /*위치*/
+    position: fixed;
+    right: 15px;
+    top: 130px;
+}

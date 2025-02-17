@@ -1,0 +1,43 @@
+/*전체 영역*/
+html{
+    height: 100dvh;
+    width: calc(100vw - 8px);
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    overflow: overlay
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* 스크롤 바 */
+::-webkit-scrollbar {
+	width: 8px;
+}
+::-webkit-scrollbar-thumb{
+	background: #00C471;
+	border-radius: 13px 13px 13px 13px;
+}
+::-webkit-scrollbar-track {
+	background: #F6F6F6;
+}
+
+/* 메인 영역 */
+.content-ar{
+
+    /* 크기 */
+    width: calc(100% - 615px);/* 전체 - 사이드바 넓이 - 우측 폼 넓이 */
+    min-height: calc(100% - 65px);/* 전체 - 네비바 높이 */
+
+    /* 여백 */
+    padding-left: 300px;/* 사이드바 넓이 */
+    padding-top: 65px;/* 네비바 높이 */
+}

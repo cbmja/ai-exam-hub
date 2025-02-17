@@ -8,7 +8,7 @@ public class testingController {
 
     @GetMapping("/index")
     public String testing(){
-        return "view/index";
+        return "view/director/extract";
     }
 
 }
