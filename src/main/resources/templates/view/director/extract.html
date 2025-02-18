@@ -25,12 +25,29 @@
                 <option selected disabled>과목</option>
             </select>
 
-            <select><!-- 모의고사 선택이라고 가정 -->
+            <select id="year-form"><!-- 모의고사 선택이라고 가정 -->
                 <option selected disabled>년도</option>
                 <option th:each="year : ${yearList}" th:text="${year}" th:value="${year}"></option>
             </select>
 
-            <select><!-- 모의고사 선택이라고 가정 -->
+            <select id="month-form"><!-- 모의고사 선택이라고 가정 -->
+                <option selected disabled>응시월</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>상관없음</option>
+            </select>
+
+            <select id="type-form"><!-- 모의고사 선택이라고 가정 -->
                 <option selected disabled>타입</option>
                 <option>A형(타입)</option>
                 <option>B형(타입)</option>
@@ -39,7 +56,6 @@
                 <option>홀수형(타입)</option>
                 <option>짝수형(타입)</option>
             </select>
-
 
         </form>
 
