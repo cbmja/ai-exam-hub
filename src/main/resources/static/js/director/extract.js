@@ -48,3 +48,21 @@ $(document).on('change', '#exam-cate-form', function(){
 
 });
 
+$(document).on('change', '.extract-select', function(){
+
+    let id = $(this).attr('id');
+    let selectedText = $('#'+id+' option:selected').text();
+    selectedText = ':&nbsp;&nbsp;&nbsp;'+selectedText;
+
+    switch(id){
+        case 'exam-cate-form' : $('#cate-data').empty().append(selectedText); break;
+        case 'exam-org-form' : $('#org-data').empty().append(selectedText); break;
+        case 'subject-form' : $('#subject-data').empty().append(selectedText); break;
+        case 'year-form' : $('#year-data').empty().append(selectedText); break;
+        case 'month-form' : $('#month-data').empty().append(selectedText); break;
+        case 'type-form' : $('#type-data').empty().append(selectedText); break;
+    }
+
+
+
+});
