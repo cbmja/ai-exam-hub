@@ -12,25 +12,25 @@
 
         <!-- 추출 시험지 정보 입력 영역 --><!-- 추출 시험지 정보 입력 영역 --><!-- 추출 시험지 정보 입력 영역 --><!-- 추출 시험지 정보 입력 영역 -->
         <form class="extract-exam-form"><!-- 추출 시험지 정보 입력 영역 -->
-            <select id="exam-cate-form">
+            <select id="exam-cate-form" class="extract-select">
                 <option selected disabled>시험 종류</option>
                 <option th:each="cate : ${examCateList}" th:text="${cate.examCateName}" th:value="${cate.examCateCode}"></option>
             </select>
 
-            <select id="exam-org-form"><!-- 모의고사 선택이라고 가정 -->
+            <select id="exam-org-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
                 <option selected disabled>출제기관</option>
             </select>
 
-            <select id="subject-form"><!-- 모의고사 선택이라고 가정 -->
+            <select id="subject-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
                 <option selected disabled>과목</option>
             </select>
 
-            <select id="year-form"><!-- 모의고사 선택이라고 가정 -->
+            <select id="year-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
                 <option selected disabled>년도</option>
                 <option th:each="year : ${yearList}" th:text="${year}" th:value="${year}"></option>
             </select>
 
-            <select id="month-form"><!-- 모의고사 선택이라고 가정 -->
+            <select id="month-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
                 <option selected disabled>응시월</option>
                 <option>1</option>
                 <option>2</option>
@@ -47,7 +47,7 @@
                 <option>상관없음</option>
             </select>
 
-            <select id="type-form"><!-- 모의고사 선택이라고 가정 -->
+            <select id="type-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
                 <option selected disabled>타입</option>
                 <option>A형(타입)</option>
                 <option>B형(타입)</option>

@@ -88,3 +88,48 @@
 
     cursor: pointer;
 }
+
+
+/* select */
+.extract-select {
+    appearance: none; /* 기본 스타일 제거 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    width: 100%;
+    max-width: 300px;
+    padding: 10px 12px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+
+    /* 화살표 추가 */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="%23222222"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    padding-right: 30px;
+}
+
+/* 호버 효과 */
+.extract-select:hover {
+    border-color: #888;
+}
+option {
+  cursor: pointer;
+}
+/* 포커스 효과 */
+.extract-select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+/* 비활성화된 경우 */
+.extract-select:disabled {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+}
