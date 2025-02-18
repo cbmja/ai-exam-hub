@@ -27,13 +27,7 @@
 
             <select><!-- 모의고사 선택이라고 가정 -->
                 <option selected disabled>년도</option>
-                <option>2024</option>
-                <option>2023</option>
-                <option>2022</option>
-                <option>2021</option>
-                <option>2020</option>
-                <option>2019</option>
-                <option>2018</option>
+                <option th:each="year : ${yearList}" th:text="${year}" th:value="${year}"></option>
             </select>
 
             <select><!-- 모의고사 선택이라고 가정 -->

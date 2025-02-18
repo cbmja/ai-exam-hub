@@ -7,20 +7,33 @@ $(document).on('change', '#exam-cate-form', function(){
     examCateCode = $('#exam-cate-form').val();
 
     $.ajax({
-        url: '/ai/extract/examOrg',
+        url: '/ai/extract/examInfo',
         method: 'GET',
         data: { examCateCode: examCateCode },
-        success: function(examOrgList) {
+        success: function(res) {
+
+            let examOrgList = res['examOrgList'];
+            let subjectList = res['subjectList'];
 
             let examOrgForm = $('#exam-org-form').empty();
 
-            let options = '<option selected disabled>출제기관</option>';
+            let oOptions = '<option selected disabled>출제기관</option>';
 
             examOrgList.forEach((examOrg)=>{
-              options += `<option value=${examOrg.examOrgCode}>${examOrg.examOrgName}</option>`
+              oOptions += `<option value=${examOrg.examOrgCode}>${examOrg.examOrgName}</option>`
             })
 
-            examOrgForm.append(options);
+            examOrgForm.append(oOptions);
+
+            let subjectForm = $('#subject-form').empty();
+
+            let sOptions = '<option selected disabled>과목</option>';
+
+            subjectList.forEach((subject)=>{
+              sOptions += `<option value=${subject.subjectCode}>${subject.subjectName}</option>`
+            })
+
+            subjectForm.append(sOptions);
 
         },
         error: function(xhr, status, error) {
@@ -32,28 +45,6 @@ $(document).on('change', '#exam-cate-form', function(){
 
     examOrgCode = $('#exam-org-form').val();
 
-    $.ajax({
-        url: '/ai/extract/examSubject',
-        method: 'GET',
-        data: { examOrgCode: examOrgCode },
-        success: function(subjectList) {
-
-            let subjectForm = $('#subject-form').empty();
-
-            let options = '<option selected disabled>과목</option>';
-
-            subjectList.forEach((subject)=>{
-              options += `<option value=${subject.subjectCode}>${subject.subjectName}</option>`
-            })
-
-            subjectForm.append(options);
-
-        },
-        error: function(xhr, status, error) {
-            console.error('Error:', error);
-            alert('서버 에러입니다. 잠시 후 다시 시도해 주세요.');
-        }
-    });
 
 });
 
