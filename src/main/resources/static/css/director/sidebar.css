@@ -5,7 +5,10 @@
     height: calc(100% - 65px);/* 전체 - 네비 바 높이 */
 
     /* 테두리 */
-    border-right: 1px solid #000000;
+    border-right: 1px solid #D1D9E0;
+
+    /* 배경 */
+    background-color: #FFFFFF;
 
     /* 정렬 */
     display: flex;
@@ -16,16 +19,17 @@
     /*위치*/
     position: fixed;
     left: 0;
-    top: 65px;/* 네비 바 높이 만큼 */
+    top: 66px;/* 네비 바 높이 + 테두리 만큼 */
 }
 /* 사이드바 최상단 텍스트 */
 .side-title{
     /* 크기 */
     width: calc(100% - 30px);
+    height: 30px;
 
     /* 텍스트 */
     font-size: 20px;
-    color: #1F2328;
+    color: #282C30;
     font-family: "Noto Sans KR", serif;
     font-optical-sizing: auto;
     font-weight: 500;
@@ -36,8 +40,23 @@
     margin-right: 15px;
 
 }
-
 /* 사이드바 내가 추출한 시험 목록 */
+.my-exam-element{
+    /* 크기 */
+    width: 100%;
+    height: calc(100% - 155px);
+
+    /* 스크롤 */
+    overflow-y: auto;
+
+    /* 정렬 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* 사이드바 내가 추출한 시험 요소 */
 .side-element{
 
     /* 크기 */
@@ -45,7 +64,7 @@
 
     /* 텍스트 */
     font-size: 17px;
-    color: #1F2328;
+    color: #59636E;
     font-family: "Noto Sans KR", serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -59,6 +78,9 @@
 
 /* 사이드바 검색창 */
 .side-form{
+    /* 기본 설정 제거 */
+    all: unset;
+
     /* 크기 */
     width: calc(100% - 30px);
     height: 40px;
@@ -66,4 +88,38 @@
     /* 여백 */
     margin-left: 15px;
     margin-right: 15px;
+
+    /* 테두리 */
+    border-radius: 8px;
+    border: 1px solid #D1D9E0;
+
+    /* 배경색 */
+    background-color: #F6F8FA;
+
+    /* 여백 */
+    padding-left: 13px;
+
+    /* 폰트 */
+    font-size: 13px;
+    color: #282C30;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.side-form:focus , .side-form:hover{
+    border: 2px solid #0969DA;
+}
+
+.side-form::placeholder{
+    font-size: 13px;
+
+    color: #BCBCBC;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }

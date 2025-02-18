@@ -4,7 +4,10 @@
     height: 65px;
 
     /* 테두리 */
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px solid #D1D9E0;
+
+    /* 배경색 */
+    background-color: #F6F8FA;
 
     /* 위치 */
     position: fixed;
