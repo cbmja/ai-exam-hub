@@ -13,9 +13,9 @@
         <div id="exam-info" class="exam-info-ar">
             <div class="exam-info-row"><span class="exam-info-title">시험 종류</span> <span class="exam-info-sub" id="cate-data">:&nbsp;&nbsp;&nbsp;중간고사</span> </div>
             <div class="exam-info-row"><span class="exam-info-title">출제 기관</span> <span class="exam-info-sub" id="org-data">:&nbsp;&nbsp;&nbsp;국립전통예술고등학교</span> </div>
-            <div class="exam-info-row"><span class="exam-info-title">과목</span> <span class="exam-info-sub" id="subject-data">:&nbsp;&nbsp;&nbsp;국어</span> </div>
             <div class="exam-info-row"><span class="exam-info-title">출제 년도</span> <span class="exam-info-sub" id="year-data">:&nbsp;&nbsp;&nbsp;2024</span> </div>
             <div class="exam-info-row"><span class="exam-info-title">출제 월</span> <span class="exam-info-sub" id="month-data">:&nbsp;&nbsp;&nbsp;5</span> </div>
+            <div class="exam-info-row"><span class="exam-info-title">과목</span> <span class="exam-info-sub" id="subject-data">:&nbsp;&nbsp;&nbsp;국어</span> </div>
             <div class="exam-info-row"><span class="exam-info-title">타입</span> <span class="exam-info-sub" id="type-data">:&nbsp;&nbsp;&nbsp;없음</span> </div>
         </div>
 
@@ -30,10 +30,6 @@
                 <option selected disabled>출제기관</option>
             </select>
 
-            <select id="subject-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
-                <option selected disabled>과목</option>
-            </select>
-
             <select id="year-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
                 <option selected disabled>출제년도</option>
                 <option th:each="year : ${yearList}" th:text="${year}" th:value="${year}"></option>
@@ -41,19 +37,23 @@
 
             <select id="month-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
                 <option selected disabled>출제월</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-                <option>상관없음</option>
+                <option>1월</option>
+                <option>2월</option>
+                <option>3월</option>
+                <option>4월</option>
+                <option>5월</option>
+                <option>6월</option>
+                <option>7월</option>
+                <option>8월</option>
+                <option>9월</option>
+                <option>10월</option>
+                <option>11월</option>
+                <option>12월</option>
+                <option>없음</option>
+            </select>
+
+            <select id="subject-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
+                <option selected disabled>과목</option>
             </select>
 
             <select id="type-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
