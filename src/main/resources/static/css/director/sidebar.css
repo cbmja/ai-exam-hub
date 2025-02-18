@@ -44,7 +44,7 @@
 .my-exam-element{
     /* 크기 */
     width: 100%;
-    height: calc(100% - 155px);
+    height: calc(100% - 170px);
 
     /* 스크롤 */
     overflow-y: auto;

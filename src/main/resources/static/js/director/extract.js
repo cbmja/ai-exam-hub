@@ -1,10 +1,48 @@
 let examCateCode;
 let examOrgCode;
+let examYear;
+let examMonth;
+let examSubject;
+let examType;
 
-/* 시험 종류 선택시 종류별 출제 기관 목록 가져오기 */
+/* select 변경시 상단 시험 정보 변경 */
+$(document).on('change', '.extract-select', function(){
+
+    let id = $(this).attr('id');
+    let selectedText = $('#'+id+' option:selected').text();
+    selectedText = ':&nbsp;&nbsp;&nbsp;'+selectedText;
+
+    switch(id){
+        case 'exam-cate-form' :
+            examCateCode = $('#exam-cate-form').val();
+            $('#cate-data').empty().append(selectedText); break;
+
+        case 'exam-org-form' :
+            examOrgCode = $('#exam-org-form').val();
+            $('#org-data').empty().append(selectedText); break;
+
+        case 'subject-form' :
+            examSubject = $('#subject-form').val();
+            $('#subject-data').empty().append(selectedText); break;
+
+        case 'year-form' :
+            examYear = $('#year-form').val();
+            $('#year-data').empty().append(selectedText); break;
+
+        case 'month-form' :
+            examMonth = $('#month-form').val();
+            $('#month-data').empty().append(selectedText); break;
+
+        case 'type-form' :
+            examType = $('#type-form').val();
+            $('#type-data').empty().append(selectedText); break;
+    }
+
+});
+
+
+/* 시험 종류 선택시 출제기관목록 , 시험 과목 불러오기 */
 $(document).on('change', '#exam-cate-form', function(){
-
-    examCateCode = $('#exam-cate-form').val();
 
     $.ajax({
         url: '/ai/extract/examInfo',
@@ -43,26 +81,5 @@ $(document).on('change', '#exam-cate-form', function(){
     });
 
 
-    examOrgCode = $('#exam-org-form').val();
-
-
 });
 
-$(document).on('change', '.extract-select', function(){
-
-    let id = $(this).attr('id');
-    let selectedText = $('#'+id+' option:selected').text();
-    selectedText = ':&nbsp;&nbsp;&nbsp;'+selectedText;
-
-    switch(id){
-        case 'exam-cate-form' : $('#cate-data').empty().append(selectedText); break;
-        case 'exam-org-form' : $('#org-data').empty().append(selectedText); break;
-        case 'subject-form' : $('#subject-data').empty().append(selectedText); break;
-        case 'year-form' : $('#year-data').empty().append(selectedText); break;
-        case 'month-form' : $('#month-data').empty().append(selectedText); break;
-        case 'type-form' : $('#type-data').empty().append(selectedText); break;
-    }
-
-
-
-});
