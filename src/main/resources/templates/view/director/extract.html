@@ -13,11 +13,7 @@
         <!-- 추출 시험지 정보 입력 영역 --><!-- 추출 시험지 정보 입력 영역 --><!-- 추출 시험지 정보 입력 영역 --><!-- 추출 시험지 정보 입력 영역 -->
         <form class="extract-exam-form"><!-- 추출 시험지 정보 입력 영역 -->
             <select>
-                <option>수능</option>
-                <option>모의고사</option>
-                <option>자격증</option>
-                <option>학교 시험</option>
-                <option>기타</option>
+                <option th:each="cate : ${examCateList}" th:text="${cate.examCateName}" th:value="${cate.examCateCode}"></option>
             </select>
 
             <select><!-- 모의고사 선택이라고 가정 -->
