@@ -5,8 +5,14 @@
 <mapper namespace="com.aiexamhub.exam.mapper.ExamOrgMapper">
 
     <select id="selectAll" resultType="ExamOrg">
-        SELECT * FROM exam_org;
+        SELECT *
+        FROM exam_org;
     </select>
 
+    <select id="selectByExamCateCode" parameterType="String" resultType="ExamOrg">
+        SELECT *
+        FROM exam_org
+        WHERE exam_cate_code LIKE CONCAT('%', #{examCateCode}, '%');
+    </select>
 
 </mapper>

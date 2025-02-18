@@ -29,4 +29,19 @@ public class ExamOrgService {
         }
     }
 
+    public List<ExamOrg> selectByExamCateCode(String examCateCode){
+        List<ExamOrg> examOrgList;
+        try{
+            examOrgList = sql.selectList("com.aiexamhub.exam.mapper.ExamOrgMapper.selectByExamCateCode",examCateCode);
+            return examOrgList;
+        }catch (Exception e){
+            e.printStackTrace();
+            examOrgList = new ArrayList<>();
+            ExamOrg examOrg = new ExamOrg();
+            examOrg.setErr("err");
+            examOrgList.add(examOrg);
+            return examOrgList;
+        }
+    }
+
 }

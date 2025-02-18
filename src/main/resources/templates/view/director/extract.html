@@ -12,17 +12,21 @@
 
         <!-- 추출 시험지 정보 입력 영역 --><!-- 추출 시험지 정보 입력 영역 --><!-- 추출 시험지 정보 입력 영역 --><!-- 추출 시험지 정보 입력 영역 -->
         <form class="extract-exam-form"><!-- 추출 시험지 정보 입력 영역 -->
-            <select>
+            <select id="exam-cate-form">
+                <option selected disabled>시험 종류</option>
                 <option th:each="cate : ${examCateList}" th:text="${cate.examCateName}" th:value="${cate.examCateCode}"></option>
             </select>
 
-            <select><!-- 모의고사 선택이라고 가정 -->
-                <option>평가원(6,9)</option>
-                <option>교육청</option>
-                <option>사설</option>
+            <select id="exam-org-form"><!-- 모의고사 선택이라고 가정 -->
+                <option selected disabled>출제기관</option>
+            </select>
+
+            <select id="subject-form"><!-- 모의고사 선택이라고 가정 -->
+                <option selected disabled>과목</option>
             </select>
 
             <select><!-- 모의고사 선택이라고 가정 -->
+                <option selected disabled>년도</option>
                 <option>2024</option>
                 <option>2023</option>
                 <option>2022</option>
@@ -33,22 +37,15 @@
             </select>
 
             <select><!-- 모의고사 선택이라고 가정 -->
+                <option selected disabled>타입</option>
                 <option>A형(타입)</option>
                 <option>B형(타입)</option>
                 <option>1형(타입)</option>
                 <option>2형(타입)</option>
+                <option>홀수형(타입)</option>
+                <option>짝수형(타입)</option>
             </select>
-            <select><!-- 모의고사 선택이라고 가정 -->
-                <option>국어</option>
-                <option>수학</option>
-                <option>영어</option>
-                <option>한국사</option>
-                <option>사탐</option>
-                <option>과탐</option>
-                <option>직탐</option>
-                <option>제2외국어</option>
-                <option>한문</option>
-            </select>
+
 
         </form>
 
@@ -68,5 +65,6 @@
 
     </div>
 
+    <script th:src="@{/js/director/extract.js}"></script>
 </div>
 </html>

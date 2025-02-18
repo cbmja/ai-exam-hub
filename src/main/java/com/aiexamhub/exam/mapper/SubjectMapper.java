@@ -2,8 +2,11 @@ package com.aiexamhub.exam.mapper;
 
 import com.aiexamhub.exam.dto.Subject;
 
+import java.util.List;
+
 public interface SubjectMapper {
 
-    Subject selectAll();
+    List<Subject> selectAll();
 
+    List<Subject> selectByExamCateCode();
 }

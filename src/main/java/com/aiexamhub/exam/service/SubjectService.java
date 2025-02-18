@@ -29,4 +29,19 @@ public class SubjectService {
         }
     }
 
+    public List<Subject> selectByExamCateCode(String examCateCode){
+        List<Subject> subjcetList;
+        try{
+            subjcetList = sql.selectList("com.aiexamhub.exam.mapper.SubjectMapper.selectByExamCateCode" , examCateCode);
+            return subjcetList;
+        }catch (Exception e){
+            e.printStackTrace();
+            subjcetList = new ArrayList<>();
+            Subject subject = new Subject();
+            subject.setErr("err");
+            subjcetList.add(subject);
+            return subjcetList;
+        }
+    }
+
 }
