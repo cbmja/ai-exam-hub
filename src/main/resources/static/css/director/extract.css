@@ -10,6 +10,73 @@
     align-items: center;
 }
 
+/* 상단 시험 정보창 */
+.exam-info-ar{
+    /* 크기 */
+    width: 80%;
+    height: 200px;
+
+    /* 테두리 */
+    border-bottom: 1px solid #D1D9E0;
+
+    /* 정렬 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+/* 정보창 요소 */
+.exam-info-row{
+    /* 크기 */
+    width: 100%;
+    height: 16%;
+
+
+    /* 정렬 */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.exam-info-title{
+    /* 크기 */
+    width: 10%;
+    height: 16%;
+
+    /* 정렬 */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    /* 텍스트 */
+    font-size: 15px;
+    color: #282C30;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.exam-info-sub{
+    /* 크기 */
+    height: 16%;
+
+    /* 정렬 */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    /* 텍스트 */
+    font-size: 15px;
+    color: #282C30;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+
 /* pdf 정보 입력 폼 */
 .extract-exam-form{
     /* 크기 */
@@ -121,9 +188,6 @@
 /* 호버 효과 */
 .extract-select:hover {
     border-color: #888;
-}
-option:hover {
-  cursor: pointer;
 }
 /* 포커스 효과 */
 .extract-select:focus {

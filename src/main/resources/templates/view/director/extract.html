@@ -10,6 +10,15 @@
         <link rel="stylesheet" th:href="@{/css/director/extract.css}">
         <th:block th:replace="~{view/director/right-form :: right-form}"></th:block>
 
+        <div id="exam-info" class="exam-info-ar">
+            <div class="exam-info-row"><span class="exam-info-title">시험 종류</span> <span class="exam-info-sub">:&nbsp;&nbsp;&nbsp;중간고사</span> </div>
+            <div class="exam-info-row"><span class="exam-info-title">출제 기관</span> <span class="exam-info-sub">:&nbsp;&nbsp;&nbsp;국립전통예술고등학교</span> </div>
+            <div class="exam-info-row"><span class="exam-info-title">과목</span> <span class="exam-info-sub">:&nbsp;&nbsp;&nbsp;국어</span> </div>
+            <div class="exam-info-row"><span class="exam-info-title">출제 년도</span> <span class="exam-info-sub">:&nbsp;&nbsp;&nbsp;2024</span> </div>
+            <div class="exam-info-row"><span class="exam-info-title">출제 월</span> <span class="exam-info-sub">:&nbsp;&nbsp;&nbsp;5</span> </div>
+            <div class="exam-info-row"><span class="exam-info-title">타입</span> <span class="exam-info-sub">:&nbsp;&nbsp;&nbsp;없음</span> </div>
+        </div>
+
         <!-- 추출 시험지 정보 입력 영역 --><!-- 추출 시험지 정보 입력 영역 --><!-- 추출 시험지 정보 입력 영역 --><!-- 추출 시험지 정보 입력 영역 -->
         <form class="extract-exam-form"><!-- 추출 시험지 정보 입력 영역 -->
             <select id="exam-cate-form" class="extract-select">
@@ -26,12 +35,12 @@
             </select>
 
             <select id="year-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
-                <option selected disabled>년도</option>
+                <option selected disabled>출제년도</option>
                 <option th:each="year : ${yearList}" th:text="${year}" th:value="${year}"></option>
             </select>
 
             <select id="month-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
-                <option selected disabled>응시월</option>
+                <option selected disabled>출제월</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
