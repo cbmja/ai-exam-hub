@@ -9,13 +9,13 @@ $(document).on('click', '.side-bar-btn', function(){
     if(type == 'hide'){
         pacAr.hide();
         siBtn.css('left' , '0').data('type' , 'show');
-        siAr.css('border-right' , 'none');
+        siAr.css('display' , 'none');
 
         siBtn.empty().append('>');
     }else{
         pacAr.show();
         siBtn.css('left' , '300px').data('type' , 'hide');
-        siAr.css('border-right' , '1px solid #D1D9E0');
+        siAr.css('display' , 'flex');
 
         siBtn.empty().append('<');
     }

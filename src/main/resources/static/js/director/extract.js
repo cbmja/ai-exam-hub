@@ -219,7 +219,7 @@ $(document).on('click', '#submit-pdf', function(){
                         );
                     }
                     canvasAr.empty().css('justify-content', 'flex-start');
-
+                    canvasAr.empty().css('align-items', 'flex-start');
                     Promise.all(pagePromises).then(function (canvases) {
                         canvases.forEach(function (canvas) {
                             canvasAr.append(canvas);
