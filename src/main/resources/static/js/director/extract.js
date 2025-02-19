@@ -106,8 +106,20 @@ dropArea.on('drop', function(event) {
     files = null;
     files = event.originalEvent.dataTransfer.files;
 
+
+
     if (files.length > 0) {
-        originalFileName = files[0].name;
+
+        const file = files[0];
+        originalFileName = file.name;
+
+        let fileType = file.type;
+        let fileExtension = file.name.split('.').pop().toLowerCase();
+        // PDF 파일만 허용
+        if (fileType != 'application/pdf' || fileExtension != 'pdf') {
+            alert('현재는 pdf 파일만 가능합니다. 죄송합니다.');
+            return;
+        }
     }
 
     dropArea.empty();
@@ -116,6 +128,18 @@ dropArea.on('drop', function(event) {
     if(originalFileName && files){
         dropArea.addClass('dragover');
     }
+
+});
+
+/* pdf 파일 변경 버튼 */
+$(document).on('click', '.exam-pdf-edit', function(){ // 25-01-14 - 1차 ok
+
+    files = null;
+    originalFileName = null;
+    dropArea.removeClass('dragover');
+
+    dropArea.empty();
+    dropArea.append('시험지 선택(드래그 하세요)');
 
 });
 
