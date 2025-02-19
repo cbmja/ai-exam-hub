@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -33,6 +34,7 @@ public class SubjectService {
         List<Subject> subjcetList;
         try{
             subjcetList = sql.selectList("com.aiexamhub.exam.mapper.SubjectMapper.selectByExamCateCode" , examCateCode);
+            subjcetList.sort(Comparator.comparing(Subject::getSubjectName));
             return subjcetList;
         }catch (Exception e){
             e.printStackTrace();

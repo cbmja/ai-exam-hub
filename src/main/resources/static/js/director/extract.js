@@ -73,7 +73,7 @@ $(document).on('change', '#exam-cate-form', function(){
 
             let subjectForm = $('#subject-form').empty();
 
-            let sOptions = '<option selected disabled>과목</option>';
+            let sOptions = '<option selected disabled>과목(가나다순)</option>';
 
             subjectList.forEach((subject)=>{
               sOptions += `<option value=${subject.subjectCode}>${subject.subjectName}</option>`

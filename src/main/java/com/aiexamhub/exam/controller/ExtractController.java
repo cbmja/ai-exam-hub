@@ -66,11 +66,14 @@ public class ExtractController {
             System.out.println("no request param");
         }
 
+        // 출제 기관 리스트
         List<ExamOrg> examOrgList = examOrgService.selectByExamCateCode("."+examCateCode);
         if(examOrgList == null || examOrgList.isEmpty() || examOrgList.get(0).getErr().equals("err")){
             // 에러
             System.out.println("sql err");
         }
+
+        // 시험 과목 리스트
         List<Subject> subjectList = subjectService.selectByExamCateCode("."+examCateCode);
         if(subjectList == null || subjectList.isEmpty() || subjectList.get(0).getErr().equals("err")){
             // 에러

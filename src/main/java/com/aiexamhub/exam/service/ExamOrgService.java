@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -33,6 +34,7 @@ public class ExamOrgService {
         List<ExamOrg> examOrgList;
         try{
             examOrgList = sql.selectList("com.aiexamhub.exam.mapper.ExamOrgMapper.selectByExamCateCode",examCateCode);
+            examOrgList.sort(Comparator.comparing(ExamOrg::getExamOrgName));
             return examOrgList;
         }catch (Exception e){
             e.printStackTrace();
