@@ -10,77 +10,80 @@
         <link rel="stylesheet" th:href="@{/css/director/extract.css}">
         <th:block th:replace="~{view/director/right-form :: right-form}"></th:block>
 
-        <div id="exam-info" class="exam-info-ar">
-            <div class="exam-info-row"><span class="exam-info-title">시험 종류</span> <span class="exam-info-sub" id="cate-data">:</span> </div>
-            <div class="exam-info-row"><span class="exam-info-title">출제 기관</span> <span class="exam-info-sub" id="org-data">:</span> </div>
-            <div class="exam-info-row"><span class="exam-info-title">출제 년도</span> <span class="exam-info-sub" id="year-data">:</span> </div>
-            <div class="exam-info-row"><span class="exam-info-title">출제 월</span> <span class="exam-info-sub" id="month-data">:</span> </div>
-            <div class="exam-info-row"><span class="exam-info-title">과목</span> <span class="exam-info-sub" id="subject-data">:</span> </div>
-            <div class="exam-info-row"><span class="exam-info-title">타입</span> <span class="exam-info-sub" id="type-data">:</span> </div>
-        </div>
+        <div id="canvas-ar" style="">
+            <div id="exam-info" class="exam-info-ar">
+                <div class="exam-info-row"><span class="exam-info-title">시험 종류</span> <span class="exam-info-sub" id="cate-data">:</span> </div>
+                <div class="exam-info-row"><span class="exam-info-title">출제 기관</span> <span class="exam-info-sub" id="org-data">:</span> </div>
+                <div class="exam-info-row"><span class="exam-info-title">출제 년도</span> <span class="exam-info-sub" id="year-data">:</span> </div>
+                <div class="exam-info-row"><span class="exam-info-title">출제 월</span> <span class="exam-info-sub" id="month-data">:</span> </div>
+                <div class="exam-info-row"><span class="exam-info-title">과목</span> <span class="exam-info-sub" id="subject-data">:</span> </div>
+                <div class="exam-info-row"><span class="exam-info-title">타입</span> <span class="exam-info-sub" id="type-data">:</span> </div>
+            </div>
 
-        <!-- 추출 시험지 정보 입력 영역 --><!-- 추출 시험지 정보 입력 영역 --><!-- 추출 시험지 정보 입력 영역 --><!-- 추출 시험지 정보 입력 영역 -->
-        <form class="extract-exam-form"><!-- 추출 시험지 정보 입력 영역 -->
-            <select id="exam-cate-form" class="extract-select">
-                <option selected disabled>시험 종류</option>
-                <option th:each="cate : ${examCateList}" th:text="${cate.examCateName}" th:value="${cate.examCateCode}"></option>
-            </select>
+            <!-- 추출 시험지 정보 입력 영역 --><!-- 추출 시험지 정보 입력 영역 --><!-- 추출 시험지 정보 입력 영역 --><!-- 추출 시험지 정보 입력 영역 -->
+            <form class="extract-exam-form"><!-- 추출 시험지 정보 입력 영역 -->
+                <select id="exam-cate-form" class="extract-select">
+                    <option selected disabled>시험 종류</option>
+                    <option th:each="cate : ${examCateList}" th:text="${cate.examCateName}" th:value="${cate.examCateCode}"></option>
+                </select>
 
-            <select id="exam-org-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
-                <option selected disabled>출제기관</option>
-            </select>
+                <select id="exam-org-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
+                    <option selected disabled>출제기관</option>
+                </select>
 
-            <select id="year-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
-                <option selected disabled>출제년도</option>
-                <option th:each="year : ${yearList}" th:text="${year}" th:value="${year}"></option>
-            </select>
+                <select id="year-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
+                    <option selected disabled>출제년도</option>
+                    <option th:each="year : ${yearList}" th:text="${year}" th:value="${year}"></option>
+                </select>
 
-            <select id="month-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
-                <option selected disabled>출제월</option>
-                <option>1월</option>
-                <option>2월</option>
-                <option>3월</option>
-                <option>4월</option>
-                <option>5월</option>
-                <option>6월</option>
-                <option>7월</option>
-                <option>8월</option>
-                <option>9월</option>
-                <option>10월</option>
-                <option>11월</option>
-                <option>12월</option>
-                <option>없음</option>
-            </select>
+                <select id="month-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
+                    <option selected disabled>출제월</option>
+                    <option>1월</option>
+                    <option>2월</option>
+                    <option>3월</option>
+                    <option>4월</option>
+                    <option>5월</option>
+                    <option>6월</option>
+                    <option>7월</option>
+                    <option>8월</option>
+                    <option>9월</option>
+                    <option>10월</option>
+                    <option>11월</option>
+                    <option>12월</option>
+                    <option>없음</option>
+                </select>
 
-            <select id="subject-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
-                <option selected disabled>과목(가나다순)</option>
-            </select>
+                <select id="subject-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
+                    <option selected disabled>과목(가나다순)</option>
+                </select>
 
-            <select id="type-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
-                <option selected disabled>타입</option>
-                <option>A형(타입)</option>
-                <option>B형(타입)</option>
-                <option>1형(타입)</option>
-                <option>2형(타입)</option>
-                <option>홀수형(타입)</option>
-                <option>짝수형(타입)</option>
-            </select>
+                <select id="type-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
+                    <option selected disabled>타입</option>
+                    <option>A형(타입)</option>
+                    <option>B형(타입)</option>
+                    <option>1형(타입)</option>
+                    <option>2형(타입)</option>
+                    <option>홀수형(타입)</option>
+                    <option>짝수형(타입)</option>
+                </select>
 
-        </form>
+            </form>
 
-        <div style="width: 100%; height: 15px;"></div><!-- 여백 -->
+            <div style="width: 100%; height: 15px;"></div><!-- 여백 -->
 
-        <!-- 추출 시험지 업로드 영역 --><!-- 추출 시험지 업로드 영역 --><!-- 추출 시험지 업로드 영역 --><!-- 추출 시험지 업로드 영역 -->
-        <div class="exam-pdf-form" id="drop-area"><!-- 추출 시험지 업로드 영역 -->
-            시험지 선택(드래그 하세요)
-        </div>
+            <!-- 추출 시험지 업로드 영역 --><!-- 추출 시험지 업로드 영역 --><!-- 추출 시험지 업로드 영역 --><!-- 추출 시험지 업로드 영역 -->
+            <div class="exam-pdf-form" id="drop-area"><!-- 추출 시험지 업로드 영역 -->
+                시험지 선택(드래그 하세요)
+            </div>
 
-        <div style="width: 100%; height: 15px;"></div><!-- 여백 -->
+            <div style="width: 100%; height: 15px;"></div><!-- 여백 -->
 
-        <!-- 입력 완료 버튼 --><!-- 입력 완료 버튼 --><!-- 입력 완료 버튼 --><!-- 입력 완료 버튼 --><!-- 입력 완료 버튼 --><!-- 입력 완료 버튼 -->
-        <div class="extract-btn-ar">
-            <div class="exam-pdf-edit" id="edit-pdf">파일 변경</div><!-- 입력 완료 버튼 -->
-            <div class="exam-data-submit" id="submit-pdf">선택 완료</div><!-- 입력 완료 버튼 -->
+            <!-- 입력 완료 버튼 --><!-- 입력 완료 버튼 --><!-- 입력 완료 버튼 --><!-- 입력 완료 버튼 --><!-- 입력 완료 버튼 --><!-- 입력 완료 버튼 -->
+            <div class="extract-btn-ar">
+                <div class="exam-pdf-edit" id="edit-pdf">파일 변경</div><!-- 입력 완료 버튼 -->
+                <div class="exam-data-submit" id="submit-pdf">선택 완료</div><!-- 입력 완료 버튼 -->
+            </div>
+
         </div>
 
     </div>

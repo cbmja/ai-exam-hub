@@ -165,6 +165,11 @@ $(document).on('click', '#submit-pdf', function(){
     if (upLoadFile && upLoadFile.type === 'application/pdf') {
 
             let pdfRenderAr = $('.extract-ar');
+            let canvasAr = $('#canvas-ar');
+            const containerHeight = pdfRenderAr.height();
+            const containerWidth = pdfRenderAr.width();
+
+
             const fileReader = new FileReader();
 
             fileReader.onload = function () {
@@ -184,7 +189,18 @@ $(document).on('click', '#submit-pdf', function(){
 
                         pagePromises.push(
                             pdf.getPage(pageNum).then(function (page) {
-                                const viewport = page.getViewport({ scale: 1 });
+
+                                const originalViewport = page.getViewport({ scale: 1 });
+                                const originalWidth = originalViewport.width;
+                                const originalHeight = originalViewport.height;
+
+                                // 가로 길이는 containerWidth에 맞추고, 세로는 원본 비율에 맞게 계산
+                                const scale = containerWidth / originalWidth;
+                                let canvasHeight = originalHeight * scale;
+
+                                // 페이지의 크기와 컨테이너의 크기를 비교하여 비율을 계산
+                                const viewport = page.getViewport({ scale: scale });
+
 
                                 const canvas = document.createElement('canvas');
                                 const ctx = canvas.getContext('2d');
@@ -202,12 +218,11 @@ $(document).on('click', '#submit-pdf', function(){
                             })
                         );
                     }
-
-                    pdfRenderAr.empty();
+                    canvasAr.empty().css('justify-content', 'flex-start');
 
                     Promise.all(pagePromises).then(function (canvases) {
                         canvases.forEach(function (canvas) {
-                            pdfRenderAr.append(canvas);
+                            canvasAr.append(canvas);
                         });
                     });
                 });
