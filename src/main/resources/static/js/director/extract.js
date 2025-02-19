@@ -156,7 +156,7 @@ $(document).on('click', '#submit-pdf', function(){
 
     let navLeft = $('#nav-left-ar').empty();
 
-    let navStr = `<span>${examCateStr} / ${examYearStr} / ${examMonthStr} / ${examSubjectStr} / ${examTypeStr} / ${examOrgStr}</span>`;
+    let navStr = `<span>${examCateStr} / ${examYearStr} / ${examMonthStr} / ${examSubjectStr} / ${examTypeStr} / ${examOrgStr} / ${originalFileName}</span>`;
     navLeft.append(navStr);
 
 });
