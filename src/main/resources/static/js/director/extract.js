@@ -158,6 +158,8 @@ $(document).on('click', '#edit-pdf', function(){
 /* 선택 완료 버튼 */
 $(document).on('click', '#submit-pdf', function(){
 
+    $("#r-f-ar").css('display' , 'flex');
+
     groupNm = $('#exam-g-nm').val();
 
     let navLeft = $('#nav-left-ar').empty();
