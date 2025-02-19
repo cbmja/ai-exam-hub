@@ -1,3 +1,6 @@
+const pdfjsLib = window['pdfjs-dist/build/pdf'];
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
 let examCateCode;
 let examOrgCode;
 let examYear;
@@ -92,7 +95,9 @@ $(document).on('change', '#exam-cate-form', function(){
 
 /* 파일 그래그 앤 드랍 */
 const dropArea = $('#drop-area');
-let files;
+
+
+let upLoadFile;
 let originalFileName;
 
 // 드래그가 drop 영역에 들어갈 때 스타일 변경
@@ -111,21 +116,18 @@ dropArea.on('drop', function(event) {
     event.preventDefault();
     dropArea.removeClass('dragover');
 
-    files = null;
-    files = event.originalEvent.dataTransfer.files;
-
-
+    let files = event.originalEvent.dataTransfer.files;
 
     if (files.length > 0) {
 
-        const file = files[0];
-        originalFileName = file.name;
+        upLoadFile = files[0];
+        originalFileName = upLoadFile.name;
 
-        let fileType = file.type;
-        let fileExtension = file.name.split('.').pop().toLowerCase();
+        let fileType = upLoadFile.type;
+        let fileExtension = upLoadFile.name.split('.').pop().toLowerCase();
         // PDF 파일만 허용
         if (fileType != 'application/pdf' || fileExtension != 'pdf') {
-            alert('현재는 pdf 파일만 가능합니다. 죄송합니다.');
+            alert('현재는 pdf 파일만 서비스 중 입니다. 죄송합니다.');
             return;
         }
     }
@@ -148,6 +150,7 @@ $(document).on('click', '#edit-pdf', function(){
 
     dropArea.empty();
     dropArea.append('시험지 선택(드래그 하세요)');
+    let navLeft = $('#nav-left-ar').empty();
 
 });
 
@@ -158,6 +161,63 @@ $(document).on('click', '#submit-pdf', function(){
 
     let navStr = `<span>${examCateStr} / ${examYearStr} / ${examMonthStr} / ${examSubjectStr} / ${examTypeStr} / ${examOrgStr} / ${originalFileName}</span>`;
     navLeft.append(navStr);
+
+    if (upLoadFile && upLoadFile.type === 'application/pdf') {
+
+            let pdfRenderAr = $('.extract-ar');
+            const fileReader = new FileReader();
+
+            fileReader.onload = function () {
+                const typedArray = new Uint8Array(this.result);
+
+                // const pdfRenderer = $('.main-l-ar');
+
+                // $('.main-t-ele').empty();
+                // pdfRenderer.removeClass('column-c-c').addClass('pdf-view');
+
+                pdfjsLib.getDocument(typedArray).promise.then(function (pdf) {
+
+                    const pagePromises = [];
+
+                    // pdf 파일 페이지 별로 canvas 생성
+                    for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+
+                        pagePromises.push(
+                            pdf.getPage(pageNum).then(function (page) {
+                                const viewport = page.getViewport({ scale: 1 });
+
+                                const canvas = document.createElement('canvas');
+                                const ctx = canvas.getContext('2d');
+                                canvas.width = viewport.width;
+                                canvas.height = viewport.height;
+
+                                const renderContext = {
+                                    canvasContext: ctx,
+                                    viewport: viewport
+                                };
+
+                                return page.render(renderContext).promise.then(function () {
+                                    return canvas;
+                                });
+                            })
+                        );
+                    }
+
+                    pdfRenderAr.empty();
+
+                    Promise.all(pagePromises).then(function (canvases) {
+                        canvases.forEach(function (canvas) {
+                            pdfRenderAr.append(canvas);
+                        });
+                    });
+                });
+
+            };
+
+            fileReader.readAsArrayBuffer(upLoadFile);
+        } else {
+            alert('현재는 pdf 파일만 서비스 중 입니다. 죄송합니다.');
+        }
 
 });
 
