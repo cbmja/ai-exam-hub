@@ -5,37 +5,45 @@ let examMonth;
 let examSubject;
 let examType;
 
+let examCateStr;
+let examOrgStr;
+let examYearStr;
+let examMonthStr;
+let examSubjectStr;
+let examTypeStr;
+
 /* select 변경시 상단 시험 정보 변경 */
 $(document).on('change', '.extract-select', function(){
 
     let id = $(this).attr('id');
-    let selectedText = $('#'+id+' option:selected').text();
-    selectedText = ':&nbsp;&nbsp;&nbsp;'+selectedText;
+    let originalText = $('#'+id+' option:selected').text();
+    selectedText = ':&nbsp;&nbsp;&nbsp;'+originalText;
 
     switch(id){
         case 'exam-cate-form' :
             examCateCode = $('#exam-cate-form').val();
-            $('#cate-data').empty().append(selectedText); break;
-
+            $('#cate-data').empty().append(selectedText);
+            examCateStr = originalText; break;
         case 'exam-org-form' :
             examOrgCode = $('#exam-org-form').val();
-            $('#org-data').empty().append(selectedText); break;
-
+            $('#org-data').empty().append(selectedText);
+            examOrgStr = originalText; break;
         case 'subject-form' :
             examSubject = $('#subject-form').val();
-            $('#subject-data').empty().append(selectedText); break;
-
+            $('#subject-data').empty().append(selectedText);
+            examSubjectStr = originalText; break;
         case 'year-form' :
             examYear = $('#year-form').val();
-            $('#year-data').empty().append(selectedText); break;
-
+            $('#year-data').empty().append(selectedText);
+            examYearStr = originalText; break;
         case 'month-form' :
             examMonth = $('#month-form').val();
-            $('#month-data').empty().append(selectedText); break;
-
+            $('#month-data').empty().append(selectedText);
+            examMonthStr = originalText; break;
         case 'type-form' :
             examType = $('#type-form').val();
-            $('#type-data').empty().append(selectedText); break;
+            $('#type-data').empty().append(selectedText);
+            examTypeStr = originalText; break;
     }
 
 });
@@ -132,7 +140,7 @@ dropArea.on('drop', function(event) {
 });
 
 /* pdf 파일 변경 버튼 */
-$(document).on('click', '.exam-pdf-edit', function(){ // 25-01-14 - 1차 ok
+$(document).on('click', '#edit-pdf', function(){
 
     files = null;
     originalFileName = null;
@@ -140,6 +148,16 @@ $(document).on('click', '.exam-pdf-edit', function(){ // 25-01-14 - 1차 ok
 
     dropArea.empty();
     dropArea.append('시험지 선택(드래그 하세요)');
+
+});
+
+/* 선택 완료 버튼 */
+$(document).on('click', '#submit-pdf', function(){
+
+    let navLeft = $('#nav-left-ar').empty();
+
+    let navStr = `<span>${examCateStr} / ${examYearStr} / ${examMonthStr} / ${examSubjectStr} / ${examTypeStr} / ${examOrgStr}</span>`;
+    navLeft.append(navStr);
 
 });
 
