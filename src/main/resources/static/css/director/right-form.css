@@ -189,6 +189,15 @@
     align-items: center;
 }
 
+.q-num-ar{
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #000000;
+
+    /* 정렬 */
+    display: flex;
+    flex-direction: row;
+}
 
 
 .op-title{
