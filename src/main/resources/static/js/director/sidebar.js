@@ -1,3 +1,7 @@
+$(document).ready(function () {
+//SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+
+
 /* 사이드바 숨김 버튼 */
 $(document).on('click', '.side-bar-btn', function(){
 
@@ -19,4 +23,24 @@ $(document).on('click', '.side-bar-btn', function(){
 
 
 
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 });
