@@ -1,15 +1,12 @@
 let isDragging = false;
-let offsetX;
-let offsetY;
+let offsetX, offsetY;
 
 $("#r-f-ar").mousedown(function(e) {
     isDragging = true;
 
-    offsetX = null;
-    offsetY = null;
-    // 현재 요소의 위치 기준으로 마우스 클릭 위치 계산
-    offsetX = e.clientX - $(this).offset().left;
-    offsetY = e.clientY - $(this).offset().top;
+    // 현재 요소의 위치 기준으로 마우스 클릭 위치 계산 (스크롤 고려)
+    offsetX = e.clientX;
+    offsetY = e.clientY;
 
     $(this).css({
         "cursor": "grabbing",
@@ -21,23 +18,22 @@ $(document).mousemove(function(e) {
     if (!isDragging) return;
 
     $("#r-f-ar").css({
-        left: e.clientX - offsetX + "px",
-        top: e.clientY - offsetY + "px"
+        left: e.pageX + "px",
+        top: e.pageY + "px"
     });
 });
 
-$(document).mouseup(function() {
+$(document).mouseup(function(e) {
     if (!isDragging) return;
-
     isDragging = false;
 
-    // 현재 위치를 픽스드(fixed)로 고정
-    let left = e.pageX - offsetX;
-    let top = e.pageY - offsetY;
+    // 현재 뷰포트 기준 좌표로 변환 (스크롤 고려)
+    let left = e.clientX;
+    let top = e.clientY;
 
     $("#r-f-ar").css({
         "cursor": "grab",
-        "position": "fixed",
+        "position": "fixed", // 뷰포트 기준 고정
         "left": left + "px",
         "top": top + "px"
     });
