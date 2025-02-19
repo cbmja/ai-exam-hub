@@ -20,7 +20,50 @@
     position: fixed;
     left: 0;
     top: 66px;/* 네비 바 높이 + 테두리 만큼 */
+    z-index: 900;
 }
+
+.side-ar-pac{
+
+}
+
+/* 사이드바 숨김 / 나타내기 버튼 */
+.side-bar-btn{
+    /* 크기 */
+    width: 10px;
+    height: 65px;/* 전체 - 네비 바 높이 */
+
+    /* 테두리 */
+    border: 2px solid #D1D9E0;
+
+    /* 배경 */
+    background-color: #F6F8FA;
+
+    /* 텍스트 */
+    font-size: 13px;
+    color: #D1D9E0;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    /* 정렬 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /*위치*/
+    position: fixed;
+    left: 300px;
+    top: 50vh;
+    z-index: 1000;
+}
+
+.side-bar-btn:hover{
+    cursor: pointer;
+}
+
+
 /* 사이드바 최상단 텍스트 */
 .side-title{
     /* 크기 */
