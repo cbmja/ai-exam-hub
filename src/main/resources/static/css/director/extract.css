@@ -125,6 +125,14 @@
     font-style: normal;
 }
 
+.exam-pdf-form:hover{
+    cursor: pointer;
+    background-color: #bed9f7;
+}
+#drop-area.dragover {
+    background-color: #bed9f7;
+}
+
 /* 시험 정보 입력 버튼 */
 .exam-data-submit{
     /* 크기 */

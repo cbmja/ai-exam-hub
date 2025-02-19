@@ -80,6 +80,42 @@ $(document).on('change', '#exam-cate-form', function(){
         }
     });
 
+});
+
+/* 파일 그래그 앤 드랍 */
+const dropArea = $('#drop-area');
+let files;
+let originalFileName;
+
+// 드래그가 drop 영역에 들어갈 때 스타일 변경
+dropArea.on('dragover', function(event) {
+    event.preventDefault();
+    dropArea.addClass('dragover');
+});
+
+// 드래그가 drop 영역을 벗어날 때 스타일 변경
+dropArea.on('dragleave', function() {
+    dropArea.removeClass('dragover');
+});
+
+// 파일을 드롭할 때 처리
+dropArea.on('drop', function(event) {
+    event.preventDefault();
+    dropArea.removeClass('dragover');
+
+    files = null;
+    files = event.originalEvent.dataTransfer.files;
+
+    if (files.length > 0) {
+        originalFileName = files[0].name;
+    }
+
+    dropArea.empty();
+    dropArea.append(originalFileName);
+
+    if(originalFileName && files){
+        dropArea.addClass('dragover');
+    }
 
 });
 
