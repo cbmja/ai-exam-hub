@@ -21,8 +21,10 @@ $(document).on('click', '.side-bar-btn', function(){
         siAr.css('display' , 'flex');
 
         siBtn.empty().append('<');
-        siBtn.css('border' , '2px solid #D1D9E0');
-        siBtn.css('color' , '#D1D9E0');
+        siBtn.css('border-top' , '1px solid #0969DA');
+        siBtn.css('border-bottom' , '1px solid #0969DA');
+        siBtn.css('border-right' , '1px solid #0969DA');
+        siBtn.css('border-left' , 'none');
     }
 
 

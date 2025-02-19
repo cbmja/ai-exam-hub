@@ -1,7 +1,7 @@
 .right-form-ar{
     /* 크기 */
     width: 500px;
-    height: 600px;
+    height: 607px;
 
     /* 테두리 */
     border-radius: 8px;
@@ -30,11 +30,12 @@
 /* 모달 숨기기 버튼 */
 .modal-hide-btn{
     /* 크기 */
-    width: 50px;
+    width: 100%;
     height: 20px;
 
     /* 테두리 */
     border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     border-right: 1px solid #0969DA;
     border-bottom: 1px solid #0969DA;
 
@@ -96,4 +97,152 @@
 
 .modal-show-btn:hover{
     cursor: pointer;
+}
+
+/* 타이틀 텍스트 */
+
+/* 보기 부분 */
+.option-ar{
+    /* 크기 */
+    width: 100%;
+    height: 50px;
+
+    /* 정렬 */
+    display: flex;
+    flex-direction: row;
+
+    /* 테두리 */
+    border-bottom: 1px solid #000000;
+}
+
+.option-title{
+    /* 크기 */
+    width: 13%;
+
+    /* 정렬 */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    /* 텍스트 */
+    font-size: 15px;
+    color: #282C30;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+    /* 여백 */
+    padding-right: 5px;
+    padding-left: 10px;
+
+    /* 정렬 */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* 문제보기 부분 */
+.q-sub-ar{
+    /* 크기 */
+    width: calc(100% - 20px);
+    height: 300px;
+
+    /* 테두리 */
+    border-bottom: 1px solid #000000;
+
+    /* 여백 */
+    padding-left: 10px;
+    padding-right: 10px;
+
+    /* 정렬 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.q-sub-title{
+    /* 크기 */
+    width: 100%;
+    height: 30px;
+
+    /* 정렬 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* 텍스트 */
+    font-size: 15px;
+    color: #282C30;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+    /* 여백 */
+    padding-right: 5px;
+
+    /* 정렬 */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+
+.op-title{
+    /* 크기 */
+    width: 13%;
+
+    /* 정렬 */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    /* 텍스트 */
+    font-size: 13px;
+    color: #282C30;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+    /* 여백 */
+    padding-right: 5px;
+
+    /* 정렬 */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.q-title-ar{
+    /* 정렬 */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.q-f-title{
+    /* 크기 */
+    width: 20%;
+
+    /* 정렬 */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    /* 텍스트 */
+    font-size: 15px;
+    color: #282C30;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+    /* 여백 */
+    padding-right: 5px;
 }
