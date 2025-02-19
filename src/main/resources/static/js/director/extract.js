@@ -159,6 +159,18 @@ $(document).on('click', '#submit-pdf', function(){
 
     let navLeft = $('#nav-left-ar').empty();
 
+    let siBtn = $('.side-bar-btn');
+    let siAr = $('.side-ar');
+    let type = siBtn.data('type');
+
+    siBtn.css('left' , '0').data('type' , 'show');
+    siAr.css('display' , 'none');
+
+    siBtn.empty().append('>');
+
+    let conAr = $('.content-ar');
+    conAr.css('padding-left' , '0');
+    conAr.css('width' , 'calc(100% - 315px)');
     let navStr = `<span>${examCateStr} / ${examYearStr} / ${examMonthStr} / ${examSubjectStr} / ${examTypeStr} / ${examOrgStr} / ${originalFileName}</span>`;
     navLeft.append(navStr);
 
