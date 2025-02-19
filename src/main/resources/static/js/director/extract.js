@@ -172,8 +172,9 @@ $(document).on('click', '#submit-pdf', function(){
     let type = siBtn.data('type');
 
     siBtn.css('left' , '0').data('type' , 'show');
+    siBtn.css('border' , '2px solid #0969DA');
+    siBtn.css('color' , '#0969DA');
     siAr.css('display' , 'none');
-
     siBtn.empty().append('>');
 
     let conAr = $('.content-ar');

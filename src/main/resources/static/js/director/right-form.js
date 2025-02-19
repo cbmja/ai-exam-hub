@@ -60,11 +60,16 @@ $(document).ready(function () {
     /* 모달 숨기기*/
     $(document).on('click', '.modal-hide-btn', function(){
         $('#r-f-ar').css('display' , 'none');
+
+        let sBtn = $('.modal-show-btn');
+        sBtn.css('display' , 'flex');
+
     });
 
     /* 모달 나타내기*/
-    $(document).on('click', '.modal-hide-btn', function(){
-        $('#r-f-ar').css('display' , 'none');
+    $(document).on('click', '.modal-show-btn', function(){
+        $('#r-f-ar').css('display' , 'flex');
+        $('.modal-show-btn').css('display' , 'none');
     });
 
 

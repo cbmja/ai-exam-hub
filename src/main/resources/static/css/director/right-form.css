@@ -53,10 +53,46 @@
     justify-content: center;
     align-items: center;
 }
-
+/* 모달 숨기기 버튼 */
 .modal-hide-btn:hover{
     cursor: pointer;
     color: #0969DA;
     border-right: 1px solid #0969DA;
     border-bottom: 1px solid #0969DA;
+}
+
+/* 모달 나타내기 버튼 */
+.modal-show-btn{
+    /* 크기 */
+    width: 10px;
+    height: 65px;/* 전체 - 네비 바 높이 */
+
+    /* 테두리 */
+    border: 2px solid #0969DA;
+
+    /* 배경 */
+    background-color: #F6F8FA;
+
+    /* 텍스트 */
+    font-size: 13px;
+    color: #0969DA;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    /* 정렬 */
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    /*위치*/
+    position: fixed;
+    right: 0;
+    top: 50vh;
+    z-index: 1000;
+}
+
+.modal-show-btn:hover{
+    cursor: pointer;
 }
