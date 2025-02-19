@@ -26,7 +26,7 @@
 .exam-info-ar{
     /* 크기 */
     width: 80%;
-    height: 200px;
+    height: 233px;
 
     /* 테두리 */
     border-bottom: 1px solid #D1D9E0;
@@ -53,7 +53,7 @@
 .exam-info-title{
     /* 크기 */
     width: 10%;
-    height: 16%;
+    /*height: 16%;*/
 
     /* 정렬 */
     display: flex;
@@ -71,7 +71,7 @@
 
 .exam-info-sub{
     /* 크기 */
-    height: 16%;
+    /*height: 16%;*/
 
     /* 정렬 */
     display: flex;
@@ -261,4 +261,51 @@
 .extract-select:disabled {
     background-color: #f0f0f0;
     cursor: not-allowed;
+}
+
+/* 그룹명 입력창ㅇ */
+.g-name-form{
+/* 기본 설정 제거 */
+    all: unset;
+
+    /* 크기 */
+    flex: 1;
+
+    /*width: 80%;*/
+    height: 100%;
+
+
+    /* 테두리 */
+    border-radius: 8px;
+    border: 1px solid #D1D9E0;
+
+    /* 배경색 */
+    background-color: #F6F8FA;
+
+    /* 여백 */
+    padding-left: 13px;
+
+    /* 폰트 */
+    font-size: 13px;
+    color: #282C30;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.g-name-form:focus , .g-name-form:hover{
+    border: 2px solid #0969DA;
+}
+
+.g-name-form::placeholder{
+    font-size: 13px;
+
+    color: #BCBCBC;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }

@@ -15,3 +15,7 @@
     right: 15px;
     top: 130px;
 }
+
+.right-form-ar:hover{
+    border: 1px solid #0969DA;
+}

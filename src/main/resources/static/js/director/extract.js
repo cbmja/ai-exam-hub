@@ -7,6 +7,7 @@ let examYear;
 let examMonth;
 let examSubject;
 let examType;
+let groupNm;
 
 let examCateStr;
 let examOrgStr;
@@ -157,6 +158,8 @@ $(document).on('click', '#edit-pdf', function(){
 /* 선택 완료 버튼 */
 $(document).on('click', '#submit-pdf', function(){
 
+    groupNm = $('#exam-g-nm').val();
+
     let navLeft = $('#nav-left-ar').empty();
 
     let siBtn = $('.side-bar-btn');
@@ -171,7 +174,7 @@ $(document).on('click', '#submit-pdf', function(){
     let conAr = $('.content-ar');
     conAr.css('padding-left' , '0');
     conAr.css('width' , 'calc(100% - 315px)');
-    let navStr = `<span>${examCateStr} / ${examYearStr} / ${examMonthStr} / ${examSubjectStr} / ${examTypeStr} / ${examOrgStr} / ${originalFileName}</span>`;
+    let navStr = `<span> [ ${groupNm} ] / ${examCateStr} / ${examYearStr} / ${examMonthStr} / ${examSubjectStr} / ${examTypeStr} / ${examOrgStr} / ${originalFileName}</span>`;
     navLeft.append(navStr);
 
     if (upLoadFile && upLoadFile.type === 'application/pdf') {
