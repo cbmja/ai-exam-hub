@@ -14,11 +14,15 @@ $(document).on('click', '.side-bar-btn', function(){
         siAr.css('display' , 'none');
 
         siBtn.empty().append('>');
+        siBtn.css('border' , '2px solid #0969DA');
+        siBtn.css('color' , '#0969DA');
     }else{
         siBtn.css('left' , '300px').data('type' , 'hide');
         siAr.css('display' , 'flex');
 
         siBtn.empty().append('<');
+        siBtn.css('border' , '2px solid #D1D9E0');
+        siBtn.css('color' , '#D1D9E0');
     }
 
 

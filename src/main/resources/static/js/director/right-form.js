@@ -52,13 +52,20 @@ $(document).ready(function () {
         isDragging = false;
 
         ar.css({
-            "cursor": "grab"
+            "cursor": "default"
         });
     });
 
 
+    /* 모달 숨기기*/
+    $(document).on('click', '.modal-hide-btn', function(){
+        $('#r-f-ar').css('display' , 'none');
+    });
 
-
+    /* 모달 나타내기*/
+    $(document).on('click', '.modal-hide-btn', function(){
+        $('#r-f-ar').css('display' , 'none');
+    });
 
 
 
