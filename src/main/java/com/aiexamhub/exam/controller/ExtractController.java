@@ -1,9 +1,6 @@
 package com.aiexamhub.exam.controller;
 
-import com.aiexamhub.exam.dto.ExamCate;
-import com.aiexamhub.exam.dto.ExamOrg;
-import com.aiexamhub.exam.dto.ExtractHub;
-import com.aiexamhub.exam.dto.Subject;
+import com.aiexamhub.exam.dto.*;
 import com.aiexamhub.exam.service.ExamCateService;
 import com.aiexamhub.exam.service.ExamOrgService;
 import com.aiexamhub.exam.service.ExtractHubService;
@@ -170,5 +167,14 @@ public class ExtractController {
 
     }
 
+
+    @PostMapping("/data")
+    @ResponseBody
+    public String saveQuestion(@RequestBody ExtractQuestion form){
+
+        System.out.println(form);
+
+        return "";
+    }
 
 }

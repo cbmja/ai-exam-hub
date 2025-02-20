@@ -220,7 +220,7 @@ $(document).on('click', '.extract-submit-btn', function(){
     let month = $('#month').val();
     let subject = $('#subjectCode').val();
     let type = $('#type').val();
-    let userId = $('#userId').val();
+    //let userId = $('#userId').val();
     let hubCode = $('#hubCode').val();
 
     let qnum = $('#question-num').val();
@@ -232,16 +232,71 @@ $(document).on('click', '.extract-submit-btn', function(){
     let option4 = $('#option-4').val();
     let option5 = $('#option-5').val();
 
-    console.log(`카테코드 : ${cateCode} / 그룹코드 : ${orgCode} / 년도 : ${year} / 달 : ${month} / 과목코드 : ${subject} / 타입 : ${type} / 유저아이디 : ${userId} / 저장소코드 : ${hubCode}`);
-    console.log('-----------------------------');
-    console.log(`문제번호 : ${qnum}`);console.log('-----------------------------');
-    console.log(`문제 텍스트 : ${question}`);console.log('-----------------------------');
-    console.log(`문제 보기 : ${questionSub}`);console.log('-----------------------------');
-    console.log(`선택지1 : ${option1}`);console.log('-----------------------------');
-    console.log(`선택지2 : ${option2}`);console.log('-----------------------------');
-    console.log(`선택지3 : ${option3}`);console.log('-----------------------------');
-    console.log(`선택지4 : ${option4}`);console.log('-----------------------------');
-    console.log(`선택지5 : ${option5}`);console.log('==============================================');
+
+    $.ajax({
+        url: "/ai/extract/data",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({
+            examCateCode: cateCode,
+            examOrgCode: orgCode,
+            examYear:year,
+            examMonth: month,
+            subjectCode: subject,
+            examType: type,
+            extractHubCode: hubCode,
+            questionNo: qnum,
+            question: question,
+            questionSub: questionSub,
+            option1: option1,
+            option2: option2,
+            option3: option3,
+            option4: option4,
+            option5: option5
+        }),
+        success: function (response) {
+            if(response == 'err'){
+                alert("서버 에러");
+                return;
+            }
+
+            let resStr = response.trim();
+
+            $('#'+capType).val(resStr);
+
+        },
+        error: function (xhr, status, error) {
+            alert("서버 에러");
+        },
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    console.log(`카테코드 : ${cateCode} / 그룹코드 : ${orgCode} / 년도 : ${year} / 달 : ${month} / 과목코드 : ${subject} / 타입 : ${type} / 저장소코드 : ${hubCode}`);
+    console.log('----------------------------------------------------------');
+    console.log(`문제번호 : ${qnum}`);console.log('---------------------------------------------------------');
+    console.log(`문제 텍스트 : ${question}`);console.log('----------------------------------------------------------');
+    console.log(`문제 보기 : ${questionSub}`);console.log('----------------------------------------------------------');
+    console.log(`선택지1 : ${option1}`);console.log('----------------------------------------------------------');
+    console.log(`선택지2 : ${option2}`);console.log('----------------------------------------------------------');
+    console.log(`선택지3 : ${option3}`);console.log('----------------------------------------------------------');
+    console.log(`선택지4 : ${option4}`);console.log('----------------------------------------------------------');
+    console.log(`선택지5 : ${option5}`);console.log('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
+
+
 });
 
 
