@@ -91,6 +91,8 @@ $(document).on('click', '.cap-btn', function () {
     let thisEle = $(this);
     let clickType = thisEle.data('id'); // 현재 클릭한 캡쳐 타입
 
+    $captureArea.hide();
+
     if (!isCapturing) { // 1-1 상황
         $('[data-id="' + capType + '"]').parent().css('border', 'none'); // 기존 테두리 제거
         console.log('캡쳐 시작');
@@ -116,6 +118,8 @@ $(document).on('click', '.cap-btn', function () {
 
 $(document).on("mousedown", function (e) {
     if (!isCapturing) return;
+
+    e.preventDefault();
 
     startX = e.clientX;
     startY = e.clientY + window.scrollY; // 스크롤 값 보정
