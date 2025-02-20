@@ -20,7 +20,8 @@
         option2,
         option3,
         option4,
-        option5
+        option5,
+        subject_detail_code
         )
         VALUES (
         #{examOrgCode},
@@ -37,7 +38,8 @@
         #{option2},
         #{option3},
         #{option4},
-        #{option5}
+        #{option5},
+        #{subjectDetailCode}
         )
     </insert>
 

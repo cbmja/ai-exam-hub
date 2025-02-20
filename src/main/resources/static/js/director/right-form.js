@@ -231,7 +231,11 @@ $(document).on('click', '.extract-submit-btn', function(){
     let option3 = $('#option-3').val();
     let option4 = $('#option-4').val();
     let option5 = $('#option-5').val();
+    let subjectDetailCode = $('#subject-detail').val();
 
+    if(!subjectDetailCode){
+        subjectDetailCode = 'DEFAULT';
+    }
 
     $.ajax({
         url: "/ai/extract/data",
@@ -252,7 +256,8 @@ $(document).on('click', '.extract-submit-btn', function(){
             option2: option2,
             option3: option3,
             option4: option4,
-            option5: option5
+            option5: option5,
+            subjectDetailCode: subjectDetailCode
         }),
         success: function (response) {
 
@@ -270,7 +275,7 @@ $(document).on('click', '.extract-submit-btn', function(){
 
 
 
-    console.log(`카테코드 : ${cateCode} / 그룹코드 : ${orgCode} / 년도 : ${year} / 달 : ${month} / 과목코드 : ${subject} / 타입 : ${type} / 저장소코드 : ${hubCode}`);
+    console.log(`카테코드 : ${cateCode} / 그룹코드 : ${orgCode} / 년도 : ${year} / 달 : ${month} / 과목코드 : ${subject} / 서브과목 : ${subjectDetailCode} / 타입 : ${type} / 저장소코드 : ${hubCode}`);
     console.log('----------------------------------------------------------');
     console.log(`문제번호 : ${qnum}`);console.log('---------------------------------------------------------');
     console.log(`문제 텍스트 : ${question}`);console.log('----------------------------------------------------------');

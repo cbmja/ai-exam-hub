@@ -26,4 +26,6 @@ public class ExtractQuestion {
     private LocalDateTime createdAt;            // 생성일
     private LocalDateTime updatedAt;            // 수정일
 
+    private String subjectDetailCode;
+
 }
