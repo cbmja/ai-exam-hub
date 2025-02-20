@@ -170,11 +170,19 @@ $(document).on('click', '#submit-pdf', function(){
 
             let options = '';
 
+            let def = 'default';
+
+            if(res.length > 0){
+                options = `<option selected disabled>선택과목</option> <option value=${def} >기본</option>`;
+            }else{
+                options = `<option value=none selected disabled>${examSubjectStr}</option>`;
+            }
+
             res.forEach((sd)=>{
               options += `<option value=${sd.subjectDetailCode}>${sd.subjectDetailName}</option>`
             })
 
-            $('#subject-detail').append(options);
+            $('#subject-detail').empty().append(options);
 
         },
         error: function(xhr, status, error) {
