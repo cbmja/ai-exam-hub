@@ -8,7 +8,7 @@ $(document).ready(function () {
     let offsetX, offsetY;
     let ar = $("#r-f-ar");
 
-    ar.mousedown(function (e) {
+    $('.modal-move-btn').mousedown(function (e) {
         isDragging = true;
 
         // 요소의 현재 위치에서 마우스 클릭 위치까지의 거리 저장
