@@ -95,25 +95,25 @@ $(document).on('click', '.cap-btn', function () {
 
     if (!isCapturing) { // 1-1 상황
         $('[data-id="' + capType + '"]').parent().css('border', 'none'); // 기존 테두리 제거
-        console.log('캡쳐 시작');
+        //console.log('캡쳐 시작');
         isCapturing = true; // 캡쳐 활성화
         thisEle.parent().css('border', '1px solid #00C471'); // 현재 캡쳐 영역 테두리
         $('#canvas-ar').css('cursor', 'crosshair'); // 마우스 십자가
         capType = clickType; // 캡쳐 타입 갱신
     } else if (isCapturing && capType === clickType) { // 2-1 상황
-        console.log('캡쳐 종료');
+        //console.log('캡쳐 종료');
         isCapturing = false; // 캡쳐 비활성화
         thisEle.parent().css('border', 'none'); // 현재 캡쳐 영역 테두리
         $('#canvas-ar').css('cursor', 'default'); // 마우스 십자가
     } else if (isCapturing && capType !== clickType) { // 2-2 상황
-        console.log('현재 캡쳐 종료 -> 새 캡쳐 시작');
+        //console.log('현재 캡쳐 종료 -> 새 캡쳐 시작');
         $('[data-id="' + capType + '"]').parent().css('border', 'none'); // 기존 테두리 제거
         thisEle.parent().css('border', '1px solid #00C471'); // 현재 캡쳐 영역 테두리
         capType = clickType; // 캡쳐 타입 갱신
     }
 
-    console.log(`캡쳐중인지:${isCapturing} / 현재 캡쳐 타입 :${capType}`);
-    console.log(`${startX} / ${startY} / ${endX} / ${endY}`);
+    //console.log(`캡쳐중인지:${isCapturing} / 현재 캡쳐 타입 :${capType}`);
+    //console.log(`${startX} / ${startY} / ${endX} / ${endY}`);
 }); // ok
 
 $(document).on("mousedown", function (e) {
@@ -163,10 +163,51 @@ $(document).on("mouseup", function () {
     endX = undefined;
     endY = undefined;
 
-    console.log('====================캡쳐 끝==================');
-    console.log(`캡쳐 활성화 여부: ${isCapturing}`);
-    console.log(`현재 캡쳐 타입: ${capType}`);
-    console.log();
+    //console.log('====================캡쳐 끝==================');
+    //console.log(`캡쳐 활성화 여부: ${isCapturing}`);
+    //console.log(`현재 캡쳐 타입: ${capType}`);
+    //console.log();
+
+    const rect = $captureArea[0].getBoundingClientRect();
+
+    html2canvas(document.body, {
+        x: rect.left,
+        y: rect.top + window.scrollY,
+        width: rect.width,
+        height: rect.height,
+    }).then((canvas) => {
+
+        const imageData = canvas.toDataURL("image/png");
+
+        // 새 창에서 이미지 보기
+        // const newWindow = window.open();
+        // newWindow.document.write('<img src="' + imageData + '" />');
+
+        $.ajax({
+            url: "/ai/extract/naver-ocr",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ image : imageData , answerNo : 0}),
+            success: function (response) {
+                if(response == 'err'){
+                    alert("서버 에러");
+                    return;
+                }
+
+                let resStr = response.trim();
+
+                $('#'+capType).val(resStr);
+
+            },
+            error: function (xhr, status, error) {
+                alert("서버 에러");
+            },
+        });
+
+    });
+
+
+
 }); //ok
 
 

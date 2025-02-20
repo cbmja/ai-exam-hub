@@ -6,13 +6,13 @@ import com.aiexamhub.exam.dto.Subject;
 import com.aiexamhub.exam.service.ExamCateService;
 import com.aiexamhub.exam.service.ExamOrgService;
 import com.aiexamhub.exam.service.SubjectService;
+import com.aiexamhub.exam.util.OcrUtil;
 import lombok.RequiredArgsConstructor;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.Year;
 import java.util.Comparator;
@@ -30,6 +30,8 @@ public class ExtractController {
     private final ExamCateService examCateService;
     private final ExamOrgService examOrgService;
     private final SubjectService subjectService;
+
+    private final OcrUtil ocrUtil;
 
     @GetMapping("/example")
     public String example(){
@@ -88,6 +90,74 @@ public class ExtractController {
         res.put("examOrgList" , examOrgList);
         res.put("subjectList" , subjectList);
         return res;
+    }
+
+
+    @PostMapping("/naver-ocr")
+    @ResponseBody
+    public String img(@RequestBody Map<String , Object> form){
+
+        try{
+            String base64Image = (String)form.get("image");
+            int answerNo = (Integer)form.get("answerNo");
+
+            String img64 = base64Image.replaceAll("data:image/png;base64,","");
+
+            String ocrResult = ocrUtil.sendOCRRequest(img64);
+            System.out.println("====================================================");
+            System.out.println(ocrResult);
+
+            JSONObject jsonObject = new JSONObject(ocrResult);
+            JSONArray images = jsonObject.getJSONArray("images");
+
+            StringBuilder inferTextBuilder = new StringBuilder();
+
+            // Iterate through images and extract inferText from fields
+            for (int i = 0; i < images.length(); i++) {
+                JSONObject image = images.getJSONObject(i);
+                JSONArray fields = image.getJSONArray("fields");
+
+                for (int j = 0; j < fields.length(); j++) {
+                    JSONObject field = fields.getJSONObject(j);
+                    String inferText = field.getString("inferText");
+                    inferTextBuilder.append(inferText);
+
+                    // Add a space if lineBreak is false
+                    if (!field.getBoolean("lineBreak")) {
+                        inferTextBuilder.append(" ");
+                    }
+                }
+            }
+
+            // Output the result
+            String result = inferTextBuilder.toString().trim();
+            System.out.println("====================================================");
+            System.out.println(result);
+/*
+
+            String[] parts = base64Image.split(",");
+            String imageData = (parts.length > 1) ? parts[1] : parts[0];
+
+            // 디코딩 후 파일 저장
+            byte[] imageBytes = Base64.getDecoder().decode(imageData);
+
+            String filePath = "C:\\Users\\jeon\\Desktop\\시험문제 추출 java\\"+answerNo+"번_선택지.png"; // 저장 경로
+            if(answerNo == 0){
+                filePath = "C:\\Users\\jeon\\Desktop\\시험문제 추출 java\\"+answerNo+"번_문제.png"; // 저장 경로
+            }
+
+             FileOutputStream fos = new FileOutputStream(filePath);
+             fos.write(imageBytes);
+             fos.close();
+*/
+
+
+            return result;
+        }catch (Exception e){
+            e.printStackTrace();
+            return "err";
+        }
+
     }
 
 
