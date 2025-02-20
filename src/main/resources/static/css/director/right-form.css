@@ -276,3 +276,10 @@
     flex-direction: row;
 }
 
+/* 캡쳐 영역 */
+
+#capture-area{
+    border: 2px dashed #00C471;
+    background-color: #e3ffec;
+
+}

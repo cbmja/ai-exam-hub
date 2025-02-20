@@ -84,6 +84,9 @@ $(document).ready(function () {
 
 let isCapturing = false; // 현재 캡쳐 활성화 중인지 여부
 let startX, startY, endX, endY; // 캡쳐 박스의 네 모서리 좌표
+
+let sx , sy; // 캡쳐 시작점의 x , y 좌표
+
 let capType; // 현재 캡쳐 타입
 
 const $captureArea = $("#capture-area"); // 캡쳐 시작시 생성되는 캡쳐박스
@@ -117,18 +120,74 @@ $(document).on('click', '.cap-btn', function () {
 $(document).on("mousedown", function (e) {
     if (!isCapturing) return;
 
-    startX = e.clientX;
-    startY = e.clientY;
+    sx = e.clientX;
+    sy = e.clientY;
 
     $captureArea.css({
-        left: startX + "px",
-        top: startY + "px",
+        left: sx + "px",
+        top: sy + "px",
         width: "0px",
         height: "0px",
         display: "block",
     });
 });
 
+$(document).on("mousemove", function (e) {
+    if (!isCapturing) return;
+
+    let direction = '';
+
+    let width = e.clientX - sx;
+
+    let height = e.clientY - sy;
+
+    if(width < 0){
+        direction += '_left';
+    }else{
+        direction += '_right'
+    }
+
+    if(height < 0){
+        direction += '_top';
+    }else{
+        direction += '_bottom';
+    }
+
+    width = Math.abs(width);
+    height = Math.abs(height);
+
+    console.log(`direction : ${direction}`);
+    console.log(`width : ${width} / height : ${height}`);
+
+    switch(direction){
+        case '_left_top' :
+            startX = sx - width;
+            startY = sy - height;
+            break;
+
+        case '_left_bottom' :
+            startX = sx - width;
+            startY = sy + height;
+            break;
+
+        case '_right_top' :
+            startX = sx + width;
+            startY = sy - height;
+            break;
+
+        case '_right_bottom' :
+            startX = sx + width;
+            startY = sy + height;
+            break;
+    }
+
+    $captureArea.css({
+        left: startX + "px", // 새로운 시작점
+        width: width + "px", // 음수값을 절대값으로 변환
+        height: height + "px", // 음수값을 절대값으로 변환
+    });
+
+});
 
 
 /*
@@ -137,22 +196,7 @@ $(document).on("mousedown", function (e) {
 
 
 
-        $(document).on("mousemove", function (e) {
-            if (!isCapturing) return;
 
-            endX = e.clientX;
-            endY = e.clientY;
-
-            const width = Math.abs(endX - startX);
-            const height = Math.abs(endY - startY);
-
-            $captureArea.css({
-                width: width + "px",
-                height: height + "px",
-                left: Math.min(startX, endX) + "px",
-                top: Math.min(startY, endY) + "px",
-            });
-        });
 
 
         $(document).on("mouseup", function () {
