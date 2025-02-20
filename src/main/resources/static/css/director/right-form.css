@@ -82,7 +82,11 @@
     border-left: 2px solid #0969DA;
 }
 
-
+/* 타이틀 클릭시 */
+.cap-btn:hover{
+    color: #00C471;
+    cursor: pointer;
+}
 
 
 /* 모달 숨기기 버튼 */

@@ -74,9 +74,13 @@ $(document).ready(function () {
 
 
 
+/* 캡쳐 버튼 클릭 */
+$(document).on('click', '.cap-btn', function(){
 
+    let type = $(this).data('id');
+    console.log(`선택 : ${type}`);
 
-
+});
 
 
 //EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
