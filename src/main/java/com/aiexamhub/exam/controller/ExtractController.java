@@ -2,9 +2,11 @@ package com.aiexamhub.exam.controller;
 
 import com.aiexamhub.exam.dto.ExamCate;
 import com.aiexamhub.exam.dto.ExamOrg;
+import com.aiexamhub.exam.dto.ExtractHub;
 import com.aiexamhub.exam.dto.Subject;
 import com.aiexamhub.exam.service.ExamCateService;
 import com.aiexamhub.exam.service.ExamOrgService;
+import com.aiexamhub.exam.service.ExtractHubService;
 import com.aiexamhub.exam.service.SubjectService;
 import com.aiexamhub.exam.util.OcrUtil;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +32,7 @@ public class ExtractController {
     private final ExamCateService examCateService;
     private final ExamOrgService examOrgService;
     private final SubjectService subjectService;
+    private final ExtractHubService extractHubService;
 
     private final OcrUtil ocrUtil;
 
@@ -41,6 +44,11 @@ public class ExtractController {
     @GetMapping("/form")
     public String testing(Model model){
 
+        // ------------------------------------------------- 하드코딩 ------------------------------------------------- //
+        String userId = "tester";
+        int hubCode = 1;
+
+        ExtractHub myHub = extractHubService.selectByExtractHubCode(hubCode);
 
         List<ExamCate> examCateList = examCateService.selectAll();
         if(examCateList == null || examCateList.isEmpty() || examCateList.get(0).getErr().equals("err")){
@@ -56,6 +64,7 @@ public class ExtractController {
                 .sorted(Comparator.reverseOrder())
                 .collect(Collectors.toList());
 
+        model.addAttribute("myHub" , myHub);
         model.addAttribute("yearList" , yearList);
         model.addAttribute("examCateList" , examCateList);
         model.addAttribute("title" , "문제_추출");
