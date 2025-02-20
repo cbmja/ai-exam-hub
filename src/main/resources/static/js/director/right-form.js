@@ -71,49 +71,61 @@ $(document).ready(function () {
 
 
 
-    /* 캡쳐 버튼 클릭 */
-    $(document).on('click', '.cap-btn', function(){
-
-        let type = $(this).data('id');
-        console.log(`선택 : ${type}`);
-
-    });
-
-
-
-
-
-
-
-
+    /* 캡쳐 */
 
         let isCapturing = false; // 현재 캡쳐 활성화 중인지 여부
-        let startX, startY, endX, endY;
+        let startX, startY, endX, endY; // 캡쳐 박스의 네 모서리 좌표
+        let capType; // 현재 캡쳐 타입
 
-        const $captureArea = $("#capture-area");
+        const $captureArea = $("#capture-area"); // 캡쳐 시작시 생성되는 캡쳐박스
 
-        $(document).on('click', '.capture-btn', function () {
-            console.log($(this).data('selected'));
 
-            if($(this).data('selected') == 0){
-                $(this).data('selected' , '1');
-                $('body').css('cursor', 'crosshair');
-                $(this).addClass('selected-btn');
-                isCapturing = true;
-                $('.modal-box').val('');
-                $('.modal-box').removeClass('filled');
-                $('.capture-ar').empty();
-                $('.text-modal').css('visibility' , 'hidden');
-                console.log('선택해제 -> 선택');
-            }else{
-                $(this).data('selected' , '0');
-                $('body').css('cursor', 'default');
-                $(this).removeClass('selected-btn');
-                isCapturing = false;
-                console.log('선택 -> 선택해제');
+/*
+1. 캡쳐 아닌 상황
+	1. 아무거나 캡쳐 시작
+	2. 캡쳐 종료 클릭
+
+2. 캡쳐중인상황
+	1. 현재 캡쳐중인것 다시 클릭
+	2. 다른 캡쳐 클릭
+	3. 캡쳐 종료 클릭
+*/
+
+
+        $(document).on('click', '.cap-btn', function () {
+
+
+            // isCapturing 활성화
+            // 현재 캡쳐중인 type
+            // cursor
+            // border
+
+            let thisEle = $(this);
+            let clickType = thisEle.data('id'); // 현재 클릭한 캡쳐 타입
+
+
+            if(!isCapturing){ // 1-1 상황
+                console.log('캡쳐 시작');
+                isCapturing = true; // 캡쳐 활성화
+                thisEle.parent().css('border' , '1px solid #00C471'); // 현재 캡쳐 영역 테두리
+                $('#canvas-ar').css('cursor', 'crosshair'); // 마우스 십자가
+                capType = clickType; // 캡쳐 타입 갱신
+            }else if(isCapturing && capType === clickType){ // 2-1 상황
+                console.log('캡쳐 종료');
+                isCapturing = false; // 캡쳐 활성화
+                thisEle.parent().css('border' , 'none'); // 현재 캡쳐 영역 테두리
+                $('#canvas-ar').css('cursor', 'default'); // 마우스 십자가
+            }else if(isCapturing && capType !== clickType){ // 2-2 상황
+                 console.log('현재 캡쳐 종료 -> 새 캡쳐 시작');
+                 $('[data-id="'+capType+'"]').parent().css('border' , 'none'); // 기존 테두리 제거
+                 thisEle.parent().css('border' , '1px solid #00C471'); // 현재 캡쳐 영역 테두리
+                 capType = clickType; // 캡쳐 타입 갱신
             }
 
+            console.log(`캡쳐중인지:${isCapturing} / 현재 캡쳐 타입 :${capType}`);
+
         });
+/*
 
 
         $(document).on("mousedown", function (e) {
@@ -200,6 +212,7 @@ $(document).ready(function () {
                 $('.text-modal').css('visibility' , 'hidden');
         });
 
+*/
 
 //EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 });
