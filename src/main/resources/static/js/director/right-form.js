@@ -211,7 +211,38 @@ $(document).on("mouseup", function () {
 }); //ok
 
 
-/*
+/* 문제 저장 버튼*/
+$(document).on('click', '.extract-submit-btn', function(){
+
+    let cateCode = $('#cateCode').val();
+    let orgCode = $('#orgCode').val();
+    let year = $('#year').val();
+    let month = $('#month').val();
+    let subject = $('#subjectCode').val();
+    let type = $('#type').val();
+    let userId = $('#userId').val();
+    let hubCode = $('#hubCode').val();
+
+    let qnum = $('#question-num').val();
+    let question = $('#question').val();
+    let questionSub = $('#question-sub').val();
+    let option1 = $('#option-1').val();
+    let option2 = $('#option-2').val();
+    let option3 = $('#option-3').val();
+    let option4 = $('#option-4').val();
+    let option5 = $('#option-5').val();
+
+    console.log(`카테코드 : ${cateCode} / 그룹코드 : ${orgCode} / 년도 : ${year} / 달 : ${month} / 과목코드 : ${subject} / 타입 : ${type} / 유저아이디 : ${userId} / 저장소코드 : ${hubCode}`);
+    console.log('-----------------------------');
+    console.log(`문제번호 : ${qnum}`);console.log('-----------------------------');
+    console.log(`문제 텍스트 : ${question}`);console.log('-----------------------------');
+    console.log(`문제 보기 : ${questionSub}`);console.log('-----------------------------');
+    console.log(`선택지1 : ${option1}`);console.log('-----------------------------');
+    console.log(`선택지2 : ${option2}`);console.log('-----------------------------');
+    console.log(`선택지3 : ${option3}`);console.log('-----------------------------');
+    console.log(`선택지4 : ${option4}`);console.log('-----------------------------');
+    console.log(`선택지5 : ${option5}`);console.log('==============================================');
+});
 
 
 
@@ -220,57 +251,8 @@ $(document).on("mouseup", function () {
 
 
 
-        $(document).on("mouseup", function () {
-            if (!isCapturing) return;
-
-            $("body").css("cursor", "default");
-            isCapturing = false;
-
-            const rect = $captureArea[0].getBoundingClientRect();
-
-            $captureArea.hide();
-            // 화면 캡처 실행
-
-            html2canvas(document.body, {
-                x: rect.left,
-                y: rect.top,
-                width: rect.width,
-                height: rect.height,
-            }).then((canvas) => {
-                // 기존 캔버스를 그대로 사용
-                canvas.style.maxWidth = "100%";
-                canvas.style.height = "auto";
-
-                // 캡처된 canvas 출력
-                $('.capture-ar').empty().append(canvas); // <canvas> 삽입
-                $captureArea.hide();
-            });
 
 
-
-            $('.capture-btn').data('selected' , '0');
-            $('body').css('cursor', 'default');
-            $('.capture-btn').removeClass('selected-btn');
-            isCapturing = false;
-
-            $('.text-modal').css('visibility' , 'visible');
-        });
-
-
-
-        $(document).on('click', '.modal-close', function () {
-
-                $('.capture-ar').empty();
-                $('.capture-btn').data('selected' , '0');
-                $('body').css('cursor', 'default');
-                $('.capture-btn').removeClass('selected-btn');
-                isCapturing = false;
-                $('.modal-box').val('');
-                $('.modal-box').removeClass('filled');
-                $('.text-modal').css('visibility' , 'hidden');
-        });
-
-*/
 
 //EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 });

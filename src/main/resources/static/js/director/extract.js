@@ -161,6 +161,14 @@ $(document).on('click', '#edit-pdf', function(){
 /* 선택 완료 버튼 */
 $(document).on('click', '#submit-pdf', function(){
 
+
+    $('#cateCode').val(examCateCode);
+    $('#orgCode').val(examOrgCode);
+    $('#year').val(examYear);
+    $('#month').val(examMonth);
+    $('#subjectCode').val(examSubject);
+    $('#type').val(examType);
+
     $("#r-f-ar").css('display' , 'flex');
 
     groupNm = $('#exam-g-nm').val();

@@ -10,7 +10,16 @@
         <link rel="stylesheet" th:href="@{/css/director/extract.css}">
         <th:block th:replace="~{view/director/right-form :: right-form}"></th:block>
 
-        <div id="canvas-ar" style="">
+        <input type="hidden" id="userId" th:value="${userId}">
+        <input type="hidden" id="hubCode" th:value="${myHub.extractHubCode}">
+        <input type="hidden" id="cateCode">
+        <input type="hidden" id="orgCode">
+        <input type="hidden" id="year">
+        <input type="hidden" id="month">
+        <input type="hidden" id="subjectCode">
+        <input type="hidden" id="type">
+
+        <div id="canvas-ar">
 
 
 
@@ -42,19 +51,19 @@
 
                 <select id="month-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
                     <option selected disabled>출제월</option>
-                    <option>1월</option>
-                    <option>2월</option>
-                    <option>3월</option>
-                    <option>4월</option>
-                    <option>5월</option>
-                    <option>6월</option>
-                    <option>7월</option>
-                    <option>8월</option>
-                    <option>9월</option>
-                    <option>10월</option>
-                    <option>11월</option>
-                    <option>12월</option>
-                    <option>없음</option>
+                    <option value="1">1월</option>
+                    <option value="2">2월</option>
+                    <option value="3">3월</option>
+                    <option value="4">4월</option>
+                    <option value="5">5월</option>
+                    <option value="6">6월</option>
+                    <option value="7">7월</option>
+                    <option value="8">8월</option>
+                    <option value="9">9월</option>
+                    <option value="10">10월</option>
+                    <option value="11">11월</option>
+                    <option value="12">12월</option>
+                    <option value="0">없음</option>
                 </select>
 
                 <select id="subject-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
@@ -63,12 +72,13 @@
 
                 <select id="type-form" class="extract-select"><!-- 모의고사 선택이라고 가정 -->
                     <option selected disabled>타입</option>
-                    <option>A형(타입)</option>
-                    <option>B형(타입)</option>
-                    <option>1형(타입)</option>
-                    <option>2형(타입)</option>
-                    <option>홀수형(타입)</option>
-                    <option>짝수형(타입)</option>
+                    <option value="A">A형(타입)</option>
+                    <option value="B">B형(타입)</option>
+                    <option value="1">1형(타입)</option>
+                    <option value="2">2형(타입)</option>
+                    <option value="odd">홀수형(타입)</option>
+                    <option value="even">짝수형(타입)</option>
+                    <option value="x">없음</option>
                 </select>
 
             </form>

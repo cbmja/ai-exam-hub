@@ -64,6 +64,7 @@ public class ExtractController {
                 .sorted(Comparator.reverseOrder())
                 .collect(Collectors.toList());
 
+        model.addAttribute("userId" , userId);
         model.addAttribute("myHub" , myHub);
         model.addAttribute("yearList" , yearList);
         model.addAttribute("examCateList" , examCateList);
