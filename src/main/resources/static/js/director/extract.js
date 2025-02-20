@@ -170,12 +170,12 @@ $(document).on('click', '#submit-pdf', function(){
 
             let options = '';
 
-            let def = 'default';
+            let def = 'DEFAULT';
 
             if(res.length > 0){
                 options = `<option selected disabled>선택과목</option> <option value=${def} >기본</option>`;
             }else{
-                options = `<option value=none selected disabled>${examSubjectStr}</option>`;
+                options = `<option value=${def} selected disabled>${examSubjectStr}</option>`;
             }
 
             res.forEach((sd)=>{
