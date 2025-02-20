@@ -84,26 +84,26 @@ $(document).ready(function () {
 
 let isCapturing = false; // 현재 캡쳐 활성화 중인지 여부
 let startX, startY, endX, endY; // 캡쳐 박스의 네 모서리 좌표
-
-let sx , sy; // 캡쳐 시작점의 x , y 좌표
-
 let capType; // 현재 캡쳐 타입
-
 const $captureArea = $("#capture-area"); // 캡쳐 시작시 생성되는 캡쳐박스
+
+
 
 $(document).on('click', '.cap-btn', function () {
     let thisEle = $(this);
     let clickType = thisEle.data('id'); // 현재 클릭한 캡쳐 타입
 
     if(!isCapturing){ // 1-1 상황
+        $('[data-id="'+capType+'"]').parent().css('border' , 'none'); // 기존 테두리 제거
         console.log('캡쳐 시작');
         isCapturing = true; // 캡쳐 활성화
         thisEle.parent().css('border' , '1px solid #00C471'); // 현재 캡쳐 영역 테두리
         $('#canvas-ar').css('cursor', 'crosshair'); // 마우스 십자가
         capType = clickType; // 캡쳐 타입 갱신
+
     }else if(isCapturing && capType === clickType){ // 2-1 상황
         console.log('캡쳐 종료');
-        isCapturing = false; // 캡쳐 활성화
+        isCapturing = false; // 캡쳐 비활성화
         thisEle.parent().css('border' , 'none'); // 현재 캡쳐 영역 테두리
         $('#canvas-ar').css('cursor', 'default'); // 마우스 십자가
     }else if(isCapturing && capType !== clickType){ // 2-2 상황
@@ -114,81 +114,61 @@ $(document).on('click', '.cap-btn', function () {
     }
 
     console.log(`캡쳐중인지:${isCapturing} / 현재 캡쳐 타입 :${capType}`);
+    console.log(`${startX} / ${startY} / ${endX} / ${endY}`);
 
-});
+}); // ok
 
 $(document).on("mousedown", function (e) {
     if (!isCapturing) return;
 
-    sx = e.clientX;
-    sy = e.clientY;
+    startX = e.clientX;
+    startY = e.clientY;
 
     $captureArea.css({
-        left: sx + "px",
-        top: sy + "px",
+        left: startX + "px",
+        top: startY + "px",
         width: "0px",
         height: "0px",
         display: "block",
     });
-});
+}); // ok
 
 $(document).on("mousemove", function (e) {
+
     if (!isCapturing) return;
 
-    let direction = '';
+    e.preventDefault();
 
-    let width = e.clientX - sx;
+    endX = e.clientX;
+    endY = e.clientY;
 
-    let height = e.clientY - sy;
-
-    if(width < 0){
-        direction += '_left';
-    }else{
-        direction += '_right'
-    }
-
-    if(height < 0){
-        direction += '_top';
-    }else{
-        direction += '_bottom';
-    }
-
-    width = Math.abs(width);
-    height = Math.abs(height);
-
-    console.log(`direction : ${direction}`);
-    console.log(`width : ${width} / height : ${height}`);
-
-    switch(direction){
-        case '_left_top' :
-            startX = sx - width;
-            startY = sy - height;
-            break;
-
-        case '_left_bottom' :
-            startX = sx - width;
-            startY = sy + height;
-            break;
-
-        case '_right_top' :
-            startX = sx + width;
-            startY = sy - height;
-            break;
-
-        case '_right_bottom' :
-            startX = sx + width;
-            startY = sy + height;
-            break;
-    }
+    const width = Math.abs(endX - startX);
+    const height = Math.abs(endY - startY);
 
     $captureArea.css({
-        left: startX + "px", // 새로운 시작점
-        width: width + "px", // 음수값을 절대값으로 변환
-        height: height + "px", // 음수값을 절대값으로 변환
+        width: width + "px",
+        height: height + "px",
+        left: Math.min(startX, endX) + "px",
+        top: Math.min(startY, endY) + "px",
     });
+}); // ok
 
-});
+$(document).on("mouseup", function () {
+    if (!isCapturing) return;
+    isCapturing = false; // 캡쳐 비활성화
+    //$('[data-id="'+capType+'"]').parent().css('border' , 'none'); // 기존 테두리 제거
+    $('#canvas-ar').css('cursor', 'default'); // 커서 기본으로
 
+    startX = undefined;
+    startY = undefined;
+    endX = undefined;
+    endY = undefined;
+
+    console.log('====================캡쳐 끝==================');
+    console.log(`캡쳐 활성화 여부: ${isCapturing}`);
+    console.log(`현재 캡쳐 타입: ${capType}`);
+    console.log();
+}); //ok
 
 /*
 
