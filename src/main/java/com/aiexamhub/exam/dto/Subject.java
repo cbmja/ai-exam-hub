@@ -7,6 +7,7 @@ public class Subject {
 
     private String subjectCode;
     private String subjectName;
+    private int subCnt;
 
     private String err="";
 }

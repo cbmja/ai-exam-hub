@@ -162,6 +162,28 @@ $(document).on('click', '#edit-pdf', function(){
 $(document).on('click', '#submit-pdf', function(){
 
 
+    $.ajax({
+        url: '/ai/extract/subjectDetail',
+        method: 'GET',
+        data: { subjectCode: examSubject },
+        success: function(res) {
+
+            let options = '';
+
+            res.forEach((sd)=>{
+              options += `<option value=${sd.subjectDetailCode}>${sd.subjectDetailName}</option>`
+            })
+
+            $('#subject-detail').append(options);
+
+        },
+        error: function(xhr, status, error) {
+            console.error('Error:', error);
+            alert('서버 에러입니다. 잠시 후 다시 시도해 주세요.');
+        }
+    });
+
+
     $('#cateCode').val(examCateCode);
     $('#orgCode').val(examOrgCode);
     $('#year').val(examYear);

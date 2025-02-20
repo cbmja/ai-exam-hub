@@ -28,6 +28,7 @@ public class ExtractController {
     private final SubjectService subjectService;
     private final ExtractHubService extractHubService;
     private final ExtractQuestionService extractQuestionService;
+    private final SubjectDetailService subjectDetailService;
 
     private final OcrUtil ocrUtil;
 
@@ -173,6 +174,17 @@ public class ExtractController {
         int res = extractQuestionService.save(form);
 
         return res;
+    }
+
+
+
+    @GetMapping("/subjectDetail")
+    @ResponseBody
+    public List<SubjectDetail> getSubjectDetails(@RequestParam(name="subjectCode", defaultValue = "") String subjectCode){
+
+        List<SubjectDetail> subjectDetailList = subjectDetailService.selectBySubjectCode(subjectCode);
+
+        return subjectDetailList;
     }
 
 }
