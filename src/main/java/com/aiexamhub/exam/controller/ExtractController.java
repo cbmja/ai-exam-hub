@@ -31,6 +31,11 @@ public class ExtractController {
     private final ExamOrgService examOrgService;
     private final SubjectService subjectService;
 
+    @GetMapping("/example")
+    public String example(){
+        return "view/director/drag-example";
+    }
+
     @GetMapping("/form")
     public String testing(Model model){
 
