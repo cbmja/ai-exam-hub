@@ -270,19 +270,6 @@ $(document).on('click', '.extract-submit-btn', function(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     console.log(`카테코드 : ${cateCode} / 그룹코드 : ${orgCode} / 년도 : ${year} / 달 : ${month} / 과목코드 : ${subject} / 타입 : ${type} / 저장소코드 : ${hubCode}`);
     console.log('----------------------------------------------------------');
     console.log(`문제번호 : ${qnum}`);console.log('---------------------------------------------------------');
