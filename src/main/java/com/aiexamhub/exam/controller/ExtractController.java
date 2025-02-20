@@ -1,10 +1,7 @@
 package com.aiexamhub.exam.controller;
 
 import com.aiexamhub.exam.dto.*;
-import com.aiexamhub.exam.service.ExamCateService;
-import com.aiexamhub.exam.service.ExamOrgService;
-import com.aiexamhub.exam.service.ExtractHubService;
-import com.aiexamhub.exam.service.SubjectService;
+import com.aiexamhub.exam.service.*;
 import com.aiexamhub.exam.util.OcrUtil;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONArray;
@@ -30,6 +27,7 @@ public class ExtractController {
     private final ExamOrgService examOrgService;
     private final SubjectService subjectService;
     private final ExtractHubService extractHubService;
+    private final ExtractQuestionService extractQuestionService;
 
     private final OcrUtil ocrUtil;
 
@@ -170,11 +168,11 @@ public class ExtractController {
 
     @PostMapping("/data")
     @ResponseBody
-    public String saveQuestion(@RequestBody ExtractQuestion form){
+    public int saveQuestion(@RequestBody ExtractQuestion form){
 
-        System.out.println(form);
+        int res = extractQuestionService.save(form);
 
-        return "";
+        return res;
     }
 
 }

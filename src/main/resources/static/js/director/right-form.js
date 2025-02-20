@@ -255,14 +255,12 @@ $(document).on('click', '.extract-submit-btn', function(){
             option5: option5
         }),
         success: function (response) {
-            if(response == 'err'){
-                alert("서버 에러");
-                return;
+
+            if(response === 1){
+                alert('저장');
+            }else{
+                alert('서버 에러입니다.');
             }
-
-            let resStr = response.trim();
-
-            $('#'+capType).val(resStr);
 
         },
         error: function (xhr, status, error) {

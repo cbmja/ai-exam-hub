@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aiexamhub.exam.mapper.ExtractQuestionMapper">
+
+    <insert id="save" parameterType="ExtractQuestion">
+        INSERT INTO extract_question (
+        exam_org_code,
+        exam_cate_code,
+        exam_year,
+        exam_month,
+        subject_code,
+        exam_type,
+        extract_hub_code,
+        question_no,
+        question,
+        question_sub,
+        option1,
+        option2,
+        option3,
+        option4,
+        option5
+        )
+        VALUES (
+        #{examOrgCode},
+        #{examCateCode},
+        #{examYear},
+        #{examMonth},
+        #{subjectCode},
+        #{examType},
+        #{extractHubCode},
+        #{questionNo},
+        #{question},
+        #{questionSub},
+        #{option1},
+        #{option2},
+        #{option3},
+        #{option4},
+        #{option5}
+        )
+    </insert>
+
+
+</mapper>
