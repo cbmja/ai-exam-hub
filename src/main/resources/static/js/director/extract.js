@@ -180,8 +180,10 @@ $(document).on('click', '#submit-pdf', function(){
     let conAr = $('.content-ar');
     conAr.css('padding-left' , '0');
     conAr.css('width' , 'calc(100% - 315px)');
-    let navStr = `<span> [ ${groupNm} ] / ${examCateStr} / ${examYearStr} / ${examMonthStr} / ${examSubjectStr} / ${examTypeStr} / ${examOrgStr} / ${originalFileName}</span>`;
+    let navStr = `<span> [ 추출 시험 정보 ] : ${examCateStr} / ${examYearStr} / ${examMonthStr} / ${examSubjectStr} / ${examTypeStr} / ${examOrgStr} / ${originalFileName}</span>`;
     navLeft.append(navStr);
+
+    $('#extract-group-name').empty().append(groupNm);
 
     if (upLoadFile && upLoadFile.type === 'application/pdf') {
 
