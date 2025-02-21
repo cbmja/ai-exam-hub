@@ -4,13 +4,56 @@
 
 <mapper namespace="com.aiexamhub.exam.mapper.ExtractQuestionMapper">
 
-    <select id="selectByExtractHubCode" parameterType="Search" resultType="ExtractQuestion">
+    <select id="selectByExtractHubCodeXXXXXX" parameterType="Search" resultType="ExtractQuestion">
         SELECT *
         FROM extract_question
         WHERE extract_hub_code = #{extractHubCode}
         ORDER BY created_at ${sort};
     </select>
-    
+
+    <select id="selectByExtractHubCode" parameterType="Search" resultType="ExtractQuestion">
+        SELECT
+        eq.extract_question_code,
+        eq.exam_org_code,
+        eo.exam_org_name,
+        eq.exam_cate_code,
+        ec.exam_cate_name,
+        eq.exam_year,
+        eq.exam_month,
+        eq.subject_code,
+        eq.exam_type,
+        s.subject_name,
+        eq.subject_detail_code,
+        sd.subject_detail_name,
+        eq.extract_hub_code,
+        eq.question_no,
+        eq.question,
+        eq.question_sub,
+        eq.option1,
+        eq.option2,
+        eq.option3,
+        eq.option4,
+        eq.option5,
+        eq.created_at,
+        eq.updated_at
+        FROM extract_question eq
+        LEFT JOIN exam_org eo ON eq.exam_org_code = eo.exam_org_code
+        LEFT JOIN exam_cate ec ON eq.exam_cate_code = ec.exam_cate_code
+        LEFT JOIN subject s ON eq.subject_code = s.subject_code
+        LEFT JOIN subject_detail sd ON eq.subject_detail_code = sd.subject_detail_code
+        WHERE eq.extract_hub_code = #{extractHubCode}
+        <choose>
+            <when test="sort == 'asc'">
+                ORDER BY eq.created_at ASC
+            </when>
+            <when test="sort == 'desc'">
+                ORDER BY eq.created_at DESC
+            </when>
+            <otherwise>
+                ORDER BY eq.created_at DESC  <!-- 기본 정렬 -->
+            </otherwise>
+        </choose>
+    </select>
     
     <insert id="save" parameterType="ExtractQuestion">
         INSERT INTO extract_question (

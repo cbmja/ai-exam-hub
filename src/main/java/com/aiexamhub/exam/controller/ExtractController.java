@@ -53,7 +53,37 @@ public class ExtractController {
         }
 
 
-        List<ExtractQuestion> extractQList = extractQuestionService.selectByExtractHubCode(hubCode , "DESC");
+        List<ExtractQuestion> extractQList = extractQuestionService.selectByExtractHubCode(hubCode , "desc");
+
+        for(ExtractQuestion eq : extractQList){
+            if(eq.getSubjectDetailName().isEmpty()){
+                eq.setSubjectDetailName("공통");
+            }
+            if(eq.getExamType().equals("even")){
+                eq.setExamTypeName("짝수형");
+            }
+            if(eq.getExamType().equals("odd")){
+                eq.setExamTypeName("홀수형");
+            }
+            if(eq.getExamType().equals("A")){
+                eq.setExamTypeName("A형");
+            }
+            if(eq.getExamType().equals("B")){
+                eq.setExamTypeName("B형");
+            }
+            if(eq.getExamType().equals("1")){
+                eq.setExamTypeName("1형");
+            }
+            if(eq.getExamType().equals("2")){
+                eq.setExamTypeName("1형");
+            }
+            if(eq.getExamType().equals("x")){
+                eq.setExamTypeName("타입 없음");
+            }
+
+        }
+
+
 
         int currentYear = Year.now().getValue();
 

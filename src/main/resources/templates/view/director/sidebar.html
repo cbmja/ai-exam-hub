@@ -23,8 +23,8 @@
 
         <div class="my-exam-element">
             <div th:each="qele : ${extractQList}" th:data-questioncode="${qele.extractQuestionCode}" class="side-element">
-                <span style="margin-bottom: 5px;">2025년도 11월 수능</span>
-                <span>국어_화법과 작문_짝수형_5번</span>
+                <span style="margin-bottom: 5px;">[[${qele.examYear}]]년도 [[${qele.examMonth}]]월 [[${qele.examCateName}]]</span>
+                <span>[[${qele.subjectName}]]_[[${qele.subjectDetailName}]]_[[${qele.examTypeName}]]_[[${qele.questionNo}]]번</span>
             </div>
 
 

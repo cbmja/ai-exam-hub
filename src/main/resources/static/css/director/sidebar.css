@@ -115,7 +115,8 @@
     /* 여백 */
     margin-left: 15px;
     margin-right: 15px;
-    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 5px;
 
     /* 정렬 */
     display: flex;
@@ -123,7 +124,16 @@
     justify-content: flex-start;
     align-items: flex-start;
 
+    border-bottom: 1px solid #D1D9E0;
+
 }
+
+.side-element:hover{
+    background-color: #F6F8FA;
+    cursor: pointer;
+}
+
+
 
 /* 사이드바 검색창 */
 .side-form{

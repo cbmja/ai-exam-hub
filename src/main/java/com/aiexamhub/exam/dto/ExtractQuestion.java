@@ -30,4 +30,11 @@ public class ExtractQuestion {
 
     private String err="";
 
+    private String examOrgName;
+    private String examCateName;
+    private String subjectName;
+    private String subjectDetailName = "";
+    private String examTypeName = "";
+
+
 }
