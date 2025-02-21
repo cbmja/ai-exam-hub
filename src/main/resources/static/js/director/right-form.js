@@ -1,12 +1,16 @@
 $(document).ready(function () {
 //SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 
-    let isDragging = false;
-    let offsetX, offsetY;
-    let ar = $("#r-f-ar");
 
+// 폼 영역 드래그 이동 -------------------------------------------------------------------------------------------------------
+
+    let isDragging = false; // 드래그 활성화 여부 // ok
+    let offsetX, offsetY; // 클릭 지점과 폼 요소 간의 거리 // ok
+    let ar = $("#r-f-ar"); // 폼 요소 // ok
+
+    // 이동 버튼 클릭
     $('.modal-move-btn').mousedown(function (e) {
-        isDragging = true;
+        isDragging = true; // 드래그 활성화
 
         // 요소의 현재 위치에서 마우스 클릭 위치까지의 거리 저장
         offsetX = e.clientX - ar.position().left;
@@ -19,7 +23,7 @@ $(document).ready(function () {
         });
 
         e.preventDefault(); // 기본 이벤트 방지
-    });
+    }); // ok
 
     $(document).mousemove(function (e) {
         if (!isDragging) return;
@@ -42,7 +46,7 @@ $(document).ready(function () {
             left: left + "px",
             top: top + "px"
         });
-    });
+    }); // ok
 
     $(document).mouseup(function () {
         if (!isDragging) return;
@@ -51,7 +55,7 @@ $(document).ready(function () {
         ar.css({
             "cursor": "default"
         });
-    });
+    }); // ok
 
 
     /* 모달 숨기기*/
@@ -61,13 +65,13 @@ $(document).ready(function () {
         let sBtn = $('.modal-show-btn');
         sBtn.css('display' , 'flex');
 
-    });
+    }); // ok
 
     /* 모달 나타내기*/
     $(document).on('click', '.modal-show-btn', function(){
         $('#r-f-ar').css('display' , 'flex');
         $('.modal-show-btn').css('display' , 'none');
-    });
+    }); // ok
 
 
 
@@ -82,45 +86,41 @@ $(document).ready(function () {
 	3. 캡쳐 종료 클릭
 */
 
-let isCapturing = false; // 현재 캡쳐 활성화 중인지 여부
-let startX, startY, endX, endY; // 캡쳐 박스의 네 모서리 좌표
+let isCapturing = false; // 현재 캡쳐 활성화 중인지 여부 // ok
+let startX, startY, endX, endY; // 캡쳐 박스의 네 모서리 좌표 // ok
 let capType; // 현재 캡쳐 타입
-const $captureArea = $("#capture-area"); // 캡쳐 시작시 생성되는 캡쳐박스
+const $captureArea = $("#capture-area"); // 캡쳐 시작시 생성되는 캡쳐박스 // ok
 
+// 캡쳐 보튼 클릭
 $(document).on('click', '.cap-btn', function () {
     let thisEle = $(this);
     let clickType = thisEle.data('id'); // 현재 클릭한 캡쳐 타입
 
     $captureArea.hide();
 
-    if (!isCapturing) { // 1-1 상황
-        $('[data-id="' + capType + '"]').parent().css('border', 'none'); // 기존 테두리 제거
-        //console.log('캡쳐 시작');
+    if (!isCapturing) { // 1-1 상황 - 캡쳐가 활성화 되지 않은 상태에서 캡쳐 버튼 클릭 // ok
+        $('[data-id="' + capType + '"]').parent().css('border', 'none'); // 기존 테두리 제거 // ok
         isCapturing = true; // 캡쳐 활성화
-        thisEle.parent().css('border', '1px solid #00C471'); // 현재 캡쳐 영역 테두리
-        $('#canvas-ar').css('cursor', 'crosshair'); // 마우스 십자가
-        capType = clickType; // 캡쳐 타입 갱신
-    } else if (isCapturing && capType === clickType) { // 2-1 상황
-        //console.log('캡쳐 종료');
-        isCapturing = false; // 캡쳐 비활성화
-        thisEle.parent().css('border', 'none'); // 현재 캡쳐 영역 테두리
-        $('#canvas-ar').css('cursor', 'default'); // 마우스 십자가
-    } else if (isCapturing && capType !== clickType) { // 2-2 상황
-        //console.log('현재 캡쳐 종료 -> 새 캡쳐 시작');
-        $('[data-id="' + capType + '"]').parent().css('border', 'none'); // 기존 테두리 제거
-        thisEle.parent().css('border', '1px solid #00C471'); // 현재 캡쳐 영역 테두리
+        thisEle.parent().css('border', '1px solid #00C471'); // 현재 활성화 된 캡쳐 영역의 테두리 생성 // ok
+        $('#canvas-ar').css('cursor', 'crosshair'); // 마우스 십자가 // ok
+        capType = clickType; // 캡쳐 타입 갱신 // ok
+    } else if (isCapturing && capType === clickType) { // 2-1 상황 - 현재 캡쳐가 활성화 중인 상태에서 다시 현재 활성화 중인 캡쳐 버튼 클릭 -> 캡쳐 종료  // ok
+        isCapturing = false; // 캡쳐 비활성화 // ok
+        thisEle.parent().css('border', 'none'); // 현재 캡쳐 영역 테두리 제거 // ok
+        $('#canvas-ar').css('cursor', 'default'); // 마우스 십자가 해제 // ok
+    } else if (isCapturing && capType !== clickType) { // 2-2 상황- 현재 캡쳐가 활성화 중인 상태에서 다른 타입의 캡쳐 클릭  // ok
+        $('[data-id="' + capType + '"]').parent().css('border', 'none'); // 기존 활성화 캡쳐 영역 테두리 제거 // ok
+        thisEle.parent().css('border', '1px solid #00C471'); // 갱신된 캡쳐 영역 테두리 생성 // ok
         capType = clickType; // 캡쳐 타입 갱신
     }
 
-    //console.log(`캡쳐중인지:${isCapturing} / 현재 캡쳐 타입 :${capType}`);
-    //console.log(`${startX} / ${startY} / ${endX} / ${endY}`);
 }); // ok
-
+// 캡쳐 시작
 $(document).on("mousedown", function (e) {
     if (!isCapturing) return;
 
     e.preventDefault();
-
+    // 클릭한 위치의 x , y 좌표 저장
     startX = e.clientX;
     startY = e.clientY + window.scrollY; // 스크롤 값 보정
 
@@ -132,18 +132,18 @@ $(document).on("mousedown", function (e) {
         display: "block",
     });
 }); // ok
-
+// 캡쳐 드래그
 $(document).on("mousemove", function (e) {
     if (!isCapturing) return;
 
     e.preventDefault();
-
+    // 현재 마우스 위치
     endX = e.clientX;
     endY = e.clientY + window.scrollY; // 스크롤 값 보정
 
     const width = Math.abs(endX - startX);
     const height = Math.abs(endY - startY);
-
+    // 시작 지점과 끝 지점의 x , y 좌표 중 더 작은 값을 left , top 속성으로 부여
     $captureArea.css({
         width: width + "px",
         height: height + "px",
@@ -151,25 +151,20 @@ $(document).on("mousemove", function (e) {
         top: Math.min(startY, endY) + "px", // 스크롤 보정된 top 값 사용
     });
 }); // ok
-
+// 캡쳐 끝
 $(document).on("mouseup", function () {
     if (!isCapturing) return;
 
     isCapturing = false; // 캡쳐 비활성화
     $('#canvas-ar').css('cursor', 'default'); // 커서 기본으로
-
+    // 값 초기화
     startX = undefined;
     startY = undefined;
     endX = undefined;
     endY = undefined;
-
-    //console.log('====================캡쳐 끝==================');
-    //console.log(`캡쳐 활성화 여부: ${isCapturing}`);
-    //console.log(`현재 캡쳐 타입: ${capType}`);
-    //console.log();
-
+    // 요소의 크기 , 위치값 계산
     const rect = $captureArea[0].getBoundingClientRect();
-
+    // 캡쳐 영역이 있는 부분을 이미지로 생성
     html2canvas(document.body, {
         x: rect.left,
         y: rect.top + window.scrollY,
@@ -183,7 +178,7 @@ $(document).on("mouseup", function () {
         // const newWindow = window.open();
         // newWindow.document.write('<img src="' + imageData + '" />');
 
-        $.ajax({
+        $.ajax({ // 서드파티로 전송 후 값 가져옴 --- --- --- --- --- --- --- --- 서버로 보내지 말고 바로 naver로 쏴도 될듯 --- --- --- --- --- --- --- --- --- --- --- ---
             url: "/ai/extract/naver-ocr",
             method: "POST",
             contentType: "application/json",
@@ -220,7 +215,6 @@ $(document).on('click', '.extract-submit-btn', function(){
     let month = $('#month').val();
     let subject = $('#subjectCode').val();
     let type = $('#type').val();
-    //let userId = $('#userId').val();
     let hubCode = $('#hubCode').val();
 
     let qnum = $('#question-num').val();
@@ -262,8 +256,8 @@ $(document).on('click', '.extract-submit-btn', function(){
         success: function (response) {
 
             if(response > 1){
-                alert('저장');
-
+                // alert('저장');
+                // 사이드에 요소 생성
                 let navInfo = $('#nav-info');
 
                 let cateNm = navInfo.data('examnm');
