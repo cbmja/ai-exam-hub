@@ -274,6 +274,9 @@ $(document).on('click', '.extract-submit-btn', function(){
                 if(!subjectDetailNm){
                     subjectDetailNm = '공통';
                 }
+                if(subjectDetailNm === subjectNm){
+                    subjectDetailNm = '공통';
+                }
 
 
                 let ele = '<div th:data-questioncode='+response+' class="side-element">'
