@@ -264,9 +264,21 @@ $(document).on('click', '.extract-submit-btn', function(){
             if(response > 1){
                 alert('저장');
 
+                let navInfo = $('#nav-info');
+
+                let cateNm = navInfo.data('examnm');
+                let subjectNm = navInfo.data('subjectnm');
+                let subjectType = navInfo.data('subjecttype');
+                let subjectDetailNm = $('#subject-detail option:selected').text();
+
+                if(!subjectDetailNm){
+                    subjectDetailNm = '공통';
+                }
+
+
                 let ele = '<div th:data-questioncode='+response+' class="side-element">'
-                            +'<span style="margin-bottom: 5px;">'+year+'년도 '+month+'월 시험명</span>'
-                            +'<span>과목명_서브과목명_시험타입_N번</span>'
+                            +'<span style="margin-bottom: 5px;">'+year+'년도 '+month+'월 '+cateNm+'</span>'
+                            +'<span>'+subjectNm+'_'+subjectDetailNm+'_'+subjectType+'_'+qnum+'번</span>'
                           +'</div>'
 
                           $('.my-exam-element').prepend(ele);

@@ -173,7 +173,7 @@ $(document).on('click', '#submit-pdf', function(){
             let def = 'DEFAULT';
 
             if(res.length > 0){
-                options = `<option selected disabled>선택과목</option> <option value=${def} >기본</option>`;
+                options = `<option selected disabled>선택과목</option> <option value=${def} >공통</option>`;
             }else{
                 options = `<option value=${def} selected disabled>${examSubjectStr}</option>`;
             }
@@ -218,7 +218,7 @@ $(document).on('click', '#submit-pdf', function(){
     let conAr = $('.content-ar');
     conAr.css('padding-left' , '0');
     conAr.css('width' , 'calc(100% - 315px)');
-    let navStr = `<span> [ 추출 시험 정보 ] : ${examCateStr} / ${examYearStr} / ${examMonthStr} / ${examSubjectStr} / ${examTypeStr} / ${examOrgStr} / ${originalFileName}</span>`;
+    let navStr = `<span id=nav-info data-examnm=${examCateStr} data-subjectnm=${examSubjectStr} data-subjecttype=${examTypeStr}> [ 추출 시험 정보 ] : ${examCateStr} / ${examYearStr} / ${examMonthStr} / ${examSubjectStr} / ${examTypeStr} / ${examOrgStr} / ${originalFileName}</span>`;
     navLeft.append(navStr);
 
     $('#extract-group-name').empty().append(groupNm);
