@@ -1,10 +1,10 @@
+/* 모달 전체 사이즈 */
 .right-form-ar{
     /* 크기 */
     width: 500px;
-    height: 607px;
+    height: 600px;
 
     /* 테두리 */
-    /*border-radius: 8px;*/
     border: 1px solid #0969DA;
 
     /* 배경 */
@@ -23,6 +23,7 @@
     align-items: flex-start;
 
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .right-form-ar:hover{
@@ -32,7 +33,7 @@
 /* 모달 상단 버튼 영역 */
 .modal-top-btn-ar{
     /* 크기 */
-    width: 100%;
+    width: calc(100% - 2px);
     height: 20px;
 
     /* 정렬 */
@@ -43,9 +44,8 @@
 
     /* 테두리 */
     border-bottom: 1px solid #0969DA;
-/*    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;*/
 
+    /* 상단고정 */
     position: sticky;
     top: 0;
     left: 0;
@@ -61,7 +61,6 @@
 
     /* 테두리 */
     border-right: 1px solid #0969DA;
-/*    border-top-left-radius: 8px;*/
 
     /* 배경 */
     background-color: #F6F8FA;
@@ -84,26 +83,13 @@
     cursor: grabbing;
     background-color: #0969DA;
     color: #FFFFFF;
-
-    border-top: 2px solid #0969DA;
-    border-left: 2px solid #0969DA;
 }
-
-/* 타이틀 클릭시 */
-.cap-btn:hover{
-    color: #00C471;
-    cursor: pointer;
-}
-
 
 /* 모달 숨기기 버튼 */
 .modal-hide-btn{
     /* 크기 */
     width: calc(100% - 20px);
     height: 20px;
-
-    /* 테두리 */
-    /*border-top-right-radius: 8px;*/
 
     /* 배경 */
     background-color: #F6F8FA;
@@ -121,14 +107,11 @@
     justify-content: center;
     align-items: center;
 }
-/* 모달 숨기기 버튼 */
+
 .modal-hide-btn:hover{
     cursor: pointer;
     background-color: #0969DA;
     color: #FFFFFF;
-
-    border-top: 2px solid #0969DA;
-    border-right: 2px solid #0969DA;
 }
 
 /* 모달 나타내기 버튼 */
@@ -160,7 +143,7 @@
     position: fixed;
     right: 0;
     top: 50vh;
-    z-index: 1000;
+    z-index: 3000;
 }
 
 .modal-show-btn:hover{
@@ -171,8 +154,10 @@
 .t-ar{
     /* 크기 조절 불가 */
     resize: none;
-    transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.2s ease-in-out;
     border: 1px solid #D1D9E0;
+
+    margin: 0;
 }
 
 .t-ar:focus , .t-ar:hover{
@@ -180,26 +165,24 @@
     border-color: #00C471 !important;
 }
 
-/* 보기 부분 */
-.option-ar{
+/* 문제 번호 입력 영역 */
+.q-num-ar{
+
     /* 크기 */
-    width: 100%;
-    height: 150px;
+    width: calc(100% - 2px);
+    height: 50px;
 
     /* 정렬 */
     display: flex;
     flex-direction: row;
 
     /* 여백 */
-    margin-bottom: 5px;
-
-    /* 테두리 */
-    /*border-bottom: 1px solid #000000;*/
+    margin-top: 5px;
 }
 
-.option-title{
+.q-num-title{
     /* 크기 */
-    width: 13%;
+    width:20%;
 
     /* 정렬 */
     display: flex;
@@ -214,28 +197,21 @@
     font-weight: 500;
     font-style: normal;
 
-    /* 여백 */
-    /*padding-right: 5px;*/
-    padding-left: 10px;
-
     /* 정렬 */
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
 
-/* 문제보기 부분 */
+.q-num-select{
+    width:60%;
+}
+
+/* 문제 텍스트 , 보기 영역 */
 .q-sub-ar{
     /* 크기 */
-    width: calc(100% - 20px);
+    width: calc(100% - 2px);
     height: 300px;
-
-    /* 테두리 */
-    /*border-bottom: 1px solid #000000;*/
-
-    /* 여백 */
-    padding-left: 10px;
-    padding-right: 10px;
 
     /* 정렬 */
     display: flex;
@@ -249,9 +225,43 @@
     width: 100%;
     height: 30px;
 
+    /* 텍스트 */
+    font-size: 15px;
+    color: #282C30;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
     /* 정렬 */
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* 보기 부분 */
+.option-ar{
+    /* 크기 */
+    width: calc(100% - 2px);
+    height: 150px;
+
+    /* 정렬 */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    /* 여백 */
+    margin-bottom: 5px;
+}
+
+.option-title{
+    /* 크기 */
+    width: 17%;
+
+    /* 정렬 */
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
 
     /* 텍스트 */
@@ -262,29 +272,13 @@
     font-weight: 500;
     font-style: normal;
 
-    /* 여백 */
-    padding-right: 5px;
-
     /* 정렬 */
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
 
-.q-num-ar{
-
-    /* 크기 */
-    width: calc(100% - 5px);
-    height: 50px;
-    /*border-bottom: 1px solid #000000;*/
-
-    /* 정렬 */
-    display: flex;
-    flex-direction: row;
-}
-
 /* 캡쳐 영역 */
-
 #capture-area{
 
     position: absolute;
@@ -295,18 +289,11 @@
 
 }
 
-
 /* 하단 버튼 영역 */
 .r-form-btn-ar{
-
     /* 크기 */
-    width: calc(100% - 20px);
+    width: calc(100% - 10px);
     height: 40px;
-
-    /* 여백 */
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-bottom: 5px;
 
     /* 정렬 */
     display: flex;
@@ -314,8 +301,9 @@
     justify-content: flex-end;
     align-items: center;
 
+    /* 여백 */
+    margin-bottom: 5px;
 }
-
 
 .reset-btn{
 
@@ -371,5 +359,11 @@
 }
 .reset-btn:hover{
     background-color: #731919;
+    cursor: pointer;
+}
+
+/* 타이틀 클릭시 */
+.cap-btn:hover{
+    color: #00C471;
     cursor: pointer;
 }
