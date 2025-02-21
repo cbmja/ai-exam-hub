@@ -52,6 +52,9 @@ public class ExtractController {
             System.out.println("sql err");
         }
 
+
+        List<ExtractQuestion> extractQList = extractQuestionService.selectByExtractHubCode(hubCode , "DESC");
+
         int currentYear = Year.now().getValue();
 
         // 1900년부터 현재 년도까지의 숫자를 포함하는 리스트 생성
@@ -60,6 +63,7 @@ public class ExtractController {
                 .sorted(Comparator.reverseOrder())
                 .collect(Collectors.toList());
 
+        model.addAttribute("extractQList" , extractQList);
         model.addAttribute("userId" , userId);
         model.addAttribute("myHub" , myHub);
         model.addAttribute("yearList" , yearList);

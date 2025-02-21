@@ -28,4 +28,6 @@ public class ExtractQuestion {
 
     private String subjectDetailCode;
 
+    private String err="";
+
 }

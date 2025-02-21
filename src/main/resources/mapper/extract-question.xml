@@ -4,6 +4,14 @@
 
 <mapper namespace="com.aiexamhub.exam.mapper.ExtractQuestionMapper">
 
+    <select id="selectByExtractHubCode" parameterType="Search" resultType="ExtractQuestion">
+        SELECT *
+        FROM extract_question
+        WHERE extract_hub_code = #{extractHubCode}
+        ORDER BY created_at ${sort};
+    </select>
+    
+    
     <insert id="save" parameterType="ExtractQuestion">
         INSERT INTO extract_question (
         exam_org_code,
