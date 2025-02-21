@@ -271,7 +271,9 @@ $(document).on('click', '.extract-submit-btn', function(){
                 if(subjectDetailNm === subjectNm){
                     subjectDetailNm = '공통';
                 }
-
+                if(subjectDetailNm === '선택과목'){
+                    subjectDetailNm = '공통';
+                }
 
                 let ele = '<div th:data-questioncode='+response+' class="side-element">'
                             +'<span style="margin-bottom: 5px;">'+year+'년도 '+month+'월 '+cateNm+'</span>'
