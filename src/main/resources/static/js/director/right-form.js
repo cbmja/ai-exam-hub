@@ -261,8 +261,16 @@ $(document).on('click', '.extract-submit-btn', function(){
         }),
         success: function (response) {
 
-            if(response === 1){
+            if(response > 1){
                 alert('저장');
+
+                let ele = '<div th:data-questioncode='+response+' class="side-element">'
+                            +'<span style="margin-bottom: 5px;">'+year+'년도 '+month+'월 시험명</span>'
+                            +'<span>과목명_서브과목명_시험타입_N번</span>'
+                          +'</div>'
+
+                          $('.my-exam-element').prepend(ele);
+
             }else{
                 alert('서버 에러입니다.');
             }

@@ -207,7 +207,7 @@ public class ExtractController {
 
         int res = extractQuestionService.save(form);
 
-        return res;
+        return form.getExtractQuestionCode();
     }
 
 
