@@ -37,6 +37,14 @@ public class ExtractController {
         return "view/director/drag-example";
     }
 
+    // 내 저장소 목록
+    @GetMapping("/repository")
+    public String MyRepositories(Model model){
+
+        return "view/director/my-repositories";
+    }
+
+
     @GetMapping("/{hubCode}/exam/form")
     public String testing(@PathVariable(name = "hubCode" , required = false) int hubCode,Model model){
 
