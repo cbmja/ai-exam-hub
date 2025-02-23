@@ -11,4 +11,6 @@ public interface ExtractQuestionMapper {
 
     List<ExtractQuestion> selectByExtractHubCode(Search search);
 
+    int CountByExtractHubCode(int hubCode);
+
 }

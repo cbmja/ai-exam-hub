@@ -11,6 +11,12 @@
         ORDER BY created_at ${sort};
     </select>
 
+    <select id="CountByExtractHubCode" parameterType="int" resultType="int">
+        SELECT count(*)
+        FROM extract_question
+        WHERE extract_hub_code = #{hubCode};
+    </select>
+
     <select id="selectByExtractHubCode" parameterType="Search" resultType="ExtractQuestion">
         SELECT
         eq.extract_question_code,

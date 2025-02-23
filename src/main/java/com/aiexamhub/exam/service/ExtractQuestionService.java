@@ -22,6 +22,20 @@ public class ExtractQuestionService {
 
             return res;
         }catch (Exception e){
+            e.printStackTrace();
+            res = -1;
+            return res;
+        }
+    }
+
+    public int CountByExtractHubCode(int hubCode){
+        int res = 0;
+        try{
+            res = sql.selectOne("com.aiexamhub.exam.mapper.ExtractQuestionMapper.CountByExtractHubCode" , hubCode);
+
+            return res;
+        }catch (Exception e){
+            e.printStackTrace();
             res = -1;
             return res;
         }

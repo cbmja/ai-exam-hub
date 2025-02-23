@@ -4,6 +4,7 @@ import com.aiexamhub.exam.dto.ExtractHub;
 import com.aiexamhub.exam.dto.Member;
 import com.aiexamhub.exam.dto.Page;
 import com.aiexamhub.exam.service.ExtractHubService;
+import com.aiexamhub.exam.service.ExtractQuestionService;
 import com.aiexamhub.exam.service.MemberService;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,12 +17,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/ai-exam-hub")
+@RequestMapping("/ai-exam-hub/mypage")
 @RequiredArgsConstructor
 public class MemberController {
 
     private final MemberService memberService;
     private final ExtractHubService extractHubService;
+    private final ExtractQuestionService extractQuestionService;
 
 
     @PostMapping("/login")
@@ -33,7 +35,7 @@ public class MemberController {
         return member.getRes();
     }
 
-    @GetMapping("/mypage")
+    @GetMapping("/repository")
     public String mypage(ServletRequest servletRequest , Model model , @RequestParam(name = "page" ,defaultValue = "0") int page , @RequestParam(name = "search" ,defaultValue = "") String search){
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
@@ -53,7 +55,12 @@ public class MemberController {
 
         List<ExtractHub> list = extractHubService.getRepositories(form);
 
+        for(ExtractHub eh : list){
+            eh.setCount(extractQuestionService.CountByExtractHubCode(eh.getExtractHubCode()));
+        }
+
         model.addAttribute("list" , list);
+        model.addAttribute("page" , form);
         return "/view/mypage/repositories";
     }
 

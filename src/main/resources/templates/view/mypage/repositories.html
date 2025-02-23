@@ -11,7 +11,7 @@
     <div style="height: 30px;"></div>
 
     <div style="width: 70%;" class="r-s-c">
-        <input class="repo-input" placeholder="내 저장소 찾기"/>
+        <input class="repo-input" id="repo-search-input" placeholder="내 저장소 찾기" th:value="${page.search}"/>
         <div style="width: 10px;"></div>
         <div class="repo-search-btn c-c" id="repo-search-btn">찾기</div>
     </div>
@@ -41,7 +41,7 @@
 
             <div class="repo-ele-top r-s-c">
                 <div th:text="${ele.extractHubName}"></div>
-                <div style="margin-left: auto;">[준비중]문제</div>
+                <div style="margin-left: auto;" th:text="${'['+ele.count+']문제'}"></div>
             </div>
 
             <div style="height: 10px;"></div>
@@ -64,10 +64,22 @@
 
     </div>
 
+    <div style="height: 30px;"></div>
 
-
+    <div style="width: 100%; height: 50px;" class="r-c-c">
+        <a class="page-btn c-c"  th:href="@{/ai-exam-hub/mypage/repository(page=${page.startPage}, search=${page.search})}"> << </a>
+        <div style="width: 4px;"></div>
+        <a class="page-btn c-c"  th:href="@{/ai-exam-hub/mypage/repository(page=${page.page -1}, search=${page.search})}"> < </a>
+        <div style="width: 2px;"></div>
+        <a th:each="num : ${page.pages}" style="margin-left: 2px; margin-right: 2px;" th:class="${num == page.page} ? 'page-btn checked c-c':'page-btn c-c'" th:text="${num}" th:href="@{/ai-exam-hub/mypage/repository(page=${num}, search=${page.search})}">
+        </a>
+        <div style="width: 2px;"></div>
+        <a class="page-btn c-c"  th:href="@{/ai-exam-hub/mypage/repository(page=${page.page +1}, search=${page.search})}"> > </a>
+        <div style="width: 4px;"></div>
+        <a class="page-btn c-c"  th:href="@{/ai-exam-hub/mypage/repository(page=${page.endPage}, search=${page.search})}"> >> </a>
+    </div>
 
 </div>
-    <!--<script th:src="@{/js/login/login.js}"></script>-->
+    <script th:src="@{/js/mypage/repositories.js}"></script>
 </div>
 </html>

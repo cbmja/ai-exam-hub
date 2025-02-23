@@ -14,6 +14,7 @@ public class ExtractHub {
     private String memberCode;
     private String comment;
 
+    private int count;
     private String search = "";
     private String err = "";
     private String sort = "DESC";
