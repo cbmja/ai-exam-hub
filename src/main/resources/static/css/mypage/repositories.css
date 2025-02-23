@@ -117,24 +117,35 @@
 
 .create-repo-btn{
     /* 크기 */
-    width: 100px;
-    height: 40px;
+    /*width: 100px;*/
+    height: 30px;
 
-    border-radius: 8px;
+    /*border-radius: 8px;*/
 
-    background-color: #00C471;
+    /*background-color: #00C471;*/
+
+    border-bottom: 1px solid #141517;
 
     /* 텍스트 */
-    font-size: 17px;
-    color: #FFFFFF;
+    font-size: 15px;
+    color: #141517;
     font-family: "Noto Sans KR", serif;
     font-optical-sizing: auto;
-    font-weight: 400;
+    font-weight: 500;
     font-style: normal;
 
 }
 
 .create-repo-btn:hover{
-    background-color:#02ad65;
-    cursor: pointer;
+    border-bottom: 2px solid #02ad65;
+}
+
+.sort-btn{
+    /* 텍스트 */
+    font-size: 13px;
+    color: #868E96;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
