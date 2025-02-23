@@ -179,7 +179,7 @@ $(document).on("mouseup", function () {
         // newWindow.document.write('<img src="' + imageData + '" />');
 
         $.ajax({ // 서드파티로 전송 후 값 가져옴 --- --- --- --- --- --- --- --- 서버로 보내지 말고 바로 naver로 쏴도 될듯 --- --- --- --- --- --- --- --- --- --- --- ---
-            url: "/ai/extract/naver-ocr",
+            url: "/ai-exam-hub/naver-ocr",
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify({ image : imageData , answerNo : 0}),
@@ -232,7 +232,7 @@ $(document).on('click', '.extract-submit-btn', function(){
     }
 
     $.ajax({
-        url: "/ai/extract/data",
+        url: "/ai-exam-hub/data",
         method: "POST",
         contentType: "application/json",
         data: JSON.stringify({

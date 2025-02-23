@@ -60,7 +60,7 @@ $(document).on('change', '.extract-select', function(){
 $(document).on('change', '#exam-cate-form', function(){
 
     $.ajax({
-        url: '/ai/extract/examInfo',
+        url: '/ai-exam-hub/examInfo',
         method: 'GET',
         data: { examCateCode: examCateCode },
         success: function(res) {
@@ -163,7 +163,7 @@ $(document).on('click', '#submit-pdf', function(){
 
 
     $.ajax({
-        url: '/ai/extract/subjectDetail',
+        url: '/ai-exam-hub/subjectDetail',
         method: 'GET',
         data: { subjectCode: examSubject },
         success: function(res) {

@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Controller
-@RequestMapping("/ai/extract")
+@RequestMapping("/ai-exam-hub")
 @RequiredArgsConstructor
 public class ExtractController {
 
@@ -37,12 +37,12 @@ public class ExtractController {
         return "view/director/drag-example";
     }
 
-    @GetMapping("/form")
-    public String testing(Model model){
+    @GetMapping("/{hubCode}/exam/form")
+    public String testing(@PathVariable(name = "hubCode" , required = false) int hubCode,Model model){
 
         // ------------------------------------------------- 하드코딩 ------------------------------------------------- //
         String userId = "tester";
-        int hubCode = 1;
+        hubCode = 1;
 
         ExtractHub myHub = extractHubService.selectByExtractHubCode(hubCode);
 
