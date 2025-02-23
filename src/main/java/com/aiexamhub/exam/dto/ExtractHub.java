@@ -11,8 +11,12 @@ public class ExtractHub {
     private String extractHubName;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private String userId;
+    private String memberCode;
+    private String comment;
 
+    private String search = "";
     private String err = "";
+    private String sort = "DESC";
+    private int page = 1;
 
 }

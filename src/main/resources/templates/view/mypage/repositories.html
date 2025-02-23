@@ -19,29 +19,27 @@
 
     </div>
 
-    <div class="repo-element c-s-c">
+    <div class="repo-element c-s-c" th:each="ele : ${list}">
 
         <div style="height: 10px;"></div>
 
         <div class="repo-ele-top r-s-c">
-            <div>국어 상급 문제 모음</div>
-            <div style="margin-left: auto;">[21]문제</div>
+            <div th:text="${ele.extractHubName}"></div>
+            <div style="margin-left: auto;">[준비중]문제</div>
         </div>
 
         <div style="height: 10px;"></div>
 
         <div class="repo-comment-ar r-s-c">
-            <div>국어 오답률 60% 이상 문제 모음</div>
+            <div th:text="${ele.comment}"></div>
         </div>
 
         <div style="height: 10px;"></div>
 
         <div class="repo-bottom r-e-c">
-            <div>
-                생성일 : 2025-01-04 / 17:35
+            <div th:text="${'생성일 : ' + ele.createdAt}">
             </div>
-            <div style="margin-left: auto;">
-                마지막 업데이트 : 2025-02-21 / 19:23
+            <div style="margin-left: auto;" th:text="${'마지막 업데이트 : ' + ele.updatedAt}">
             </div>
         </div>
         <div style="height: 10px;"></div>

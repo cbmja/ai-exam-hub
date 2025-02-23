@@ -10,4 +10,20 @@
         WHERE extract_hub_code = #{extractHubCode};
     </select>
 
+    <select id="getRepositories" parameterType="Page" resultType="ExtractHub">
+        SELECT *
+        FROM extract_hub
+        WHERE member_code = #{memberCode}
+        AND extract_hub_name LIKE CONCAT('%', #{search}, '%')
+        order by created_at ${sort}
+        LIMIT #{startNum}, #{pageElement};
+    </select>
+
+    <select id="getTotal" parameterType="Page" resultType="int">
+        SELECT count(*)
+        FROM extract_hub
+        WHERE member_code = #{memberCode}
+        AND extract_hub_name LIKE CONCAT('%', #{search}, '%');
+    </select>
+
 </mapper>
