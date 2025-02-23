@@ -35,7 +35,14 @@ $(document).on('click', '#login-submit', function(){
                 console.log(response);
                 switch (response){
 
-                    case 'success': alert('로그인 성공'); break;
+                    case 'success': alert('로그인 성공');
+
+                    $('#login-btn').css('display' , 'none');
+                    $('#mypage-btn').css('display' , 'flex');
+                    $('.login-form-ar').css('display' , 'none');
+
+
+                    break;
                     case 'wrongId': alert('존재하지 않는 아이디입니다.'); break;
                     case 'wrongPw': alert('비밀번호가 틀렸습니다.'); break;
                     case 'err': alert('서버 에러입니다.'); break;
