@@ -5,6 +5,7 @@ import com.aiexamhub.exam.service.MemberService;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,9 +21,9 @@ public class LoginController {
 
     @PostMapping("/login")
     @ResponseBody
-    public String loginProc(@RequestBody Member form , HttpServletResponse response){
+    public String loginProc(@RequestBody Member form , HttpServletResponse response , Model model){
 
-        Member member = memberService.EmailLogin(form , response);
+        Member member = memberService.EmailLogin(form , response , model);
 
         return member.getRes();
     }

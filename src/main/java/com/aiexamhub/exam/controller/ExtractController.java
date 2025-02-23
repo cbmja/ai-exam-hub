@@ -3,6 +3,8 @@ package com.aiexamhub.exam.controller;
 import com.aiexamhub.exam.dto.*;
 import com.aiexamhub.exam.service.*;
 import com.aiexamhub.exam.util.OcrUtil;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -33,27 +35,31 @@ public class ExtractController {
     private final OcrUtil ocrUtil;
 
     @GetMapping("/example")
-    public String example(){
+    public String example(ServletRequest servletRequest){
         return "view/director/drag-example";
     }
 
     // 내 저장소 목록
     @GetMapping("/repository")
-    public String MyRepositories(Model model){
+    public String MyRepositories(ServletRequest servletRequest , Model model){
+        HttpServletRequest req = (HttpServletRequest) servletRequest;
+        model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
 
         return "view/repository/repositories";
     }
 
     @GetMapping("/index")
-    public String index(Model model){
-
+    public String index(ServletRequest servletRequest , Model model){
+        HttpServletRequest req = (HttpServletRequest) servletRequest;
+        model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
         return "view/layout/index";
     }
 
 
     @GetMapping("/{hubCode}/exam/form")
-    public String testing(@PathVariable(name = "hubCode" , required = false) int hubCode,Model model){
-
+    public String testing(ServletRequest servletRequest , @PathVariable(name = "hubCode" , required = false) int hubCode,Model model){
+        HttpServletRequest req = (HttpServletRequest) servletRequest;
+        model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
         // ------------------------------------------------- 하드코딩 ------------------------------------------------- //
         String userId = "tester";
         hubCode = 1;
@@ -119,8 +125,9 @@ public class ExtractController {
 
     @GetMapping("/examInfo")
     @ResponseBody
-    public Map<String , Object> getExamOrg(@RequestParam(name="examCateCode", defaultValue = "") String examCateCode){
-
+    public Map<String , Object> getExamOrg(ServletRequest servletRequest , @RequestParam(name="examCateCode", defaultValue = "") String examCateCode,Model model){
+        HttpServletRequest req = (HttpServletRequest) servletRequest;
+        model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
         Map<String , Object> res = new HashMap<>();
 
         if(examCateCode.isBlank()){
@@ -149,9 +156,12 @@ public class ExtractController {
 
     @PostMapping("/naver-ocr")
     @ResponseBody
-    public String img(@RequestBody Map<String , Object> form){
+    public String img(ServletRequest servletRequest , @RequestBody Map<String , Object> form , Model model){
 
         try{
+            HttpServletRequest req = (HttpServletRequest) servletRequest;
+            model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
+
             String base64Image = (String)form.get("image");
             int answerNo = (Integer)form.get("answerNo");
 
@@ -217,8 +227,9 @@ public class ExtractController {
 
     @PostMapping("/data")
     @ResponseBody
-    public int saveQuestion(@RequestBody ExtractQuestion form){
-
+    public int saveQuestion(ServletRequest servletRequest , @RequestBody ExtractQuestion form , Model model){
+        HttpServletRequest req = (HttpServletRequest) servletRequest;
+        model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
         int res = extractQuestionService.save(form);
 
         return form.getExtractQuestionCode();
@@ -228,8 +239,9 @@ public class ExtractController {
 
     @GetMapping("/subjectDetail")
     @ResponseBody
-    public List<SubjectDetail> getSubjectDetails(@RequestParam(name="subjectCode", defaultValue = "") String subjectCode){
-
+    public List<SubjectDetail> getSubjectDetails(ServletRequest servletRequest , @RequestParam(name="subjectCode", defaultValue = "") String subjectCode , Model model){
+        HttpServletRequest req = (HttpServletRequest) servletRequest;
+        model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
         List<SubjectDetail> subjectDetailList = subjectDetailService.selectBySubjectCode(subjectCode);
 
         return subjectDetailList;

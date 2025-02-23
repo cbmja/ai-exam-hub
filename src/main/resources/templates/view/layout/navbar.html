@@ -8,8 +8,8 @@
     </div>
 
     <div class="navbar-right" style="margin-left: auto;">
-        <span class="navbar-text r-e-c hover-pointer-green" id="login-btn" style="font-size: 15px;">로그인 / 회원가입</span>
-        <span class="navbar-text r-e-c hover-pointer-green" id="mypage-btn" style="display: none;">마이페이지</span>
+        <span th:if="${!isLogin}" class="navbar-text r-e-c hover-pointer-green" id="login-btn" style="font-size: 15px;">로그인 / 회원가입</span>
+        <span th:if="${isLogin}" class="navbar-text r-e-c hover-pointer-green" id="mypage-btn">마이페이지</span>
     </div>
     <script th:src="@{/js/layout/navbar.js}"></script>
 </nav>

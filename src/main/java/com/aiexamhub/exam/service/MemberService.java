@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 @Service
 @RequiredArgsConstructor
@@ -15,8 +16,9 @@ public class MemberService {
     private final SqlSessionTemplate sql;
     private final LoginUtil loginUtil;
 
-    public Member EmailLogin(Member form , HttpServletResponse response){
+    public Member EmailLogin(Member form , HttpServletResponse response , Model model){
         Member member;
+        boolean isLogin = false;
         try{
             member = sql.selectOne("com.aiexamhub.exam.mapper.MemberMapper.findById" , form.getMemberId());
 
@@ -37,6 +39,9 @@ public class MemberService {
                     response.addCookie(idCookie);
 
                     member.setRes("success");
+
+                    model.addAttribute("isLogin" , true);
+
                 }else{ // id 있음 , pw 틀림
                     member.setRes("wrongPw");
                 }
