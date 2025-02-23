@@ -105,6 +105,13 @@
     border: 1px solid #00C471;
 }
 
+
+.login-btn:hover{
+    background-color:#02ad65;
+    cursor: pointer;
+}
+
+
 .login-form-bottom{
     /* 크기 */
     width: 100%;
