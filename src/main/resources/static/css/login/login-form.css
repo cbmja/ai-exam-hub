@@ -1,0 +1,155 @@
+.login-form-ar{
+    /* 크기 */
+    width: 100vw;
+    height: 100vh;
+
+    /* 위치 */
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+
+    /*display: none;*/
+
+    /* 배경 */
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.login-form{
+    /* 크기 */
+    width: 360px;
+    height: 430px;
+
+    /* 테두리 */
+    border-radius: 8px;
+    border: 1px solid #00C471;
+
+    /* 배경 */
+    background-color: #FFFFFF;
+
+    /* 여백 */
+    padding: 20px;
+}
+
+.login-form-top{
+    /* 크기 */
+    height: 50px;
+    width: 100%;
+
+    /* 텍스트 */
+    font-size: 20px;
+    color: #868E96;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.login-form-logo{
+    /* 크기 */
+    width: 100%;
+    height: 50px;
+
+    /* 텍스트 */
+    font-size: 23px;
+    color: #00C471;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.login-input{
+
+    all: unset;
+
+    /* 크기 */
+    width: calc(100% - 10px);
+    height: 42px;
+
+    /* 테두리 */
+    border: 1px solid #DEE2E6;
+    border-radius: 8px;
+
+    /* 여백 */
+    padding-left: 5px;
+    padding-right: 5px;
+
+    /* 텍스트 */
+    font-size: 17px;
+    color: #141517;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.login-btn{
+    /* 크기 */
+    width: 100%;
+    height: 42px;
+
+    background-color: #00C471;
+
+    border-radius: 8px;
+
+    /* 텍스트 */
+    font-size: 17px;
+    color: #FFFFFF;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    /* 테두리 */
+    border: 1px solid #00C471;
+}
+
+.login-form-bottom{
+    /* 크기 */
+    width: 100%;
+    height: 42px;
+
+    /* 텍스트 */
+    font-size: 14px;
+    color: #5e636b;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+.social-login-ar{
+    /* 크기 */
+    width: 100%;
+
+    border-top: 1px solid #DEE2E6;
+
+    /* 텍스트 */
+    font-size: 14px;
+    color: #DEE2E6;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.login-logo-ar{
+    /* 크기 */
+    width: 100%;
+    height: 50px;
+}
+
+.login-logo{
+    /* 크기 */
+    width: 70px;
+    height: 49px;
+
+    border-radius: 8px;
+
+    /* 텍스트 */
+    font-size: 16px !important;
+    color: #FFFFFF !important;
+    font-weight: 400 !important;
+}

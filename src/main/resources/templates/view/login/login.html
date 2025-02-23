@@ -1,0 +1,55 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="login-form">
+    <!-- css -->
+    <link rel="stylesheet" th:href="@{/css/login/login-form.css}">
+
+    <div class="login-form-ar c-c-c">
+
+        <div class="login-form c-c-c">
+
+            <div class="login-form-top r-e-c">
+                <span id="login-close-btn">x</span>
+            </div>
+
+            <div class="login-form-logo c-c">
+                <span>AI-exam-hub</span>
+            </div>
+
+            <input class="login-input" placeholder="이메일"/>
+            <div style="height: 13px;"></div>
+            <input type="password" class="login-input" placeholder="비밀번호"/>
+            <div style="height: 13px;"></div>
+            <div class="c-c login-btn" id="login-btn">로그인</div>
+
+            <div class="login-form-bottom c-c">
+
+                <span class="login-util-btn hover-pointer-green" data-type="email">아이디(이메일) 찾기</span>
+                    <span style="color: #DEE2E6;">&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+                <span class="login-util-btn hover-pointer-green" data-type="password">비밀번호 찾기</span>
+                    <span style="color: #DEE2E6;">&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+                <span class="login-util-btn hover-pointer-green" data-type="join">회원가입</span>
+
+            </div>
+
+            <div class="social-login-ar c-c-c">
+                <div style="height: 15px;"></div>
+                <span>간편 로그인</span>
+                <div style="height: 15px;"></div>
+                <div class="login-logo-ar r-c-c">
+                    <div class="c-c login-logo" style="background-color: #FEE500;">kakao</div>
+                        <div style="width: 20px;"></div>
+                    <div class="c-c login-logo" style="background-color: #03C75A;">naver</div>
+                        <div style="width: 20px;"></div>
+                    <div class="c-c login-logo" style="background-color: #5e636b;">google</div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+    <script th:src="@{/js/login/login.js}"></script>
+</div>
