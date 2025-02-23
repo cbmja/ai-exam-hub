@@ -41,10 +41,45 @@ body{
 .content-ar{
 
     /* 크기 */
-    width: calc(100% - 615px);/* 전체 - 사이드바 넓이 - 우측 폼 넓이 */
-    min-height: calc(100% - 65px);/* 전체 - 네비바 높이 */
+    width: 80%;/* 전체 - 사이드바 넓이 - 우측 폼 넓이 */
+    min-height: 610px;
 
     /* 여백 */
-    padding-left: 300px;/* 사이드바 넓이 */
-    padding-top: 65px;/* 네비바 높이 */
+    padding-left: 10%;
+    padding-right: 10%;
+
 }
+
+/* 정렬 공통 */
+
+/* row - start - center */
+.r-s-c{
+    /* 정렬 */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+/* row - end - center */
+.r-e-c{
+    /* 정렬 */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+/* column - start - center */
+.c-s-c{
+    /* 정렬 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+
+
+
+
+

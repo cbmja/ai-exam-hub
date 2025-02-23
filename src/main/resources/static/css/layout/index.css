@@ -1,0 +1,22 @@
+.index-ar{
+    /* 크기 */
+    width: 100%;
+}
+
+.index-video-ar{
+    /* 크기 */
+    width: 80%;
+    height: 300px;
+
+    /* 테두리 */
+    border: 1px solid #000000;
+}
+
+.index-text-ar{
+    /* 크기 */
+    width: 80%;
+    height: 300px;
+
+    /* 테두리 */
+    border: 1px solid #000000;
+}

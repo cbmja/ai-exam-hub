@@ -41,7 +41,13 @@ public class ExtractController {
     @GetMapping("/repository")
     public String MyRepositories(Model model){
 
-        return "view/director/my-repositories";
+        return "view/repository/repositories";
+    }
+
+    @GetMapping("/index")
+    public String index(Model model){
+
+        return "view/layout/index";
     }
 
 
