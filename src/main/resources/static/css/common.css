@@ -51,6 +51,10 @@ body{
 
 }
 
+.hover-pointer:hover{
+    cursor: pointer;
+}
+
 .hover-pointer-green:hover{
     cursor: pointer;
     color: #00C471;
