@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/ai-exam-hub/mypage")
+@RequestMapping("/ai-exam-hub")
 @RequiredArgsConstructor
 public class MemberController {
 
@@ -35,7 +35,7 @@ public class MemberController {
         return member.getRes();
     }
 
-    @GetMapping("/repository")
+    @GetMapping("/mypage/repository")
     public String mypage(ServletRequest servletRequest , Model model , @RequestParam(name = "page" ,defaultValue = "0") int page , @RequestParam(name = "search" ,defaultValue = "") String search){
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
