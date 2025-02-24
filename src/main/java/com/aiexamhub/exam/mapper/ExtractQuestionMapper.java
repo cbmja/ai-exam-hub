@@ -15,4 +15,6 @@ public interface ExtractQuestionMapper {
 
     ExtractQuestion selectByExtractQuestionCode(int extractQuestionCode);
 
+    int updateQuestion(ExtractQuestion form);
+
 }

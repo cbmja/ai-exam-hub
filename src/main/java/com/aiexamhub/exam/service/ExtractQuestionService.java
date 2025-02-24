@@ -79,4 +79,18 @@ public class ExtractQuestionService {
 
     }
 
+    public int updateQuestion(ExtractQuestion form){
+
+        int res = -1;
+        try {
+            res = sql.update("com.aiexamhub.exam.mapper.ExtractQuestionMapper.updateQuestion",form);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return res;
+
+    }
+
+
+
 }

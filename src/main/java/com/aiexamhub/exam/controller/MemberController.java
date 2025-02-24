@@ -112,4 +112,13 @@ public class MemberController {
         return extractQuestion;
     }
 
+
+    @PostMapping("/question/edit")
+    @ResponseBody
+    public int editQuestion(@RequestBody ExtractQuestion form){
+
+
+        return extractQuestionService.updateQuestion(form);
+    }
+
 }

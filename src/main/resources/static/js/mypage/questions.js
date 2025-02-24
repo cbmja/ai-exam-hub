@@ -15,6 +15,8 @@ $(document).on('click', '.question-ele', function(){
 
             console.log(response);
 
+            $('#question-code').empty().val(questionCode);
+            $('#question-detail-title').empty().append(questiontitle);
 
 
             $('#q-detail-question').empty().val(response.question);
@@ -24,7 +26,7 @@ $(document).on('click', '.question-ele', function(){
             $('#q-detail-option3').empty().val(response.option3);
             $('#q-detail-option4').empty().val(response.option4);
             $('#q-detail-option5').empty().val(response.option5);
-
+            $('#q-detail-comment').empty().val(response.comment);
             $('#question-detail-modal').css('display' , 'flex');
 
 

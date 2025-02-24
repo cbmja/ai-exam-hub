@@ -109,6 +109,19 @@
         )
     </insert>
 
-
+    <update id="updateQuestion" parameterType="ExtractQuestion">
+        UPDATE extract_question
+        SET
+        option1 = #{option1},
+        option2 = #{option2},
+        option3 = #{option3},
+        option4 = #{option4},
+        option5 = #{option5},
+        comment = #{comment},
+        question = #{question},
+        question_sub = #{questionSub},
+        updated_at = NOW()
+        WHERE extract_question_code = #{extractQuestionCode}
+    </update>
 
 </mapper>
