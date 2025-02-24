@@ -11,7 +11,7 @@
     background-color: #FFFFFF;
 
     /* 정렬 */
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
@@ -31,9 +31,7 @@
     height: 65px;/* 전체 - 네비 바 높이 */
 
     /* 테두리 */
-    border-top: 1px solid #0969DA;
-    border-bottom: 1px solid #0969DA;
-    border-right: 1px solid #0969DA;
+    border: 2px solid #0969DA;
 
     /* 배경 */
     background-color: #F6F8FA;
@@ -53,7 +51,7 @@
 
     /*위치*/
     position: fixed;
-    left: 300px;
+    left: 0;
     top: 50vh;
     z-index: 1000;
 }

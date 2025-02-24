@@ -122,3 +122,17 @@
     font-weight: 400;
     font-style: normal;
 }
+
+.hub-title-ar{
+
+    width: 70%;
+
+    /* 텍스트 */
+    font-size: 25px;
+    color: #141517;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+}

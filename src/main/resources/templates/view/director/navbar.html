@@ -8,6 +8,8 @@
     </div>
 
     <div class="nav-right">
-        <h3>마이페이지</h3>
+        <h3  class="hover-pointer-green" th:data-hubcode="${myHub.extractHubCode}" id="move-my-hub">저장소로 이동</h3 >
     </div>
+
+    <script th:src="@{/js/director/navbar.js}"></script>
 </nav>
