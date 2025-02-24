@@ -15,18 +15,18 @@ $(document).on('click', '.question-ele', function(){
 
             console.log(response);
 
-            $('#question-code').empty().val(questionCode);
+            $('#question-code').val(questionCode);
             $('#question-detail-title').empty().append(questiontitle);
 
 
-            $('#q-detail-question').empty().val(response.question);
-            $('#q-detail-question-sub').empty().val(response.questionSub);
-            $('#q-detail-option1').empty().val(response.option1);
-            $('#q-detail-option2').empty().val(response.option2);
-            $('#q-detail-option3').empty().val(response.option3);
-            $('#q-detail-option4').empty().val(response.option4);
-            $('#q-detail-option5').empty().val(response.option5);
-            $('#q-detail-comment').empty().val(response.comment);
+            $('#q-detail-question').val(response.question);
+            $('#q-detail-question-sub').val(response.questionSub);
+            $('#q-detail-option1').val(response.option1);
+            $('#q-detail-option2').val(response.option2);
+            $('#q-detail-option3').val(response.option3);
+            $('#q-detail-option4').val(response.option4);
+            $('#q-detail-option5').val(response.option5);
+            $('#q-detail-comment').val(response.comment);
             $('#question-detail-modal').css('display' , 'flex');
 
 

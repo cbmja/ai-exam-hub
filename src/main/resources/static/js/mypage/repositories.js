@@ -20,8 +20,20 @@ $(document).on('click', '.repo-element', function(){
 
 $(document).on('click', '#create-repository', function(){
 
+    $('.create-repository-modal-ar').css('display' , 'flex');
 
+    $('#create-repo-name').val("");
+    $('#create-repo-comment').val("");
 
 });
+
+$(document).on('click', '#create-repo-quit', function(){
+
+    $('.create-repository-modal-ar').css('display' , 'none');
+
+});
+
+
+
 //EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 });

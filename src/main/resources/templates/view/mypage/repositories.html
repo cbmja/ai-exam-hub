@@ -6,6 +6,29 @@
 
 <div layout:fragment="content">
     <link rel="stylesheet" th:href="@{/css/mypage/repositories.css}">
+
+    <div class="create-repository-modal-ar c-c">
+
+        <div class="create-repository-form c-s-c">
+            <div style="height: 10px;"></div>
+            <div class="repo-title">저장소명</div>
+            <div style="height: 5px;"></div>
+            <input class="c-r-repo-name" id="create-repo-name"/>
+            <div style="height: 10px;"></div>
+            <div class="repo-title">설명</div>
+            <div style="height: 5px;"></div>
+            <textarea class="c-r-repo-name" style="height: 200px;" id="create-repo-comment"></textarea>
+            <div style="height: 10px;"></div>
+            <div class="r-e-c" style="width: 100%;">
+                <div class="quit-btn c-c" id="create-repo-quit">취소</div>
+                <div style="width: 10px;"></div>
+                <div class="question-create-btn c-c" id="create-repo-submit">생성</div>
+            </div>
+
+        </div>
+
+    </div>
+
 <div class="mypage-repo-ar c-c-c">
 
     <div style="height: 30px;"></div>
