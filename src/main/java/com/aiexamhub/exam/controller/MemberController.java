@@ -101,4 +101,15 @@ public class MemberController {
         return "/view/mypage/questions";
     }
 
+
+    @GetMapping("/question/{questionCode}")
+    @ResponseBody
+    public ExtractQuestion getQuestion(@PathVariable(name = "questionCode")int questionCode){
+
+
+        ExtractQuestion extractQuestion = extractQuestionService.selectByExtractQuestionCode(questionCode);
+
+        return extractQuestion;
+    }
+
 }
