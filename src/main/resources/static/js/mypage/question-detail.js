@@ -7,6 +7,41 @@ $(document).on('click', '#q-d-close-btn', function(){
 
 });
 
+$(document).on('click', '#question-delete-btn', function(){
+
+    let questionCode = $('#question-code').val();
+
+    if(!confirm("정말 삭제 하시겠습니까?")){
+        return;
+    }
+
+
+    $.ajax({
+        url: '/ai-exam-hub/question/delete', // 서버 URL
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            extractQuestionCode : questionCode
+        }),
+        success: function(response) {
+
+            if(response < 0){
+                alert('서버 에러입니다. 잠시 후 다시 시도해주세요.');
+            }else{
+                alert('삭제 완료');
+                location.reload();
+            }
+
+        },
+        error: function(xhr, status, error) {
+            console.error('Error:', error);
+            alert('서버 에러입니다. 잠시 후 다시 시도해주세요.');
+        }
+    });
+
+
+});
+
 
 $(document).on('click', '#question-edit-btn', function(){
 

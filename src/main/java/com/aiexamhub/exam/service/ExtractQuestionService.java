@@ -91,6 +91,16 @@ public class ExtractQuestionService {
 
     }
 
+    public int delete(int extractQuestionCode){
 
+        int res = -1;
+        try {
+            res = sql.delete("com.aiexamhub.exam.mapper.ExtractQuestionMapper.delete",extractQuestionCode);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return res;
+
+    }
 
 }

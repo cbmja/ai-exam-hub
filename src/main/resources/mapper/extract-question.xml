@@ -124,4 +124,11 @@
         WHERE extract_question_code = #{extractQuestionCode}
     </update>
 
+
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM extract_question
+        WHERE extract_question_code = #{extractQuestionCode}
+    </delete>
+
 </mapper>

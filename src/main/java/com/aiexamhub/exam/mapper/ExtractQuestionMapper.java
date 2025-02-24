@@ -17,4 +17,6 @@ public interface ExtractQuestionMapper {
 
     int updateQuestion(ExtractQuestion form);
 
+    int delete(int extractQuestionCode);
+
 }

@@ -121,4 +121,13 @@ public class MemberController {
         return extractQuestionService.updateQuestion(form);
     }
 
+
+    @PostMapping("/question/delete")
+    @ResponseBody
+    public int deleteQuestion(@RequestBody ExtractQuestion form){
+
+
+        return extractQuestionService.delete(form.getExtractQuestionCode());
+    }
+
 }
