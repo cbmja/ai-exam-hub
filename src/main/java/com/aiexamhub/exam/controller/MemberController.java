@@ -133,4 +133,15 @@ public class MemberController {
         return extractQuestionService.delete(form.getExtractQuestionCode());
     }
 
+    @PostMapping("/repository/add")
+    @ResponseBody
+    public int createRepository(ServletRequest servletRequest,@RequestBody ExtractHub form){
+        HttpServletRequest req = (HttpServletRequest) servletRequest;
+        String memberCode = (String)req.getAttribute("memberCode");
+
+        form.setMemberCode(memberCode);
+
+        return extractHubService.save(form);
+    }
+
 }

@@ -13,4 +13,6 @@ public interface ExtractHubMapper {
 
     List<ExtractHub> getRepositories(Page form);
 
+    int save(ExtractHub form);
+
 }

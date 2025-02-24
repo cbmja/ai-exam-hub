@@ -32,6 +32,17 @@ public class ExtractHubService {
         }
     }
 
+    public int save(ExtractHub form){
+        int res = -1;
+        try {
+            res = sql.insert("com.aiexamhub.exam.mapper.ExtractHubMapper.save" , form);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return res;
+
+    }
+
 
     public int getTotal(Page form){
 
@@ -42,5 +53,7 @@ public class ExtractHubService {
     public List<ExtractHub> getRepositories(Page form){
         return sql.selectList("com.aiexamhub.exam.mapper.ExtractHubMapper.getRepositories" , form);
     }
+
+
 
 }

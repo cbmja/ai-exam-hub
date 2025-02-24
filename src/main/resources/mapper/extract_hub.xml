@@ -26,4 +26,20 @@
         AND extract_hub_name LIKE CONCAT('%', #{search}, '%');
     </select>
 
+
+    <insert id="save" parameterType="ExtractHub" useGeneratedKeys="true" keyProperty="extractHubCode">
+        INSERT INTO extract_hub (
+        extract_hub_name,
+        comment,
+        created_at,
+        member_code
+        )
+        VALUES (
+        #{extractHubName},
+        #{comment},
+        NOW(),
+        #{memberCode}
+        )
+    </insert>
+
 </mapper>
