@@ -100,6 +100,14 @@ body{
     justify-content: flex-start;
     align-items: center;
 }
+/* column - start - start */
+.c-s-s{
+    /* 정렬 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
 /* column - center - center */
 .c-c-c{
     /* 정렬 */

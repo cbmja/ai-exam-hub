@@ -34,6 +34,40 @@
 
         </div>
 
+        <div class="question-ele c-s-s" th:each="ele : ${list}" th:data-questioncode="${ele.extractQuestionCode}">
+            <div style="height: 5px;"></div>
+
+            <div class="question-title" th:text="${ele.examYear +'_'+ ele.examCateName +'_'+ ele.subjectName +'_'+ ele.subjectDetailName +'_'+ ele.examTypeName +'_'+ele.questionNo+'번'}">
+
+            </div>
+
+            <div style="height: 5px;"></div>
+
+            <div class="question-comment" th:text="${ele.comment}">
+
+            </div>
+
+            <div style="height: 5px;"></div>
+
+            <div class="r-s-c" style="width: 100%;">
+                <div class="question-comment" th:text="${'생성일 : ' + ele.createdAt}">
+
+                </div>
+                <div class="question-comment" style="margin-left: auto;" th:text="${'마지막 업데이트 : ' + ele.updatedAt}">
+
+                </div>
+            </div>
+
+            <div style="height: 5px;"></div>
+        </div>
+
+
+
+
+
+
+
+
     </div>
 
 

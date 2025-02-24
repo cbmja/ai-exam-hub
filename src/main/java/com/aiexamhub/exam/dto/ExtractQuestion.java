@@ -25,6 +25,7 @@ public class ExtractQuestion {
     private String option5 = "";            // 선택지5
     private LocalDateTime createdAt;            // 생성일
     private LocalDateTime updatedAt;            // 수정일
+    private String comment;
 
     private String subjectDetailCode;
 

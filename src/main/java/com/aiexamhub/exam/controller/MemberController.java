@@ -74,22 +74,26 @@ public class MemberController {
 
         List<ExtractQuestion> list = extractQuestionService.selectByExtractHubCode(hubCode , "ASC");
 
-/*
-        for(ExtractQuestion eq : list){
 
-            eq.setExamOrgName(examOrgService.selectByExamOrgCode(eq.getExamOrgCode()).getExamOrgName());
-            eq.setExamCateName(examCateService.selectByExamCateCode(eq.getExamCateCode()).getExamCateName());
+        for(ExtractQuestion eq : list){
 
             if(eq.getExamType().equals("even")){
                 eq.setExamTypeName("짝수형");
             }else if(eq.getExamType().equals("odd")){
                 eq.setExamTypeName("홀수형");
+            }else if(eq.getExamType().equals("1")){
+                eq.setExamTypeName("1형");
+            }else if(eq.getExamType().equals("2")){
+                eq.setExamTypeName("2형");
+            }else if(eq.getExamType().equals("x")){
+                eq.setExamTypeName("X");
             }
-            eq.setSubjectName(subjectService.selectBySubjectCode(eq.getSubjectCode()).getSubjectName());
-            eq.setSubjectDetailName(subjectDetailService.selectBySubjectDetailCode(eq.getSubjectDetailCode()).getSubjectDetailName());
 
+            if(eq.getSubjectDetailName().isEmpty()){
+                eq.setSubjectDetailName("공통");
+            }
         }
-*/
+
 
         ExtractHub extractHub = extractHubService.selectByExtractHubCode(hubCode);
         model.addAttribute("extractHub" , extractHub);

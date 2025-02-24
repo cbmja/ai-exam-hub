@@ -85,3 +85,40 @@
     font-style: normal;
 }
 
+
+.question-ele{
+    /* 크기 */
+    width: calc(70% - 10px);
+
+    /* 여백 */
+    padding-left: 5px;
+    padding-right: 5px;
+
+    border-bottom: 1px solid #000000;
+}
+
+.question-ele:hover{
+    cursor: pointer;
+    background-color: #fcfffe;
+}
+
+.question-title{
+    /* 텍스트 */
+    font-size: 17px;
+    color: #141517;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+}
+
+.question-comment{
+    /* 텍스트 */
+    font-size: 12px;
+    color: #868E96;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
