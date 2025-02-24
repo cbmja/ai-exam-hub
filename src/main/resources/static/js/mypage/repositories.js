@@ -10,5 +10,15 @@ $(document).on('click', '#repo-search-btn', function(){
 });
 
 
+$(document).on('click', '.repo-element', function(){
+
+    let hubCode = $(this).data('hubcode');
+
+    window.location.href='/ai-exam-hub/mypage/repository/'+hubCode;
+
+
+
+});
+
 //EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 });

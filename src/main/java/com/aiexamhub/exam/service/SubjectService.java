@@ -46,4 +46,22 @@ public class SubjectService {
         }
     }
 
+    public Subject selectBySubjectCode(String subjectCode){
+        Subject subject;
+        try{
+            subject = sql.selectOne("com.aiexamhub.exam.mapper.SubjectMapper.selectBySubjectCode" , subjectCode);
+            if(subject == null){
+                subject = new Subject();
+                subject.setErr("err");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            subject = new Subject();
+            subject.setErr("err");
+        }
+        return subject;
+
+
+    }
+
 }

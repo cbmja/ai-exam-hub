@@ -14,4 +14,10 @@
         WHERE exam_cate_code LIKE CONCAT('%', #{examCateCode}, '%');
     </select>
 
+    <select id="selectBySubjectCode" parameterType="String" resultType="Subject">
+        SELECT *
+        FROM subject
+        WHERE subject_code = ${subjectCode};
+    </select>
+
 </mapper>

@@ -35,7 +35,7 @@
 
     <div id="repo-ele-ar" class="c-c-c" style="width: 100%;">
 
-        <div class="repo-element c-s-c" th:each="ele : ${list}">
+        <div class="repo-element c-s-c" th:each="ele : ${list}" th:data-hubcode="${ele.extractHubCode}">
 
             <div style="height: 10px;"></div>
 

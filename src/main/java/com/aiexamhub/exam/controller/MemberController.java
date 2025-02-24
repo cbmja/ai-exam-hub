@@ -1,11 +1,7 @@
 package com.aiexamhub.exam.controller;
 
-import com.aiexamhub.exam.dto.ExtractHub;
-import com.aiexamhub.exam.dto.Member;
-import com.aiexamhub.exam.dto.Page;
-import com.aiexamhub.exam.service.ExtractHubService;
-import com.aiexamhub.exam.service.ExtractQuestionService;
-import com.aiexamhub.exam.service.MemberService;
+import com.aiexamhub.exam.dto.*;
+import com.aiexamhub.exam.service.*;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -24,6 +20,11 @@ public class MemberController {
     private final MemberService memberService;
     private final ExtractHubService extractHubService;
     private final ExtractQuestionService extractQuestionService;
+    private final ExamOrgService examOrgService;
+    private final ExamCateService examCateService;
+    private final SubjectService subjectService;
+    private final SubjectDetailService subjectDetailService;
+
 
 
     @PostMapping("/login")
@@ -62,6 +63,38 @@ public class MemberController {
         model.addAttribute("list" , list);
         model.addAttribute("page" , form);
         return "/view/mypage/repositories";
+    }
+
+    @GetMapping("/mypage/repository/{hubCode}")
+    public String questions(ServletRequest servletRequest , Model model , @PathVariable(name = "hubCode")int hubCode){
+        HttpServletRequest req = (HttpServletRequest) servletRequest;
+        model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
+
+        String memberCode = (String)req.getAttribute("memberCode");
+
+        List<ExtractQuestion> list = extractQuestionService.selectByExtractHubCode(hubCode , "ASC");
+
+/*
+        for(ExtractQuestion eq : list){
+
+            eq.setExamOrgName(examOrgService.selectByExamOrgCode(eq.getExamOrgCode()).getExamOrgName());
+            eq.setExamCateName(examCateService.selectByExamCateCode(eq.getExamCateCode()).getExamCateName());
+
+            if(eq.getExamType().equals("even")){
+                eq.setExamTypeName("짝수형");
+            }else if(eq.getExamType().equals("odd")){
+                eq.setExamTypeName("홀수형");
+            }
+            eq.setSubjectName(subjectService.selectBySubjectCode(eq.getSubjectCode()).getSubjectName());
+            eq.setSubjectDetailName(subjectDetailService.selectBySubjectDetailCode(eq.getSubjectDetailCode()).getSubjectDetailName());
+
+        }
+*/
+
+        ExtractHub extractHub = extractHubService.selectByExtractHubCode(hubCode);
+        model.addAttribute("extractHub" , extractHub);
+        model.addAttribute("list" , list);
+        return "/view/mypage/questions";
     }
 
 }

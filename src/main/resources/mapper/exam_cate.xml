@@ -8,5 +8,10 @@
         SELECT * FROM exam_cate;
     </select>
 
+    <select id="selectByExamCateCode" parameterType="String" resultType="ExamCate">
+        SELECT *
+        FROM exam_cate
+        WHERE exam_cate_code = #{examCateCode};
+    </select>
 
 </mapper>

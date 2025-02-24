@@ -31,5 +31,24 @@ public class ExamCateService {
         }
     }
 
+    public ExamCate selectByExamCateCode(String examCateCode){
+        ExamCate examCate;
+        try{
+            examCate = sql.selectOne("com.aiexamhub.exam.mapper.ExamCateMapper.selectByExamCateCode",examCateCode);
+            if(examCate == null){
+                examCate = new ExamCate();
+                examCate.setErr("err");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            examCate = new ExamCate();
+            examCate.setErr("err");
+        }
+        return examCate;
+
+
+
+    }
+
 
 }

@@ -6,4 +6,6 @@ public interface ExamCateMapper {
 
     ExamCate selectAll();
 
+    ExamCate selectByExamCateCode(String ExamCateCode);
+
 }

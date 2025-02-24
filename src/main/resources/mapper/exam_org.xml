@@ -15,4 +15,10 @@
         WHERE exam_cate_code LIKE CONCAT('%', #{examCateCode}, '%');
     </select>
 
+    <select id="selectByExamOrgCode" parameterType="String" resultType="ExamOrg">
+        SELECT *
+        FROM exam_org
+        WHERE exam_org_code = #{examOrgCode};
+    </select>
+
 </mapper>

@@ -9,4 +9,6 @@ public interface ExamOrgMapper {
     List<ExamOrg> selectAll();
     List<ExamOrg> selectByExamCateCode(String examCateCode);
 
+    ExamOrg selectByExamOrgCode(String examOrgCode);
+
 }

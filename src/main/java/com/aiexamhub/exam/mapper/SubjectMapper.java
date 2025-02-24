@@ -9,4 +9,6 @@ public interface SubjectMapper {
     List<Subject> selectAll();
 
     List<Subject> selectByExamCateCode();
+
+    Subject selectBySubjectCode(String subjectCode);
 }

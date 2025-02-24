@@ -10,4 +10,10 @@
         WHERE subject_code =#{subjectCode};
     </select>
 
+    <select id="selectBySubjectDetailCode" parameterType="String" resultType="SubjectDetail">
+        SELECT *
+        FROM subject_detail
+        WHERE subject_detail_code =#{subjectDetailCode};
+    </select>
+
 </mapper>

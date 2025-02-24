@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{view/layout/layout}">
+
+
+<div layout:fragment="content">
+    <link rel="stylesheet" th:href="@{/css/mypage/repositories.css}">
+
+
+    [[${list}]]
+    <br>
+    [[${extractHub}]]
+
+    <script th:src="@{/js/mypage/repositories.js}"></script>
+</div>
+</html>

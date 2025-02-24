@@ -46,4 +46,24 @@ public class ExamOrgService {
         }
     }
 
+    public ExamOrg selectByExamOrgCode(String examOrgCode){
+        ExamOrg examOrg;
+        try{
+            examOrg = sql.selectOne("com.aiexamhub.exam.mapper.ExamOrgMapper.selectByExamOrgCode",examOrgCode);
+            if(examOrg == null){
+                examOrg = new ExamOrg();
+                examOrg.setErr("err");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            examOrg = new ExamOrg();
+            examOrg.setErr("err");
+        }
+        return examOrg;
+
+    }
+
+
+
+
 }

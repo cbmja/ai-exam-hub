@@ -30,4 +30,20 @@ public class SubjectDetailService {
         }
     }
 
+    public SubjectDetail selectBySubjectDetailCode(String subjectDetailCode){
+        SubjectDetail subjectDetail;
+        try {
+            subjectDetail = sql.selectOne("com.aiexamhub.exam.mapper.SubjectDetailMapper.selectBySubjectDetailCode" , subjectDetailCode);
+            if(subjectDetail == null){
+                subjectDetail = new SubjectDetail();
+                subjectDetail.setErr("err");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            subjectDetail = new SubjectDetail();
+            subjectDetail.setErr("err");
+        }
+        return subjectDetail;
+    }
+
 }
