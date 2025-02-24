@@ -1,0 +1,87 @@
+
+.question-input{
+
+    all: unset;
+
+    /* 크기 */
+    width: calc(100% - 60px);
+    height: 42px;
+
+    /* 테두리 */
+    border: 1px solid #DEE2E6;
+    border-radius: 8px;
+
+    /* 여백 */
+    padding-left: 5px;
+    padding-right: 5px;
+
+    /* 텍스트 */
+    font-size: 17px;
+    color: #141517;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.question-search-btn{
+    /* 크기 */
+    width: 50px;
+    height: 42px;
+
+    /* 배경 */
+    background-color: #00C471;
+
+    border-radius: 8px;
+
+    /* 텍스트 */
+    font-size: 15px;
+    color: #FFFFFF;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.question-search-btn:hover{
+    cursor: pointer;
+    background-color: #02ad65;
+}
+
+
+
+.add-question-btn{
+    /* 크기 */
+    /*width: 100px;*/
+    height: 30px;
+
+    /*border-radius: 8px;*/
+
+    /*background-color: #00C471;*/
+
+    border-bottom: 2px solid #141517;
+
+    /* 텍스트 */
+    font-size: 15px;
+    color: #141517;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+}
+
+.add-question-btn:hover{
+    border-bottom: 2px solid #02ad65;
+}
+
+.q-sort-btn{
+    /* 텍스트 */
+    font-size: 13px;
+    color: #868E96;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
