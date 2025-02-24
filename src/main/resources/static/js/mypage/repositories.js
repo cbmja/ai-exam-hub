@@ -16,9 +16,12 @@ $(document).on('click', '.repo-element', function(){
 
     window.location.href='/ai-exam-hub/mypage/repository/'+hubCode;
 
+});
+
+$(document).on('click', '#create-repository', function(){
+
 
 
 });
-
 //EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 });

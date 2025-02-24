@@ -34,7 +34,7 @@ public class MemberService {
                     idCookie.setHttpOnly(true);
                     idCookie.setSecure(false);
                     idCookie.setPath("/");
-                    idCookie.setMaxAge(30 * 60 * 60);
+                    idCookie.setMaxAge(3 * 24 * 60 * 60); // 3일 유지
 
                     response.addCookie(idCookie);
 
