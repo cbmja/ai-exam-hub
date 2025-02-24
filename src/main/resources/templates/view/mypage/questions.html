@@ -7,6 +7,8 @@
 <div layout:fragment="content">
     <link rel="stylesheet" th:href="@{/css/mypage/questions.css}">
 
+    <th:block th:replace="~{view/mypage/question-detail :: question-detail}"></th:block>
+
     <div class="questions-ar c-c-c">
 
         <div style="height: 30px;"></div>
@@ -34,7 +36,7 @@
 
         </div>
 
-        <div class="question-ele c-s-s" th:each="ele : ${list}" th:data-questioncode="${ele.extractQuestionCode}">
+        <div class="question-ele c-s-s" th:each="ele : ${list}" th:data-questioncode="${ele.extractQuestionCode}" th:data-questiontitle="${ele.examYear +'_'+ ele.examCateName +'_'+ ele.subjectName +'_'+ ele.subjectDetailName +'_'+ ele.examTypeName +'_'+ele.questionNo+'번'}">
             <div style="height: 5px;"></div>
 
             <div class="question-title" th:text="${ele.examYear +'_'+ ele.examCateName +'_'+ ele.subjectName +'_'+ ele.subjectDetailName +'_'+ ele.examTypeName +'_'+ele.questionNo+'번'}">
@@ -60,13 +62,6 @@
 
             <div style="height: 5px;"></div>
         </div>
-
-
-
-
-
-
-
 
     </div>
 

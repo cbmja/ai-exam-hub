@@ -5,6 +5,8 @@ $(document).ready(function () {
 $(document).on('click', '.question-ele', function(){
 
     let questionCode = $(this).data('questioncode');
+    let questiontitle = $(this).data('questiontitle');
+
 
     $.ajax({
         url: '/ai-exam-hub/question/'+questionCode, // 서버 URL
