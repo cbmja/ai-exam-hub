@@ -282,6 +282,28 @@ $(document).on('click', '.extract-submit-btn', function(){
 
                           $('.my-exam-element').prepend(ele);
 
+
+                $('#question-num').val("");
+                $('#question').val("");
+                $('#question-sub').val("");
+                $('#option-1').val("");
+                $('#option-2').val("");
+                $('#option-3').val("");
+                $('#option-4').val("");
+                $('#option-5').val("");
+
+
+                // '저장 완료' 메시지 표시
+                var message = document.getElementById('successMessage');
+                message.style.display = 'block';
+
+                // 1초 후 메시지 숨기기
+                setTimeout(function() {
+                  message.style.display = 'none';
+                }, 1000);
+
+
+
             }else{
                 alert('서버 에러입니다.');
             }

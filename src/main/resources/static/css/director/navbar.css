@@ -19,6 +19,8 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+
+    z-index: 2000;
 }
 
 /* 네비 영역 좌 / 우 */

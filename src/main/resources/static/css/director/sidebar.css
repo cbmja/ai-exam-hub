@@ -19,8 +19,8 @@
     /*위치*/
     position: fixed;
     left: 0;
-    top: 66px;/* 네비 바 높이 + 테두리 만큼 */
-    z-index: 900;
+    top: 65px;/* 네비 바 높이 + 테두리 만큼 */
+    z-index: 2000;
 }
 
 
@@ -53,7 +53,7 @@
     position: fixed;
     left: 0;
     top: 50vh;
-    z-index: 1000;
+    z-index: 2000;
 }
 
 .side-bar-btn:hover{

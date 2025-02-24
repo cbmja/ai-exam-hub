@@ -14,7 +14,7 @@
     position: fixed;
     left: calc(100% - 550px);
     top: 100px;
-    z-index: 2500;
+    z-index: 3000;
 
     /* 정렬 */
     display: none;
@@ -285,7 +285,7 @@
     background: rgba(0, 128, 0, 0.2); /* 연한 녹색 배경 */
     border: 2px dashed #008000; /* 녹색 테두리 */
     display: none;
-    z-index: 9999;
+    z-index: 1000;
 
 }
 
