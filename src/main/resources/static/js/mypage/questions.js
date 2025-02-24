@@ -40,6 +40,15 @@ $(document).on('click', '.question-ele', function(){
 });
 
 
+$(document).on('click', '#add-question-btn', function(){
+
+    let hubCode = $('#exhcode').val();
+
+    window.location.href='/ai-exam-hub/extract/form/'+hubCode;
+
+});
+
+
 
 //EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 });

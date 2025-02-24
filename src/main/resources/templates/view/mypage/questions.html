@@ -30,12 +30,12 @@
                 · 업데이트 일자로 정렬
             </div>
 
-            <div class="add-question-btn c-c hover-pointer-green" style="margin-left: auto;">
+            <div class="add-question-btn c-c hover-pointer-green" style="margin-left: auto;" id="add-question-btn">
                 · 문제 추가
             </div>
 
         </div>
-
+        <input type="hidden" th:value="${extractHub.extractHubCode}" id="exhcode">
         <div class="question-ele c-s-s" th:each="ele : ${list}" th:data-questioncode="${ele.extractQuestionCode}" th:data-questiontitle="${ele.examYear +'_'+ ele.examCateName +'_'+ ele.subjectName +'_'+ ele.subjectDetailName +'_'+ ele.examTypeName +'_'+ele.questionNo+'번'}">
             <div style="height: 5px;"></div>
 

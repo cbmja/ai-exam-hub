@@ -39,6 +39,7 @@ public class MemberController {
         return member.getRes();
     }
 
+    // ok-02/25---------------------------------------------------------------------------------------------------------
     @GetMapping("/mypage/repository")
     public String mypage(ServletRequest servletRequest , Model model , @RequestParam(name = "page" ,defaultValue = "0") int page , @RequestParam(name = "search" ,defaultValue = "") String search){
         HttpServletRequest req = (HttpServletRequest) servletRequest;

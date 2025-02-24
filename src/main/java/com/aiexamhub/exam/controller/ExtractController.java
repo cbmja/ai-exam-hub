@@ -39,6 +39,7 @@ public class ExtractController {
         return "view/director/drag-example";
     }
 
+/*
     // 내 저장소 목록
     @GetMapping("/repository")
     public String MyRepositories(ServletRequest servletRequest , Model model){
@@ -47,22 +48,14 @@ public class ExtractController {
 
         return "view/repository/repositories";
     }
+*/
 
-    @GetMapping("/index")
-    public String index(ServletRequest servletRequest , Model model){
-        HttpServletRequest req = (HttpServletRequest) servletRequest;
-        model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
-        return "view/layout/index";
-    }
-
-
-    @GetMapping("/{hubCode}/exam/form")
+    // ok-02/25---------------------------------------------------------------------------------------------------------
+    @GetMapping("extract/form/{hubCode}")
     public String testing(ServletRequest servletRequest , @PathVariable(name = "hubCode" , required = false) int hubCode,Model model){
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
-        // ------------------------------------------------- 하드코딩 ------------------------------------------------- //
-        String userId = "tester";
-        hubCode = 1;
+        String memberCode = (String)req.getAttribute("memberCode");
 
         ExtractHub myHub = extractHubService.selectByExtractHubCode(hubCode);
 
@@ -114,7 +107,6 @@ public class ExtractController {
                 .collect(Collectors.toList());
 
         model.addAttribute("extractQList" , extractQList);
-        model.addAttribute("userId" , userId);
         model.addAttribute("myHub" , myHub);
         model.addAttribute("yearList" , yearList);
         model.addAttribute("examCateList" , examCateList);
@@ -122,7 +114,7 @@ public class ExtractController {
         return "view/director/extract";
     }
 
-
+    // ok-02/25---------------------------------------------------------------------------------------------------------
     @GetMapping("/examInfo")
     @ResponseBody
     public Map<String , Object> getExamOrg(ServletRequest servletRequest , @RequestParam(name="examCateCode", defaultValue = "") String examCateCode,Model model){
@@ -153,7 +145,7 @@ public class ExtractController {
         return res;
     }
 
-
+    // ok-02/25---------------------------------------------------------------------------------------------------------
     @PostMapping("/naver-ocr")
     @ResponseBody
     public String img(ServletRequest servletRequest , @RequestBody Map<String , Object> form , Model model){
@@ -224,7 +216,7 @@ public class ExtractController {
 
     }
 
-
+    // ok-02/25---------------------------------------------------------------------------------------------------------
     @PostMapping("/data")
     @ResponseBody
     public int saveQuestion(ServletRequest servletRequest , @RequestBody ExtractQuestion form , Model model){
@@ -236,7 +228,7 @@ public class ExtractController {
     }
 
 
-
+    // ok-02/25---------------------------------------------------------------------------------------------------------
     @GetMapping("/subjectDetail")
     @ResponseBody
     public List<SubjectDetail> getSubjectDetails(ServletRequest servletRequest , @RequestParam(name="subjectCode", defaultValue = "") String subjectCode , Model model){
