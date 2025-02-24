@@ -6,6 +6,7 @@ import com.aiexamhub.exam.dto.Member;
 import com.aiexamhub.exam.dto.Page;
 import com.aiexamhub.exam.service.*;
 import jakarta.servlet.ServletRequest;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,25 @@ public class MemberController {
         Member member = memberService.EmailLogin(form , response , model);
 
         return member.getRes();
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response){
+
+        // 기존 쿠키를 찾기
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("idCookie")) {
+                    // 쿠키 삭제: 만료 시간을 과거로 설정하여 삭제
+                    cookie.setMaxAge(0);  // 0으로 설정하면 쿠키는 즉시 만료됩니다.
+                    cookie.setPath("/");   // 쿠키가 설정된 경로도 지정합니다. 일반적으로 '/'로 설정합니다.
+                    response.addCookie(cookie);  // 수정된 쿠키를 응답에 추가
+                }
+            }
+        }
+
+        return "redirect:/ai-exam-hub/index";
     }
 
     // ok-02/25---------------------------------------------------------------------------------------------------------
