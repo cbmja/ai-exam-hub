@@ -16,9 +16,16 @@ public class IndexController {
     // ok-02/25---------------------------------------------------------------------------------------------------------
     @GetMapping("/index")
     public String index(ServletRequest servletRequest , Model model){
-        HttpServletRequest req = (HttpServletRequest) servletRequest;
-        model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
-        return "view/layout/index";
+        String viewPath = "view/layout/index";
+        try{
+            HttpServletRequest req = (HttpServletRequest) servletRequest;
+            model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
+        }catch(Exception e){
+            e.printStackTrace();
+            viewPath = "view/util/error";
+        }
+
+        return viewPath;
     }
 
 }
