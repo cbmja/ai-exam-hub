@@ -17,6 +17,7 @@ $(document).on('click', '#login-close-btn', function(){
 });
 
 /* 로그인 */
+// 02/25 1차 ok-----------------------------------------------------------------------------------------------------
 $(document).on('click', '#login-submit', function(){
 
     let loginId = $('#login-id').val();

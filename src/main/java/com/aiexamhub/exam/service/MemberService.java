@@ -16,9 +16,9 @@ public class MemberService {
     private final SqlSessionTemplate sql;
     private final LoginUtil loginUtil;
 
+    // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
     public Member EmailLogin(Member form , HttpServletResponse response , Model model){
         Member member;
-        boolean isLogin = false;
         try{
             member = sql.selectOne("com.aiexamhub.exam.mapper.MemberMapper.findById" , form.getMemberId());
 
@@ -29,6 +29,13 @@ public class MemberService {
                 if(member.getMemberPw().equals(form.getMemberPw())){ // id , pw 일치
 
                     String ecCookie = loginUtil.encrypt(member.getMemberCode());
+
+                    if(ecCookie.equals("err")){
+                        member = new Member();
+                        member.setRes("err");
+                        return member;
+                    }
+
                     Cookie idCookie = new Cookie("idCookie", ecCookie);
                     // 쿠키 설정
                     idCookie.setHttpOnly(true);

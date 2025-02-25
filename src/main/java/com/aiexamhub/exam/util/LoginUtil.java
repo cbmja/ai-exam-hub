@@ -36,6 +36,8 @@ public class LoginUtil {
 
         return result;
     }
+
+    // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
     public String encrypt(String plainText){
         String result = "";
         try{
@@ -47,6 +49,7 @@ public class LoginUtil {
             result = Base64.getEncoder().encodeToString(encryptedBytes);
         }catch(Exception e){
             e.printStackTrace();
+            result = "err";
         }
 
         return result;

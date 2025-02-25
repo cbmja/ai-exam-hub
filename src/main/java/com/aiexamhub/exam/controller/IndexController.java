@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class IndexController {
 
-    // ok-02/25---------------------------------------------------------------------------------------------------------
+    // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
     @GetMapping("/index")
     public String index(ServletRequest servletRequest , Model model){
         String viewPath = "view/layout/index";

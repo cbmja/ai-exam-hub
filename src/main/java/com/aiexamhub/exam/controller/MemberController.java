@@ -30,7 +30,7 @@ public class MemberController {
     private final SubjectDetailService subjectDetailService;
 
 
-
+    // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
     @PostMapping("/login")
     @ResponseBody
     public String loginProc(@RequestBody Member form , HttpServletResponse response , Model model){
