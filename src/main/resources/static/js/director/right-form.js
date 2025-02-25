@@ -292,6 +292,7 @@ $(document).on('click', '.extract-submit-btn', function(){
                 $('#option-4').val("");
                 $('#option-5').val("");
 
+                $('.right-form-ar').animate({ scrollTop: 0 }, 'fast');
 
                 // '저장 완료' 메시지 표시
                 var message = document.getElementById('successMessage');

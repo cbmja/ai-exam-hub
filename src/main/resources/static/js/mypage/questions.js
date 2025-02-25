@@ -34,6 +34,8 @@ $(document).on('click', '.question-ele', function(){
             $('#q-detail-comment').val(response.comment);
             $('#question-detail-modal').css('display' , 'flex');
 
+            $('.question-detail-modal').animate({ scrollTop: 0 }, 'fast');
+
 
         },
         error: function(xhr, status, error) {
