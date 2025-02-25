@@ -181,7 +181,8 @@ public class MemberController {
         return extractQuestion;
     }
 
-
+    // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
+    // 문제 수정
     @PostMapping("/question/edit")
     @ResponseBody
     public int editQuestion(@RequestBody ExtractQuestion form){
@@ -190,7 +191,8 @@ public class MemberController {
         return extractQuestionService.updateQuestion(form);
     }
 
-
+    // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
+    // 문제 삭제
     @PostMapping("/question/delete")
     @ResponseBody
     public int deleteQuestion(@RequestBody ExtractQuestion form){
@@ -199,15 +201,23 @@ public class MemberController {
         return extractQuestionService.delete(form.getExtractQuestionCode());
     }
 
+    // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
+    // 저장소 생성
     @PostMapping("/repository/add")
     @ResponseBody
     public int createRepository(ServletRequest servletRequest,@RequestBody ExtractHub form){
-        HttpServletRequest req = (HttpServletRequest) servletRequest;
-        String memberCode = (String)req.getAttribute("memberCode");
+        int res = -1;
+        try{
+            HttpServletRequest req = (HttpServletRequest) servletRequest;
+            String memberCode = (String)req.getAttribute("memberCode");
 
-        form.setMemberCode(memberCode);
+            form.setMemberCode(memberCode);
+            res = extractHubService.save(form);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
-        return extractHubService.save(form);
+        return res;
     }
 
 }

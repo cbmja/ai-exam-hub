@@ -38,6 +38,7 @@ $(document).on('click', '#create-repo-quit', function(){
 
 });
 
+// 02/25 1차 ok-----------------------------------------------------------------------------------------------------
 $(document).on('click', '#create-repo-submit', function(){
 
         let extractHubName = $('#create-repo-name').val();

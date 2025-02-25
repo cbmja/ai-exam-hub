@@ -82,7 +82,7 @@ public class ExtractQuestionService {
         return extractQuestion;
 
     }
-
+    // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
     public int updateQuestion(ExtractQuestion form){
 
         int res = -1;
@@ -95,6 +95,7 @@ public class ExtractQuestionService {
 
     }
 
+    // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
     public int delete(int extractQuestionCode){
 
         int res = -1;

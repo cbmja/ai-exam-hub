@@ -7,6 +7,7 @@ $(document).on('click', '#q-d-close-btn', function(){
 
 });
 
+// 02/25 1차 ok-----------------------------------------------------------------------------------------------------
 $(document).on('click', '#question-delete-btn', function(){
 
     let questionCode = $('#question-code').val();
@@ -42,7 +43,7 @@ $(document).on('click', '#question-delete-btn', function(){
 
 });
 
-
+// 02/25 1차 ok-----------------------------------------------------------------------------------------------------
 $(document).on('click', '#question-edit-btn', function(){
 
 
