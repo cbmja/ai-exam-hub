@@ -169,7 +169,8 @@ public class MemberController {
         return viewPath;
     }
 
-
+    // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
+    // 문제 상세
     @GetMapping("/question/{questionCode}")
     @ResponseBody
     public ExtractQuestion getQuestion(@PathVariable(name = "questionCode")int questionCode){

@@ -65,7 +65,7 @@ public class ExtractQuestionService {
         return list;
     }
 
-
+    // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
     public ExtractQuestion selectByExtractQuestionCode(int extractQuestionCode){
         ExtractQuestion extractQuestion;
         try{

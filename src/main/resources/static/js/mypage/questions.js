@@ -1,7 +1,7 @@
 $(document).ready(function () {
 //SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 
-
+// 02/25 1차 ok-----------------------------------------------------------------------------------------------------
 $(document).on('click', '.question-ele', function(){
 
     let questionCode = $(this).data('questioncode');
@@ -14,6 +14,11 @@ $(document).on('click', '.question-ele', function(){
         success: function(response) {
 
             console.log(response);
+
+            if(response.err == 'err'){
+                alert('서버 에러입니다.');
+                return;
+            }
 
             $('#question-code').val(questionCode);
             $('#question-detail-title').empty().append(questiontitle);
