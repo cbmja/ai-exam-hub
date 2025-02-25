@@ -40,26 +40,33 @@ public class MemberController {
         return member.getRes();
     }
 
+    // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response){
-
-        // 기존 쿠키를 찾기
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("idCookie")) {
-                    // 쿠키 삭제: 만료 시간을 과거로 설정하여 삭제
-                    cookie.setMaxAge(0);  // 0으로 설정하면 쿠키는 즉시 만료됩니다.
-                    cookie.setPath("/");   // 쿠키가 설정된 경로도 지정합니다. 일반적으로 '/'로 설정합니다.
-                    response.addCookie(cookie);  // 수정된 쿠키를 응답에 추가
+        String viewPath = "redirect:/ai-exam-hub/index";
+        try{
+            // 기존 쿠키를 찾기
+            Cookie[] cookies = request.getCookies();
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if (cookie.getName().equals("idCookie")) {
+                        // 쿠키 삭제: 만료 시간을 과거로 설정하여 삭제
+                        cookie.setMaxAge(0);  // 0으로 설정하면 쿠키는 즉시 만료됩니다.
+                        cookie.setPath("/");   // 쿠키가 설정된 경로도 지정합니다. 일반적으로 '/'로 설정합니다.
+                        response.addCookie(cookie);  // 수정된 쿠키를 응답에 추가
+                    }
                 }
             }
+        }catch (Exception e){
+            e.printStackTrace();
+            viewPath = "/view/util/errer";
         }
 
-        return "redirect:/ai-exam-hub/index";
+
+        return viewPath;
     }
 
-    // ok-02/25---------------------------------------------------------------------------------------------------------
+    // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
     @GetMapping("/mypage/repository")
     public String mypage(ServletRequest servletRequest , Model model , @RequestParam(name = "page" ,defaultValue = "0") int page , @RequestParam(name = "search" ,defaultValue = "") String search){
         HttpServletRequest req = (HttpServletRequest) servletRequest;
