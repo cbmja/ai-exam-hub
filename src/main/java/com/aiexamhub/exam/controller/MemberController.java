@@ -69,31 +69,50 @@ public class MemberController {
     // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
     @GetMapping("/mypage/repository")
     public String mypage(ServletRequest servletRequest , Model model , @RequestParam(name = "page" ,defaultValue = "0") int page , @RequestParam(name = "search" ,defaultValue = "") String search){
-        HttpServletRequest req = (HttpServletRequest) servletRequest;
-        model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
+        String viewPath = "/view/mypage/repositories";
+        try {
+            HttpServletRequest req = (HttpServletRequest) servletRequest;
+            model.addAttribute("isLogin", (Boolean) req.getAttribute("isLogin"));
 
-        String memberCode = (String)req.getAttribute("memberCode");
+            String memberCode = (String) req.getAttribute("memberCode");
 
-        Page p = new Page();
-        p.setSearch(search);
-        p.setMemberCode(memberCode);
-        int total = extractHubService.getTotal(p);
+            Page p = new Page();
+            p.setSearch(search);
+            p.setMemberCode(memberCode);
+            int total = extractHubService.getTotal(p);
 
-        Page form = new Page(page,total); //현재 페이지
+            if(total <= -1){
+                return "/view/util/error";
+            }
 
-        form.setMemberCode(memberCode);
-        form.setSearch(search); // 검색어
-        form.setSort("DESC"); // 정렬
+            Page form = new Page(page, total); //현재 페이지
 
-        List<ExtractHub> list = extractHubService.getRepositories(form);
+            form.setMemberCode(memberCode);
+            form.setSearch(search); // 검색어
+            form.setSort("DESC"); // 정렬
 
-        for(ExtractHub eh : list){
-            eh.setCount(extractQuestionService.CountByExtractHubCode(eh.getExtractHubCode()));
+            List<ExtractHub> list = extractHubService.getRepositories(form);
+
+            if(list == null){
+                return "/view/util/error";
+            }
+
+            for (ExtractHub eh : list) {
+                int count = extractQuestionService.CountByExtractHubCode(eh.getExtractHubCode());
+                if(count < 0){
+                    return "/view/util/error";
+                }
+                eh.setCount(count);
+            }
+
+            model.addAttribute("list", list);
+            model.addAttribute("page", form);
+        }catch (Exception e){
+            e.printStackTrace();
+            viewPath = "/view/util/error";
         }
 
-        model.addAttribute("list" , list);
-        model.addAttribute("page" , form);
-        return "/view/mypage/repositories";
+        return viewPath;
     }
 
     @GetMapping("/mypage/repository/{hubCode}")

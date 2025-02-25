@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -43,15 +44,31 @@ public class ExtractHubService {
 
     }
 
-
+    // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
     public int getTotal(Page form){
 
-        int total = sql.selectOne("com.aiexamhub.exam.mapper.ExtractHubMapper.getTotal" , form);
+        int total = -1;
+        try{
+            total = sql.selectOne("com.aiexamhub.exam.mapper.ExtractHubMapper.getTotal" , form);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return total;
     }
-
+    // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
     public List<ExtractHub> getRepositories(Page form){
-        return sql.selectList("com.aiexamhub.exam.mapper.ExtractHubMapper.getRepositories" , form);
+        
+        List<ExtractHub> list = null;
+        try{
+            list = sql.selectList("com.aiexamhub.exam.mapper.ExtractHubMapper.getRepositories" , form);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        if(list == null){
+            list = new ArrayList<>();
+        }
+
+        return list;
     }
 
 
