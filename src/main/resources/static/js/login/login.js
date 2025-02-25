@@ -1,7 +1,7 @@
 $(document).ready(function () {
 //SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 
-
+// 02/25 1차 ok-----------------------------------------------------------------------------------------------------
 /* 로그인 모달 띄우기 */
 $(document).on('click', '#login-btn', function(){
 
@@ -10,7 +10,7 @@ $(document).on('click', '#login-btn', function(){
 
     $('.login-form-ar').css('display' , 'flex');
 });
-
+// 02/25 1차 ok-----------------------------------------------------------------------------------------------------
 /* 로그인 모달 숨기기 */
 $(document).on('click', '#login-close-btn', function(){
     $('.login-form-ar').css('display' , 'none');
@@ -22,6 +22,15 @@ $(document).on('click', '#login-submit', function(){
 
     let loginId = $('#login-id').val();
     let loginPw = $('#login-pw').val();
+
+    if(!loginId){
+        alert(`아이디를 입력하세요.`);
+        return;
+    }else if(!loginPw){
+        alert(`비밀번호를 입력하세요.`);
+        return;
+    }
+
 
     $.ajax({
             url: '/ai-exam-hub/login', // 서버 URL
