@@ -9,7 +9,7 @@ $(document).on('click', '#repo-search-btn', function(){
 
 });
 
-
+// 02/25 1차 ok-----------------------------------------------------------------------------------------------------
 $(document).on('click', '.repo-element', function(){
 
     let hubCode = $(this).data('hubcode');

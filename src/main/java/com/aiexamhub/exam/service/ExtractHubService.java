@@ -14,23 +14,18 @@ import java.util.List;
 public class ExtractHubService {
 
     private final SqlSessionTemplate sql;
-
+    // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
     public ExtractHub selectByExtractHubCode(int extractHubCode){
-        ExtractHub extractHub;
+        ExtractHub extractHub = null;
         try{
             extractHub = sql.selectOne("com.aiexamhub.exam.mapper.ExtractHubMapper.selectByExtractHubCode" , extractHubCode);
 
-            if(extractHub == null){
-                extractHub = new ExtractHub();
-                extractHub.setErr("noEle");
-            }
-            return extractHub;
         }catch (Exception e){
             e.printStackTrace();
             extractHub = new ExtractHub();
             extractHub.setErr("err");
-            return extractHub;
         }
+        return extractHub;
     }
 
     public int save(ExtractHub form){
@@ -66,6 +61,9 @@ public class ExtractHubService {
         }
         if(list == null){
             list = new ArrayList<>();
+            ExtractHub e= new ExtractHub();
+            e.setErr("Err");
+            list.add(e);
         }
 
         return list;

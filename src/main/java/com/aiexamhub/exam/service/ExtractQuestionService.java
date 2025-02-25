@@ -42,23 +42,26 @@ public class ExtractQuestionService {
         return res;
     }
 
+    // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
     public List<ExtractQuestion> selectByExtractHubCode(int hubCode , String sort){
-        List<ExtractQuestion> list ;
-        Search search = new Search();
-        search.setExtractHubCode(hubCode);
-        search.setSort(sort);
+        List<ExtractQuestion> list = null;
 
         try{
+            Search search = new Search();
+            search.setExtractHubCode(hubCode);
+            search.setSort(sort);
             list = sql.selectList("com.aiexamhub.exam.mapper.ExtractQuestionMapper.selectByExtractHubCode",search);
 
         }catch (Exception e){
             e.printStackTrace();
-            list = new ArrayList<>();
-            ExtractQuestion ex = new ExtractQuestion();
-            ex.setErr("err");
-            list.add(ex);
-            return list;
         }
+        if(list == null){
+            list = new ArrayList<>();
+            ExtractQuestion e = new ExtractQuestion();
+            e.setErr("err");
+            list.add(e);
+        }
+
         return list;
     }
 

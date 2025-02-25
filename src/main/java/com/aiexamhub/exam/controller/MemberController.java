@@ -24,13 +24,10 @@ public class MemberController {
     private final MemberService memberService;
     private final ExtractHubService extractHubService;
     private final ExtractQuestionService extractQuestionService;
-    private final ExamOrgService examOrgService;
-    private final ExamCateService examCateService;
-    private final SubjectService subjectService;
-    private final SubjectDetailService subjectDetailService;
 
 
     // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
+    // 로그인
     @PostMapping("/login")
     @ResponseBody
     public String loginProc(@RequestBody Member form , HttpServletResponse response , Model model){
@@ -41,6 +38,7 @@ public class MemberController {
     }
 
     // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
+    // 로그아웃
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response){
         String viewPath = "redirect:/ai-exam-hub/index";
@@ -67,6 +65,7 @@ public class MemberController {
     }
 
     // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
+    // 내 저장소 목록
     @GetMapping("/mypage/repository")
     public String mypage(ServletRequest servletRequest , Model model , @RequestParam(name = "page" ,defaultValue = "0") int page , @RequestParam(name = "search" ,defaultValue = "") String search){
         String viewPath = "/view/mypage/repositories";
@@ -93,7 +92,8 @@ public class MemberController {
 
             List<ExtractHub> list = extractHubService.getRepositories(form);
 
-            if(list == null){
+            if(!list.isEmpty() && list.get(0).getErr().equals("err")){
+
                 return "/view/util/error";
             }
 
@@ -115,40 +115,58 @@ public class MemberController {
         return viewPath;
     }
 
+    // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
+    // 내 저장소(저장소에 저장된 문제 목록)
     @GetMapping("/mypage/repository/{hubCode}")
     public String questions(ServletRequest servletRequest , Model model , @PathVariable(name = "hubCode")int hubCode){
-        HttpServletRequest req = (HttpServletRequest) servletRequest;
-        model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
+        String viewPath = "/view/mypage/questions";
+        try {
 
-        String memberCode = (String)req.getAttribute("memberCode");
+            HttpServletRequest req = (HttpServletRequest) servletRequest;
+            model.addAttribute("isLogin", (Boolean) req.getAttribute("isLogin"));
 
-        List<ExtractQuestion> list = extractQuestionService.selectByExtractHubCode(hubCode , "ASC");
+            String memberCode = (String) req.getAttribute("memberCode");
 
+            List<ExtractQuestion> list = extractQuestionService.selectByExtractHubCode(hubCode, "ASC");
 
-        for(ExtractQuestion eq : list){
-
-            if(eq.getExamType().equals("even")){
-                eq.setExamTypeName("짝수형");
-            }else if(eq.getExamType().equals("odd")){
-                eq.setExamTypeName("홀수형");
-            }else if(eq.getExamType().equals("1")){
-                eq.setExamTypeName("1형");
-            }else if(eq.getExamType().equals("2")){
-                eq.setExamTypeName("2형");
-            }else if(eq.getExamType().equals("x")){
-                eq.setExamTypeName("X");
+            if(!list.isEmpty() && list.get(0).getErr().equals("err")){
+                return "/view/util/error";
             }
 
-            if(eq.getSubjectDetailName().isEmpty()){
-                eq.setSubjectDetailName("공통");
+
+            for (ExtractQuestion eq : list) {
+
+                if (eq.getExamType().equals("even")) {
+                    eq.setExamTypeName("짝수형");
+                } else if (eq.getExamType().equals("odd")) {
+                    eq.setExamTypeName("홀수형");
+                } else if (eq.getExamType().equals("1")) {
+                    eq.setExamTypeName("1형");
+                } else if (eq.getExamType().equals("2")) {
+                    eq.setExamTypeName("2형");
+                } else if (eq.getExamType().equals("x")) {
+                    eq.setExamTypeName("X");
+                }
+                if (eq.getSubjectDetailName().isEmpty()) {
+                    eq.setSubjectDetailName("공통");
+                }
             }
+
+
+            ExtractHub extractHub = extractHubService.selectByExtractHubCode(hubCode);
+            if(extractHub != null) {
+                if (extractHub.getErr().equals("err")) {
+                    return "/view/util/error";
+                }
+            }
+            model.addAttribute("extractHub", extractHub);
+            model.addAttribute("list", list);
+
+        }catch (Exception e){
+            e.printStackTrace();
+            viewPath = "/view/util/error";
         }
-
-
-        ExtractHub extractHub = extractHubService.selectByExtractHubCode(hubCode);
-        model.addAttribute("extractHub" , extractHub);
-        model.addAttribute("list" , list);
-        return "/view/mypage/questions";
+        return viewPath;
     }
 
 
