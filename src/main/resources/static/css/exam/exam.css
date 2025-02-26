@@ -1,0 +1,50 @@
+/* A4 사이즈 설정 */
+@page {
+    size: A4;
+    margin: 20mm;
+}
+
+/* 문서 기본 스타일 */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    /* 텍스트 */
+    font-size: 17px;
+    color: #1A1B1E;
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.container {
+    width: 100%;
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 20mm;
+    box-sizing: border-box;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.content {
+    margin-bottom: 20mm;
+}
+
+.u-l{
+    border-bottom: 1px solid #000000;
+}
+
+.box{
+    border: 2px solid #000000;
+    padding: 2px;
+}
+
+.bold{
+    font-weight: 800;
+}
