@@ -51,8 +51,13 @@ public class ExamController {
 
         for(int i : commonOptionCode){
             CommonTextOption co = commonTextOptionService.selectByCode(i);
+
+            String[] parts = co.getQuestionNo().split(" ");
+
+            co.setSqnum(Integer.parseInt(parts[0]));
             coList.add(co);
         }
+        Collections.sort(coList, Comparator.comparingInt(CommonTextOption::getSqnum));
 
         model.addAttribute("myHub" , myHub);
         model.addAttribute("list" , list);

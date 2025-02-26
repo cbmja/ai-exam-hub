@@ -19,6 +19,8 @@ public class CommonTextOption {
     private String subjectDetailCode;
     private String questionNo;
 
+    private int sqnum;
+
     private String err = "";
 
 
