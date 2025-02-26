@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aiexamhub.exam.mapper.CommonTextOptionMapper">
+
+    <select id="selectByCode" parameterType="int" resultType="CommonTextOption">
+        SELECT *
+        FROM common_text_option
+        WHERE common_text_option_code = #{code};
+    </select>
+
+</mapper>

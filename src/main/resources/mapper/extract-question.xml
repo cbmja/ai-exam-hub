@@ -48,7 +48,8 @@
         eq.option5,
         eq.created_at,
         eq.updated_at,
-        eq.comment
+        eq.comment,
+        eq.common_text_option_code
         FROM extract_question eq
         LEFT JOIN exam_org eo ON eq.exam_org_code = eo.exam_org_code
         LEFT JOIN exam_cate ec ON eq.exam_cate_code = ec.exam_cate_code

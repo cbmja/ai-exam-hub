@@ -57,5 +57,15 @@ $(document).on('click', '#add-question-btn', function(){
 
 
 
+$(document).on('click', '#create-exam', function(){
+
+    let hubCode = $('#exhcode').val();
+
+    window.location.href='/ai-exam-hub/exam/'+hubCode;
+
+});
+
+
+
 //EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 });
