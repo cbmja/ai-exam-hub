@@ -1,6 +1,5 @@
 package com.aiexamhub.exam.controller;
 
-import com.aiexamhub.exam.dto.CommonTextOption;
 import com.aiexamhub.exam.dto.ExtractHub;
 import com.aiexamhub.exam.dto.ExtractQuestion;
 import com.aiexamhub.exam.service.CommonTextOptionService;
@@ -25,7 +24,7 @@ public class ExamController {
     private final CommonTextOptionService commonTextOptionService;
 
     @GetMapping("/exam/{hubCode}")
-    public String exam(@PathVariable int hubCode , Model model){
+    public String exam(@PathVariable(name="hubCode") int hubCode , Model model){
 
         // hubCode에 해당하는 ExtractHub 객체를 가져옴
         ExtractHub myHub = extractHubService.selectByExtractHubCode(hubCode);
@@ -44,24 +43,23 @@ public class ExamController {
             commonOptionCodeSet.add(question.getCommonTextOptionCode());
         }
 
-        // Set을 List로 변환 (필요 시)
-        List<Integer> commonOptionCode = new ArrayList<>(commonOptionCodeSet);
+        int coCode = -1;
 
-        List<CommonTextOption> coList = new ArrayList<>();
+        for(ExtractQuestion question : list){
 
-        for(int i : commonOptionCode){
-            CommonTextOption co = commonTextOptionService.selectByCode(i);
+            if(coCode == question.getCommonTextOptionCode()){
+                question.setCommonTextOptionContent("");
+            }else{
+                coCode = question.getCommonTextOptionCode();
+            }
 
-            String[] parts = co.getQuestionNo().split(" ");
-
-            co.setSqnum(Integer.parseInt(parts[0]));
-            coList.add(co);
         }
-        Collections.sort(coList, Comparator.comparingInt(CommonTextOption::getSqnum));
+
+
 
         model.addAttribute("myHub" , myHub);
         model.addAttribute("list" , list);
-        model.addAttribute("coList" , coList);
+
         return "/view/exam/exam";
     }
 

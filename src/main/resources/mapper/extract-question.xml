@@ -49,12 +49,15 @@
         eq.created_at,
         eq.updated_at,
         eq.comment,
-        eq.common_text_option_code
+        eq.common_text_option_code,
+        cto.common_text_option_content,
+        cto.question_no_str
         FROM extract_question eq
         LEFT JOIN exam_org eo ON eq.exam_org_code = eo.exam_org_code
         LEFT JOIN exam_cate ec ON eq.exam_cate_code = ec.exam_cate_code
         LEFT JOIN subject s ON eq.subject_code = s.subject_code
         LEFT JOIN subject_detail sd ON eq.subject_detail_code = sd.subject_detail_code
+        LEFT JOIN common_text_option cto ON eq.common_text_option_code = cto.common_text_option_code
         WHERE eq.extract_hub_code = #{extractHubCode}
         <choose>
             <when test="sort == 'asc'">

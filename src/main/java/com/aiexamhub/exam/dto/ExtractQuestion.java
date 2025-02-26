@@ -29,6 +29,8 @@ public class ExtractQuestion {
     private int commonTextOptionCode;
 
     private String subjectDetailCode;
+    private String commonTextOptionContent;
+    private String questionNoStr;
 
     private String err="";
 

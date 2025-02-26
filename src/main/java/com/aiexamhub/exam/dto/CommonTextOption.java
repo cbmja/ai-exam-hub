@@ -17,7 +17,7 @@ public class CommonTextOption {
     private int examMonth;
     private String subjectCode;
     private String subjectDetailCode;
-    private String questionNo;
+    private String questionNoStr;
 
     private int sqnum;
 

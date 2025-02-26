@@ -27,7 +27,33 @@
 
     <div class="content">
 
-        <div style="padding: 10px; border: 1px solid #000000;" th:each="coOp : ${coList}" th:utext="${'[ ' + coOp.questionNo + ' ] 번 문제<br><br>' + coOp.commonTextOptionContent}"></div>
+        <div th:each="question : ${list}">
+
+            <div th:if="${question.commonTextOptionContent != ''}">
+                <div style="width: 100%; height: 20px;"></div>
+                <div style="width: 100%; height: 20px; border-top: 2px solid #000000;"></div>
+                <div style="padding: 10px; border: 1px solid #000000;" th:utext="${'[ ' + question.questionNoStr + ' ] 번 문제<br><br>' + question.commonTextOptionContent}"></div>
+            </div>
+
+            <div style="height: 20px;"></div>
+            <h3 th:text="${question.questionNo}"></h3>
+            <div th:utext="${question.question}"></div>
+            <div style="height: 6px;"></div>
+            <div th:if="${question.questionSub != ''}" style="padding: 10px; border: 1px solid #000000;" th:utext="${question.questionSub}"></div>
+            <div style="height: 6px;"></div>
+            <div th:utext="${ '1. ' + question.option1}"></div>
+            <div style="height: 6px;"></div>
+            <div th:utext="${ '2. ' + question.option2}"></div>
+            <div style="height: 6px;"></div>
+            <div th:utext="${ '3. ' + question.option3}"></div>
+            <div style="height: 6px;"></div>
+            <div th:utext="${ '4. ' + question.option4}"></div>
+            <div style="height: 6px;"></div>
+            <div th:utext="${ '5. ' + question.option5}"></div>
+            <div style="height: 6px;"></div>
+
+
+        </div>
 
     </div>
 
