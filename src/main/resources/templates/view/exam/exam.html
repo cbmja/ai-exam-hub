@@ -27,7 +27,7 @@
 
     <div class="content">
 
-    <div style="padding: 10px; border: 1px solid #000000;" th:each="coOp : ${coList}" th:utext="${coOp.commonTextOptionContent}"></div>
+        <div style="padding: 10px; border: 1px solid #000000;" th:each="coOp : ${coList}" th:utext="${'[ ' + coOp.questionNo + ' ] 번 문제<br><br>' + coOp.commonTextOptionContent}"></div>
 
     </div>
 
