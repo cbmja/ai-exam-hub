@@ -7,4 +7,6 @@ public interface CommonTextOptionMapper {
 
     CommonTextOption selectByCode(int code);
 
+    int save(CommonTextOption form);
+
 }

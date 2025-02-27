@@ -305,6 +305,43 @@ $(document).on('click', '#submit-pdf', function(){
 
 
 
+$(document).on('click', '#common-opt-ext', function () {
+
+    $('.common-option-form-background').css('display' , 'flex');
+
+    $.ajax({
+        url: '/ai-exam-hub/subjectDetail',
+        method: 'GET',
+        data: { subjectCode: examSubject },
+        success: function(res) {
+
+            let options = '';
+
+            let def = 'DEFAULT';
+
+            if(res.length > 0){
+                options = `<option selected disabled>선택과목</option> <option value=${def} >공통</option>`;
+            }else{
+                options = `<option value=${def} selected disabled>${examSubjectStr}</option>`;
+            }
+
+            res.forEach((sd)=>{
+              options += `<option value=${sd.subjectDetailCode}>${sd.subjectDetailName}</option>`
+            })
+
+            $('#subject-detail-opt').empty().append(options);
+
+        },
+        error: function(xhr, status, error) {
+            console.error('Error:', error);
+            alert('서버 에러입니다. 잠시 후 다시 시도해 주세요.');
+        }
+    });
+
+
+
+
+}); // ok
 
 
 
@@ -313,8 +350,42 @@ $(document).on('click', '#submit-pdf', function(){
 
 
 
+$(document).on('click', '#submit-co-opt', function () {
 
 
+let subjectDetailCode = $('#subject-detail-opt').val();
+let commonTextOptionContent = $('#common-opt-text').val();
+let questionNoStr = $('#common-q-num').val();
+
+    $.ajax({
+        url: "/ai-exam-hub/common-opt",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({ examCateCode : examCateCode ,
+         examType : examType ,
+          examYear : examYear ,
+           examMonth : examMonth ,
+            subjectCode : examSubject ,
+             subjectDetailCode : subjectDetailCode ,
+              commonTextOptionContent :commonTextOptionContent ,
+              questionNoStr : questionNoStr,
+              hubCode: $('#hubCode').val()}),
+        success: function (response) {
+            if(response <= 0 ){
+                alert("서버 에러");
+                return;
+            }
+
+
+
+
+        },
+        error: function (xhr, status, error) {
+            alert("서버 에러");
+        },
+    });
+
+}); // ok
 
 
 

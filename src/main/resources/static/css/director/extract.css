@@ -15,7 +15,7 @@
     width: 100vh;
     height: 100%;
 
-    margin-left: 50px;
+    /*margin-left: 50px;*/
 
     /* 정렬 */
     display: flex;
@@ -214,6 +214,42 @@
     margin-right: 10px;
 
 }
+
+.exam-common-optb{
+     /* 크기 */
+     width: 110px;
+     height: 41px;
+
+     /* 테두리 */
+     border-radius: 8px;
+
+     /* 배경 */
+     background-color: #0969DA;
+
+     /* 정렬 */
+     display: flex;
+     justify-content: center;
+     align-items: center;
+
+     /* 텍스트 */
+     font-size: 15px;
+     color: #FFFFFF;
+     font-family: "Noto Sans KR", serif;
+     font-optical-sizing: auto;
+     font-weight: 400;
+     font-style: normal;
+
+     /* 여백 */
+     margin-right: 10px;
+
+ }
+ .exam-common-optb:hover{
+     background-color: #0753ad;
+     cursor: pointer;
+
+ }
+
+
 
 .exam-data-submit:hover{
     background-color: #165e2a;

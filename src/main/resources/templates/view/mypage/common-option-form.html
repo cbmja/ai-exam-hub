@@ -1,0 +1,41 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="common-option-form">
+    <!-- css -->
+    <link rel="stylesheet" th:href="@{/css/mypage/common-option-form.css}">
+
+    <div class="common-option-form-background c-c" id="common-option-form-modal">
+
+
+        <div class="common-option-form-modal c-s-c">
+            <div style="width: 100%;">
+                <div class="detail-modal-btn r-e-c">
+                    <span id="c-opt-close-btn" class="hover-pointer">X</span>
+                </div>
+
+                <div style="height: 30px;"></div>
+
+                <div class="qm-question-title-ar r-s-c">문제 번호</div>
+                <textarea class="qm-question-ar" id="common-q-num" placeholder="1, 2, 3 번의 공통 보기라면 -> 1 2 3 공백으로 분리" style="height: 30px;"></textarea>
+                <select class="q-num-select" id="subject-detail-opt">
+                </select>
+                <div class="qm-question-title-ar r-s-c">보기 텍스트</div>
+                <textarea class="qm-question-ar" id="common-opt-text" style="height: 1000px;"></textarea>
+
+                <div style="height: 20px;"></div>
+                <div style="width: 100%;" class="r-e-c">
+                    <div class="copt-submit-btn" style="margin-left: 10px;" id="submit-co-opt">보기 저장</div>
+                </div>
+                <div style="height: 20px;"></div>
+
+
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+    <!-- js -->
+    <script th:src="@{/js/mypage/common-option-form.js}"></script>
+</div>

@@ -1,5 +1,6 @@
 package com.aiexamhub.exam.mapper;
 
+import com.aiexamhub.exam.dto.CommonTextOption;
 import com.aiexamhub.exam.dto.ExtractQuestion;
 import com.aiexamhub.exam.dto.Search;
 
@@ -18,5 +19,9 @@ public interface ExtractQuestionMapper {
     int updateQuestion(ExtractQuestion form);
 
     int delete(int extractQuestionCode);
+
+    List<ExtractQuestion> selectForCommonOpt(CommonTextOption form);
+
+    int updateCommonOtp(ExtractQuestion form);
 
 }

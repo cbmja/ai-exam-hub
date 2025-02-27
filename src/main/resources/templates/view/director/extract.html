@@ -5,7 +5,7 @@
 
 
 <div layout:fragment="content">
-
+    <th:block th:replace="~{view/mypage/common-option-form :: common-option-form}"></th:block>
     <div  class="extract-ar">
         <link rel="stylesheet" th:href="@{/css/director/extract.css}">
         <th:block th:replace="~{view/director/right-form :: right-form}"></th:block>
@@ -94,8 +94,9 @@
 
             <!-- 입력 완료 버튼 --><!-- 입력 완료 버튼 --><!-- 입력 완료 버튼 --><!-- 입력 완료 버튼 --><!-- 입력 완료 버튼 --><!-- 입력 완료 버튼 -->
             <div class="extract-btn-ar">
+                <div class="exam-common-optb" id="common-opt-ext">공통 보기 추출</div><!-- 입력 완료 버튼 -->
                 <div class="exam-pdf-edit" id="edit-pdf">파일 변경</div><!-- 입력 완료 버튼 -->
-                <div class="exam-data-submit" id="submit-pdf">추출 시작</div><!-- 입력 완료 버튼 -->
+                <div class="exam-data-submit" id="submit-pdf">문제 추출</div><!-- 입력 완료 버튼 -->
             </div>
 
         </div>

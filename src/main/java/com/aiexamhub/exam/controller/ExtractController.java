@@ -31,6 +31,7 @@ public class ExtractController {
     private final ExtractHubService extractHubService;
     private final ExtractQuestionService extractQuestionService;
     private final SubjectDetailService subjectDetailService;
+    private final CommonTextOptionService commonTextOptionService;
 
     private final OcrUtil ocrUtil;
 
@@ -237,6 +238,17 @@ public class ExtractController {
         List<SubjectDetail> subjectDetailList = subjectDetailService.selectBySubjectCode(subjectCode);
 
         return subjectDetailList;
+    }
+
+
+
+    @PostMapping("/common-opt")
+    @ResponseBody
+    public int commonOption(ServletRequest servletRequest , @RequestBody CommonTextOption form , Model model){
+
+
+
+        return commonTextOptionService.save(form);
     }
 
 }

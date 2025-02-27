@@ -10,4 +10,27 @@
         WHERE common_text_option_code = #{code};
     </select>
 
+    <insert id="save" parameterType="CommonTextOption" useGeneratedKeys="true" keyProperty="commonTextOptionCode">
+        INSERT INTO common_text_option (
+        common_text_option_content,
+        exam_cate_code,
+        exam_type,
+        exam_year,
+        exam_month,
+        subject_code,
+        subject_detail_code,
+        question_no_str
+        )
+        VALUES (
+        #{commonTextOptionContent},
+        #{examCateCode},
+        #{examType},
+        #{examYear},
+        #{examMonth},
+        #{subjectCode},
+        #{subjectDetailCode},
+        #{questionNoStr}
+        )
+    </insert>
+
 </mapper>

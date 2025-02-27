@@ -11,6 +11,23 @@
         ORDER BY created_at ${sort};
     </select>
 
+    <select id="selectForCommonOpt" parameterType="CommonTextOption" resultType="ExtractQuestion">
+        SELECT *
+        FROM extract_question
+        WHERE extract_hub_code = #{hubCode}
+        AND exam_cate_code = #{examCateCode}
+        AND exam_year = #{examYear}
+        AND exam_month = #{examMonth}
+        AND exam_type = #{examType}
+        AND subject_code = #{subjectCode}
+        AND FIND_IN_SET(CAST(question_no AS CHAR), REPLACE(#{questionNoStr}, ' ', ',')) > 0
+        AND subject_detail_code = #{subjectDetailCode};
+    </select>
+
+
+
+
+
     <select id="selectByExtractQuestionCode" parameterType="int" resultType="ExtractQuestion">
         SELECT *
         FROM extract_question
@@ -124,6 +141,14 @@
         comment = #{comment},
         question = #{question},
         question_sub = #{questionSub},
+        updated_at = NOW()
+        WHERE extract_question_code = #{extractQuestionCode}
+    </update>
+
+    <update id="updateCommonOtp" parameterType="ExtractQuestion">
+        UPDATE extract_question
+        SET
+        common_text_option_code = #{commonTextOptionCode},
         updated_at = NOW()
         WHERE extract_question_code = #{extractQuestionCode}
     </update>
