@@ -53,7 +53,23 @@ public class ExamController {
                 coCode = question.getCommonTextOptionCode();
             }
 
+            if (question.getExamType().equals("even")) {
+                question.setExamTypeName("짝수형");
+            } else if (question.getExamType().equals("odd")) {
+                question.setExamTypeName("홀수형");
+            } else if (question.getExamType().equals("1")) {
+                question.setExamTypeName("1형");
+            } else if (question.getExamType().equals("2")) {
+                question.setExamTypeName("2형");
+            } else if (question.getExamType().equals("x")) {
+                question.setExamTypeName("X");
+            }
+            if (question.getSubjectDetailName().isEmpty()) {
+                question.setSubjectDetailName("공통");
+            }
+
         }
+
 
 
 
