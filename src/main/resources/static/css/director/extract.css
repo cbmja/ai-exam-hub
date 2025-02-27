@@ -12,8 +12,10 @@
 
 #canvas-ar{
     /* 크기 */
-    width: 100%;
+    width: 100vh;
     height: 100%;
+
+    margin-left: 50px;
 
     /* 정렬 */
     display: flex;
