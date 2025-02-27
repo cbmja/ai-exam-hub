@@ -329,29 +329,7 @@
     background-color: #881f1f;
 }
 
-.common-option-btn{
-   /* 크기 */
-   width: 99px;
-   height: 41px;
 
-   /* 정렬 */
-   display: flex;
-   justify-content: center;
-   align-items: center;
-
-   /* 텍스트 */
-   font-size: 15px;
-   color: #0969DA;
-   font-family: "Noto Sans KR", serif;
-   font-optical-sizing: auto;
-   font-weight: 400;
-   font-style: normal;
-
-   border-radius: 8px;
-   border: 1px solid #0969DA;
-
-   background-color: #F6F8FA;
-}
 
 .extract-submit-btn{
 
