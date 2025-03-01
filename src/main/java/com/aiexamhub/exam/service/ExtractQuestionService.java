@@ -69,16 +69,17 @@ public class ExtractQuestionService {
     }
 
     // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
+    // 03/01 2차 ok-----------------------------------------------------------------------------------------------------
     public ExtractQuestion selectByExtractQuestionCode(int extractQuestionCode){
-        ExtractQuestion extractQuestion;
+        ExtractQuestion extractQuestion = null;
         try{
             extractQuestion = sql.selectOne("com.aiexamhub.exam.mapper.ExtractQuestionMapper.selectByExtractQuestionCode",extractQuestionCode);
-            if(extractQuestion == null){
-                extractQuestion = new ExtractQuestion();
-                extractQuestion.setErr("err");
-            }
+
         }catch (Exception e){
             e.printStackTrace();
+        }
+
+        if(extractQuestion == null){
             extractQuestion = new ExtractQuestion();
             extractQuestion.setErr("err");
         }

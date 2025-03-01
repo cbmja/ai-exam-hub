@@ -2,6 +2,7 @@ $(document).ready(function () {
 //SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 
 // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
+// 03/01 2차 ok-----------------------------------------------------------------------------------------------------
 $(document).on('click', '.question-ele', function(){
 
     let questionCode = $(this).data('questioncode');
