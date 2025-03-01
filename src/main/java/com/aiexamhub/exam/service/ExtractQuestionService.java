@@ -30,14 +30,13 @@ public class ExtractQuestionService {
 
 
     // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
+    // 03/01 2차 ok-----------------------------------------------------------------------------------------------------
     public int CountByExtractHubCode(int hubCode){
         int res = -1;
         try{
             res = sql.selectOne("com.aiexamhub.exam.mapper.ExtractQuestionMapper.CountByExtractHubCode" , hubCode);
-
         }catch (Exception e){
             e.printStackTrace();
-            res = -1;
         }
         return res;
     }

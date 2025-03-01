@@ -67,6 +67,7 @@ public class MemberController {
     }
 
     // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
+    // 03/01 2차 ok-----------------------------------------------------------------------------------------------------
     // 내 저장소 목록
     @GetMapping("/mypage/repository")
     public String mypage(ServletRequest servletRequest , Model model , @RequestParam(name = "page" ,defaultValue = "0") int page , @RequestParam(name = "search" ,defaultValue = "") String search){

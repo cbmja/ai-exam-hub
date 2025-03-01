@@ -41,6 +41,7 @@ public class ExtractHubService {
     }
 
     // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
+    // 03/01 2차 ok-----------------------------------------------------------------------------------------------------
     public int getTotal(Page form){
 
         int total = -1;
@@ -52,11 +53,15 @@ public class ExtractHubService {
         return total;
     }
     // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
+    // 03/01 2차 ok-----------------------------------------------------------------------------------------------------
     public List<ExtractHub> getRepositories(Page form){
         
         List<ExtractHub> list = null;
         try{
             list = sql.selectList("com.aiexamhub.exam.mapper.ExtractHubMapper.getRepositories" , form);
+            if(list == null){
+                list = new ArrayList<>();
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
