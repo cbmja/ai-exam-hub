@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
     // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
+    // 03/01 2차 ok-----------------------------------------------------------------------------------------------------
     @GetMapping("/index")
     public String index(ServletRequest servletRequest , Model model){
         String viewPath = "view/layout/index";
