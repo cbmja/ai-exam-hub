@@ -44,6 +44,7 @@ $(document).on('click', '#question-delete-btn', function(){
 });
 
 // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
+// 03/01 2차 ok-----------------------------------------------------------------------------------------------------
 $(document).on('click', '#question-edit-btn', function(){
 
 
@@ -75,7 +76,7 @@ $(document).on('click', '#question-edit-btn', function(){
         }),
         success: function(response) {
 
-            if(response < 0){
+            if(response <= 0){
                 alert('서버 에러입니다. 잠시 후 다시 시도해주세요.');
             }else{
                 alert('수정 완료');

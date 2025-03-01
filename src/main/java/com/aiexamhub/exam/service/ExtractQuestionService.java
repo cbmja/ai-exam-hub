@@ -86,7 +86,9 @@ public class ExtractQuestionService {
         return extractQuestion;
 
     }
+
     // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
+    // 03/01 2차 ok-----------------------------------------------------------------------------------------------------
     public int updateQuestion(ExtractQuestion form){
 
         int res = -1;
