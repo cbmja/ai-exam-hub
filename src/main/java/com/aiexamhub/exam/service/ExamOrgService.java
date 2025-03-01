@@ -29,7 +29,7 @@ public class ExamOrgService {
             return examOrgList;
         }
     }
-
+    // 03/01 1차 ok-----------------------------------------------------------------------------------------------------
     public List<ExamOrg> selectByExamCateCode(String examCateCode){
         List<ExamOrg> examOrgList;
         try{

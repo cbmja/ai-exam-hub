@@ -20,6 +20,7 @@ let examSubjectStr;
 let examTypeStr;
 
 /* select 변경시 상단 시험 정보 변경 */
+// 03/01 1차 ok-----------------------------------------------------------------------------------------------------
 $(document).on('change', '.extract-select', function(){
 
     let id = $(this).attr('id');
@@ -57,13 +58,23 @@ $(document).on('change', '.extract-select', function(){
 
 
 /* 시험 종류 선택시 출제기관목록 , 시험 과목 불러오기 */
+// 03/01 1차 ok-----------------------------------------------------------------------------------------------------
 $(document).on('change', '#exam-cate-form', function(){
+
+    let ecc = $('#exam-cate-form').val();
 
     $.ajax({
         url: '/ai-exam-hub/examInfo',
         method: 'GET',
-        data: { examCateCode: examCateCode },
+        data: { examCateCode: ecc },
         success: function(res) {
+            let response = res['res'];
+
+            if(response == 'err'){
+                alert('서버 에러입니다.')
+                return;
+            }
+
 
             let examOrgList = res['examOrgList'];
             let subjectList = res['subjectList'];

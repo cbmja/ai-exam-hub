@@ -131,34 +131,49 @@ public class ExtractController {
     }
 
     // ok-02/25---------------------------------------------------------------------------------------------------------
+    // 03/01 2차 ok-----------------------------------------------------------------------------------------------------
     @GetMapping("/examInfo")
     @ResponseBody
     public Map<String , Object> getExamOrg(ServletRequest servletRequest , @RequestParam(name="examCateCode", defaultValue = "") String examCateCode,Model model){
-        HttpServletRequest req = (HttpServletRequest) servletRequest;
-        model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
-        Map<String , Object> res = new HashMap<>();
+            Map<String , Object> res = new HashMap<>();
+        try{
+            HttpServletRequest req = (HttpServletRequest) servletRequest;
+            model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
 
-        if(examCateCode.isBlank()){
-            System.out.println("no request param");
+
+            if(examCateCode.isBlank()){
+                res.put("res" , "err");
+
+                return res;
+            }
+
+            // 출제 기관 리스트
+            List<ExamOrg> examOrgList = examOrgService.selectByExamCateCode("."+examCateCode);
+            if(examOrgList == null || examOrgList.isEmpty() || examOrgList.get(0).getErr().equals("err")){
+                res.put("res" , "err");
+
+                return res;
+            }
+
+            // 시험 과목 리스트
+            List<Subject> subjectList = subjectService.selectByExamCateCode("."+examCateCode);
+            if(subjectList == null || subjectList.isEmpty() || subjectList.get(0).getErr().equals("err")){
+                res.put("res" , "err");
+
+                return res;
+            }
+            res.put("res" , "success");
+            res.put("examOrgList" , examOrgList);
+            res.put("subjectList" , subjectList);
+            return res;
+        }catch (Exception e){
+            e.printStackTrace();
+
+            res.put("res" , "err");
+
+            return res;
         }
 
-        // 출제 기관 리스트
-        List<ExamOrg> examOrgList = examOrgService.selectByExamCateCode("."+examCateCode);
-        if(examOrgList == null || examOrgList.isEmpty() || examOrgList.get(0).getErr().equals("err")){
-            // 에러
-            System.out.println("sql err");
-        }
-
-        // 시험 과목 리스트
-        List<Subject> subjectList = subjectService.selectByExamCateCode("."+examCateCode);
-        if(subjectList == null || subjectList.isEmpty() || subjectList.get(0).getErr().equals("err")){
-            // 에러
-            System.out.println("sql err");
-        }
-
-        res.put("examOrgList" , examOrgList);
-        res.put("subjectList" , subjectList);
-        return res;
     }
 
     // ok-02/25---------------------------------------------------------------------------------------------------------
