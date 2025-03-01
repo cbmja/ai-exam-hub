@@ -63,20 +63,21 @@ public class ExtractController {
 
             ExtractHub myHub = extractHubService.selectByExtractHubCode(hubCode);
             if(myHub.getErr().equals("err")){
-                return "/view/util/errer";
+                return "/view/util/error";
             }
 
 
             List<ExamCate> examCateList = examCateService.selectAll();
             if(examCateList == null || examCateList.isEmpty() || examCateList.get(0).getErr().equals("err")){
                 // 에러
-                return "/view/util/errer";
+                return "/view/util/error";
             }
 
 
             List<ExtractQuestion> extractQList = extractQuestionService.selectByExtractHubCode(hubCode , "desc");
-            if(extractQList.get(0).getErr().equals("err")){
-                return "/view/util/errer";
+
+            if(extractQList.size() == 1 && extractQList.get(0).getErr().equals("err")){
+                return "/view/util/error";
             }
 
             for(ExtractQuestion eq : extractQList){
@@ -124,7 +125,7 @@ public class ExtractController {
 
         }catch (Exception e){
             e.printStackTrace();
-            return "/view/util/errer";
+            return "/view/util/error";
         }
 
 

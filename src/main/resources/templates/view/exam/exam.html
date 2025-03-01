@@ -36,8 +36,8 @@
             </div>
 
             <div style="height: 20px;"></div>
-            <h3  style="border-top: 1px solid #F6F6F6;" th:text="${question.examYear +'_'+ question.examCateName +'_'+ question.subjectName +'_'+ question.subjectDetailName +'_'+ question.examTypeName +'_'+question.questionNo+'번'}"></h3>
-            <div th:utext="${question.question}"></div>
+            <h6  style="border-top: 1px solid #F6F6F6; margin-bottom: 0;" th:text="${question.examYear +'_'+ question.examCateName +'_'+ question.subjectName +'_'+ question.subjectDetailName +'_'+ question.examTypeName +'_'+question.questionNo+'번'}"></h6>
+            <h3 th:utext="${question.question}"></h3>
             <div style="height: 6px;"></div>
             <div th:if="${question.questionSub != ''}" style="padding: 10px; border: 1px solid #000000;" th:utext="${question.questionSub}"></div>
             <div style="height: 10px;"></div>

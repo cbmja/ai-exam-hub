@@ -59,7 +59,7 @@ public class MemberController {
             }
         }catch (Exception e){
             e.printStackTrace();
-            viewPath = "/view/util/errer";
+            viewPath = "/view/util/error";
         }
 
 
