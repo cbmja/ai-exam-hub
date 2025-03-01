@@ -151,7 +151,9 @@ $(document).on("mousemove", function (e) {
         top: Math.min(startY, endY) + "px", // 스크롤 보정된 top 값 사용
     });
 }); // ok
+
 // 캡쳐 끝
+// 03/01 1차 ok-----------------------------------------------------------------------------------------------------
 $(document).on("mouseup", function () {
     if (!isCapturing) return;
 
@@ -207,6 +209,7 @@ $(document).on("mouseup", function () {
 
 
 /* 문제 저장 버튼*/
+// 03/01 1차 ok-----------------------------------------------------------------------------------------------------
 $(document).on('click', '.extract-submit-btn', function(){
 
     let cateCode = $('#cateCode').val();

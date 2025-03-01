@@ -177,6 +177,7 @@ public class ExtractController {
     }
 
     // ok-02/25---------------------------------------------------------------------------------------------------------
+    // 03/01 2차 귀찮아서 확인 안함 보류 -----------------------------------------------------------------------------------
     @PostMapping("/naver-ocr")
     @ResponseBody
     public String img(ServletRequest servletRequest , @RequestBody Map<String , Object> form , Model model){
@@ -186,13 +187,10 @@ public class ExtractController {
             model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
 
             String base64Image = (String)form.get("image");
-            int answerNo = (Integer)form.get("answerNo");
 
             String img64 = base64Image.replaceAll("data:image/png;base64,","");
 
             String ocrResult = ocrUtil.sendOCRRequest(img64);
-            System.out.println("====================================================");
-            System.out.println(ocrResult);
 
             JSONObject jsonObject = new JSONObject(ocrResult);
             JSONArray images = jsonObject.getJSONArray("images");
@@ -218,8 +216,7 @@ public class ExtractController {
 
             // Output the result
             String result = inferTextBuilder.toString().trim();
-            System.out.println("====================================================");
-            System.out.println(result);
+
 /*
 
             String[] parts = base64Image.split(",");
@@ -238,7 +235,6 @@ public class ExtractController {
              fos.close();
 */
 
-
             return result;
         }catch (Exception e){
             e.printStackTrace();
@@ -248,16 +244,16 @@ public class ExtractController {
     }
 
     // ok-02/25---------------------------------------------------------------------------------------------------------
+    // 03/01 2차 ok-----------------------------------------------------------------------------------------------------
     @PostMapping("/data")
     @ResponseBody
     public int saveQuestion(ServletRequest servletRequest , @RequestBody ExtractQuestion form , Model model){
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
-        int res = extractQuestionService.save(form);
+        extractQuestionService.save(form);
 
         return form.getExtractQuestionCode();
     }
-
 
     // ok-02/25---------------------------------------------------------------------------------------------------------
     // 03/01 2차 ok-----------------------------------------------------------------------------------------------------
@@ -270,7 +266,6 @@ public class ExtractController {
 
         return subjectDetailList;
     }
-
 
     // 03/01 1차 ok-----------------------------------------------------------------------------------------------------
     @PostMapping("/common-opt")

@@ -14,9 +14,9 @@ import java.util.List;
 public class ExtractQuestionService {
 
     private final SqlSessionTemplate sql;
-
+    // 03/01 1차 ok-----------------------------------------------------------------------------------------------------
     public int save(ExtractQuestion form){
-        int res = 0;
+        int res = -1;
         try{
             res = sql.insert("com.aiexamhub.exam.mapper.ExtractQuestionMapper.save" , form);
 
@@ -27,7 +27,6 @@ public class ExtractQuestionService {
             return res;
         }
     }
-
 
     // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
     // 03/01 2차 ok-----------------------------------------------------------------------------------------------------
