@@ -42,6 +42,7 @@ public class ExtractQuestionService {
     }
 
     // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
+    // 03/01 2차 ok-----------------------------------------------------------------------------------------------------
     public List<ExtractQuestion> selectByExtractHubCode(int hubCode , String sort){
         List<ExtractQuestion> list = null;
 
@@ -50,6 +51,9 @@ public class ExtractQuestionService {
             search.setExtractHubCode(hubCode);
             search.setSort(sort);
             list = sql.selectList("com.aiexamhub.exam.mapper.ExtractQuestionMapper.selectByExtractHubCode",search);
+            if(list == null){
+                list = new ArrayList<>();
+            }
 
         }catch (Exception e){
             e.printStackTrace();

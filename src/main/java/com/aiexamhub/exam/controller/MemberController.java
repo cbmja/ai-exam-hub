@@ -119,6 +119,7 @@ public class MemberController {
     }
 
     // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
+    // 03/01 2차 ok-----------------------------------------------------------------------------------------------------
     // 내 저장소(저장소에 저장된 문제 목록)
     @GetMapping("/mypage/repository/{hubCode}")
     public String questions(ServletRequest servletRequest , Model model , @PathVariable(name = "hubCode")int hubCode){
@@ -148,7 +149,7 @@ public class MemberController {
                 } else if (eq.getExamType().equals("2")) {
                     eq.setExamTypeName("2형");
                 } else if (eq.getExamType().equals("x")) {
-                    eq.setExamTypeName("X");
+                    eq.setExamTypeName("타입X");
                 }
                 if (eq.getSubjectDetailName().isEmpty()) {
                     eq.setSubjectDetailName("공통");

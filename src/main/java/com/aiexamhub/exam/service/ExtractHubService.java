@@ -15,6 +15,7 @@ public class ExtractHubService {
 
     private final SqlSessionTemplate sql;
     // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
+    // 03/01 2차 ok-----------------------------------------------------------------------------------------------------
     public ExtractHub selectByExtractHubCode(int extractHubCode){
         ExtractHub extractHub = null;
         try{
