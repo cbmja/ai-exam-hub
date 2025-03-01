@@ -272,7 +272,7 @@ public class ExtractController {
     }
 
 
-
+    // 03/01 1차 ok-----------------------------------------------------------------------------------------------------
     @PostMapping("/common-opt")
     @ResponseBody
     public int commonOption(ServletRequest servletRequest , @RequestBody CommonTextOption form , Model model){

@@ -170,7 +170,7 @@ $(document).on('click', '#edit-pdf', function(){
 });
 
 /* 선택 완료 버튼 */
-// 03/01 2차 ok-----------------------------------------------------------------------------------------------------
+// 03/01 1차 ok-----------------------------------------------------------------------------------------------------
 $(document).on('click', '#submit-pdf', function(){
 
 
@@ -318,13 +318,7 @@ $(document).on('click', '#submit-pdf', function(){
 });
 
 
-
-
-
-
-
-
-
+// 03/01 1차 ok-----------------------------------------------------------------------------------------------------
 $(document).on('click', '#common-opt-ext', function () {
 
     $('.common-option-form-background').css('display' , 'flex');
@@ -340,6 +334,10 @@ $(document).on('click', '#common-opt-ext', function () {
             let def = 'DEFAULT';
 
             if(res.length > 0){
+                if(res[0].err == 'err'){
+                    alert('서버 에러입니다.');
+                    return;
+                }
                 options = `<option selected disabled>선택과목</option> <option value=${def} >공통</option>`;
             }else{
                 options = `<option value=${def} selected disabled>${examSubjectStr}</option>`;
@@ -364,18 +362,13 @@ $(document).on('click', '#common-opt-ext', function () {
 }); // ok
 
 
-
-
-
-
-
-
+// 03/01 1차 ok-----------------------------------------------------------------------------------------------------
 $(document).on('click', '#submit-co-opt', function () {
 
 
-let subjectDetailCode = $('#subject-detail-opt').val();
-let commonTextOptionContent = $('#common-opt-text').val();
-let questionNoStr = $('#common-q-num').val();
+    let subjectDetailCode = $('#subject-detail-opt').val();
+    let commonTextOptionContent = $('#common-opt-text').val();
+    let questionNoStr = $('#common-q-num').val();
 
     $.ajax({
         url: "/ai-exam-hub/common-opt",
@@ -395,10 +388,6 @@ let questionNoStr = $('#common-q-num').val();
                 alert("서버 에러");
                 return;
             }
-
-
-
-
         },
         error: function (xhr, status, error) {
             alert("서버 에러");
@@ -406,22 +395,6 @@ let questionNoStr = $('#common-q-num').val();
     });
 
 }); // ok
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

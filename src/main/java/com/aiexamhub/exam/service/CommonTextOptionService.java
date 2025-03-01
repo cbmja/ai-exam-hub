@@ -27,7 +27,7 @@ public class CommonTextOptionService {
         return co;
 
     }
-
+    // 03/01 1차 ok-----------------------------------------------------------------------------------------------------
     public int save(CommonTextOption form){
         int res = -1;
         try{
@@ -37,18 +37,22 @@ public class CommonTextOptionService {
 
         }
 
-        if(res != -1){
+
+        if(res > 0){
 
             List<ExtractQuestion> list = sql.selectList("com.aiexamhub.exam.mapper.ExtractQuestionMapper.selectForCommonOpt" , form);
 
             for(ExtractQuestion eq : list){
                 eq.setCommonTextOptionCode(form.getCommonTextOptionCode());
-                sql.update("com.aiexamhub.exam.mapper.ExtractQuestionMapper.updateCommonOtp" , eq);
+                int r = sql.update("com.aiexamhub.exam.mapper.ExtractQuestionMapper.updateCommonOtp" , eq);
+                if(r <= 0){
+                    return -1;
+                }
             }
 
+        }else{
+            return -1;
         }
-
-
 
 
         return res;
