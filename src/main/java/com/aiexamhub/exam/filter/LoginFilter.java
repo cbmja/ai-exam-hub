@@ -40,7 +40,9 @@ public class LoginFilter implements Filter {
         Boolean isLogin = !idCookie.isEmpty();
         servletRequest.setAttribute("isLogin" , isLogin);
 
-        idCookie = loginUtil.decrypt(idCookie);
+        if(!idCookie.isEmpty()){
+            idCookie = loginUtil.decrypt(idCookie);
+        }
 
         servletRequest.setAttribute("memberCode" , idCookie);
 
