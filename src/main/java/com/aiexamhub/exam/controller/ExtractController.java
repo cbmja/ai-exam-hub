@@ -52,67 +52,82 @@ public class ExtractController {
 */
 
     // ok-02/25---------------------------------------------------------------------------------------------------------
+    // 03/01 2차 ok-----------------------------------------------------------------------------------------------------
     @GetMapping("extract/form/{hubCode}")
     public String testing(ServletRequest servletRequest , @PathVariable(name = "hubCode" , required = false) int hubCode,Model model){
-        HttpServletRequest req = (HttpServletRequest) servletRequest;
-        model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
-        String memberCode = (String)req.getAttribute("memberCode");
 
-        ExtractHub myHub = extractHubService.selectByExtractHubCode(hubCode);
+        try{
+            HttpServletRequest req = (HttpServletRequest) servletRequest;
+            model.addAttribute("isLogin" , (Boolean)req.getAttribute("isLogin"));
+            String memberCode = (String)req.getAttribute("memberCode");
 
-        List<ExamCate> examCateList = examCateService.selectAll();
-        if(examCateList == null || examCateList.isEmpty() || examCateList.get(0).getErr().equals("err")){
-            // 에러
-            System.out.println("sql err");
+            ExtractHub myHub = extractHubService.selectByExtractHubCode(hubCode);
+            if(myHub.getErr().equals("err")){
+                return "/view/util/errer";
+            }
+
+
+            List<ExamCate> examCateList = examCateService.selectAll();
+            if(examCateList == null || examCateList.isEmpty() || examCateList.get(0).getErr().equals("err")){
+                // 에러
+                return "/view/util/errer";
+            }
+
+
+            List<ExtractQuestion> extractQList = extractQuestionService.selectByExtractHubCode(hubCode , "desc");
+            if(extractQList.get(0).getErr().equals("err")){
+                return "/view/util/errer";
+            }
+
+            for(ExtractQuestion eq : extractQList){
+                if(eq.getSubjectDetailName().isEmpty()){
+                    eq.setSubjectDetailName("공통");
+                }
+                if(eq.getExamType().equals("even")){
+                    eq.setExamTypeName("짝수형");
+                }
+                if(eq.getExamType().equals("odd")){
+                    eq.setExamTypeName("홀수형");
+                }
+                if(eq.getExamType().equals("A")){
+                    eq.setExamTypeName("A형");
+                }
+                if(eq.getExamType().equals("B")){
+                    eq.setExamTypeName("B형");
+                }
+                if(eq.getExamType().equals("1")){
+                    eq.setExamTypeName("1형");
+                }
+                if(eq.getExamType().equals("2")){
+                    eq.setExamTypeName("1형");
+                }
+                if(eq.getExamType().equals("x")){
+                    eq.setExamTypeName("타입 없음");
+                }
+
+            }
+
+            int currentYear = Year.now().getValue();
+
+            // 1900년부터 현재 년도까지의 숫자를 포함하는 리스트 생성
+            List<Integer> yearList = IntStream.rangeClosed(1900, currentYear)  // 1900~현재 년도 범위
+                    .boxed()  // IntStream을 Integer로 변환
+                    .sorted(Comparator.reverseOrder())
+                    .collect(Collectors.toList());
+
+            model.addAttribute("extractQList" , extractQList);
+            model.addAttribute("myHub" , myHub);
+            model.addAttribute("yearList" , yearList);
+            model.addAttribute("examCateList" , examCateList);
+            model.addAttribute("title" , "문제_추출");
+            return "view/director/extract";
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return "/view/util/errer";
         }
 
 
-        List<ExtractQuestion> extractQList = extractQuestionService.selectByExtractHubCode(hubCode , "desc");
-
-        for(ExtractQuestion eq : extractQList){
-            if(eq.getSubjectDetailName().isEmpty()){
-                eq.setSubjectDetailName("공통");
-            }
-            if(eq.getExamType().equals("even")){
-                eq.setExamTypeName("짝수형");
-            }
-            if(eq.getExamType().equals("odd")){
-                eq.setExamTypeName("홀수형");
-            }
-            if(eq.getExamType().equals("A")){
-                eq.setExamTypeName("A형");
-            }
-            if(eq.getExamType().equals("B")){
-                eq.setExamTypeName("B형");
-            }
-            if(eq.getExamType().equals("1")){
-                eq.setExamTypeName("1형");
-            }
-            if(eq.getExamType().equals("2")){
-                eq.setExamTypeName("1형");
-            }
-            if(eq.getExamType().equals("x")){
-                eq.setExamTypeName("타입 없음");
-            }
-
-        }
-
-
-
-        int currentYear = Year.now().getValue();
-
-        // 1900년부터 현재 년도까지의 숫자를 포함하는 리스트 생성
-        List<Integer> yearList = IntStream.rangeClosed(1900, currentYear)  // 1900~현재 년도 범위
-                .boxed()  // IntStream을 Integer로 변환
-                .sorted(Comparator.reverseOrder())
-                .collect(Collectors.toList());
-
-        model.addAttribute("extractQList" , extractQList);
-        model.addAttribute("myHub" , myHub);
-        model.addAttribute("yearList" , yearList);
-        model.addAttribute("examCateList" , examCateList);
-        model.addAttribute("title" , "문제_추출");
-        return "view/director/extract";
     }
 
     // ok-02/25---------------------------------------------------------------------------------------------------------

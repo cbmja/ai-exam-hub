@@ -14,7 +14,7 @@ import java.util.List;
 public class ExamCateService {
 
     private final SqlSessionTemplate sql;
-
+    // 03/01 1차 ok-----------------------------------------------------------------------------------------------------
     public List<ExamCate> selectAll(){
         List<ExamCate> examCateList;
         try{
