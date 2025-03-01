@@ -170,6 +170,7 @@ $(document).on('click', '#edit-pdf', function(){
 });
 
 /* 선택 완료 버튼 */
+// 03/01 2차 ok-----------------------------------------------------------------------------------------------------
 $(document).on('click', '#submit-pdf', function(){
 
 
@@ -183,7 +184,15 @@ $(document).on('click', '#submit-pdf', function(){
 
             let def = 'DEFAULT';
 
+
+
             if(res.length > 0){
+
+                if(res[0].err == 'err'){
+                    alert('서버 에러입니다.');
+                    return;
+                }
+
                 options = `<option selected disabled>선택과목</option> <option value=${def} >공통</option>`;
             }else{
                 options = `<option value=${def} selected disabled>${examSubjectStr}</option>`;

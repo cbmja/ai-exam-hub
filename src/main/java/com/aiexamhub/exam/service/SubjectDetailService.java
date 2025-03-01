@@ -15,6 +15,7 @@ public class SubjectDetailService {
 
     private final SqlSessionTemplate sql;
 
+    // 03/01 1차 ok-----------------------------------------------------------------------------------------------------
     public List<SubjectDetail> selectBySubjectCode(String subjectCode){
         List<SubjectDetail> subjcetDetailList;
         try{

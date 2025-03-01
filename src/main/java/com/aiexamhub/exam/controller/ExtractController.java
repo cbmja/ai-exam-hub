@@ -260,6 +260,7 @@ public class ExtractController {
 
 
     // ok-02/25---------------------------------------------------------------------------------------------------------
+    // 03/01 2차 ok-----------------------------------------------------------------------------------------------------
     @GetMapping("/subjectDetail")
     @ResponseBody
     public List<SubjectDetail> getSubjectDetails(ServletRequest servletRequest , @RequestParam(name="subjectCode", defaultValue = "") String subjectCode , Model model){
