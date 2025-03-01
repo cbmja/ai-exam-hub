@@ -17,6 +17,7 @@ public class MemberService {
     private final LoginUtil loginUtil;
 
     // 02/25 1차 ok-----------------------------------------------------------------------------------------------------
+    // 03/01 2차 ok-----------------------------------------------------------------------------------------------------
     public Member EmailLogin(Member form , HttpServletResponse response , Model model){
         Member member;
         try{
